@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160608030409) do
+ActiveRecord::Schema.define(version: 20160608162555) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,5 +31,34 @@ ActiveRecord::Schema.define(version: 20160608030409) do
   end
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
+
+  create_table "hotels", force: :cascade do |t|
+    t.string   "name"
+    t.string   "address"
+    t.string   "city"
+    t.string   "state_code"
+    t.string   "zip_code"
+    t.string   "phone_number"
+    t.string   "url"
+    t.boolean  "off_site"
+    t.boolean  "water_sports"
+    t.boolean  "marina"
+    t.boolean  "beach"
+    t.boolean  "tennis"
+    t.boolean  "biking"
+    t.boolean  "suites"
+    t.boolean  "concierge_floor"
+    t.boolean  "room_service"
+    t.boolean  "wired_internet"
+    t.boolean  "wireless_internet"
+    t.integer  "num_rooms"
+    t.string   "cost_range"
+    t.string   "shuttle_to_parks"
+    t.string   "cost_estimate"
+    t.string   "lodging_area_code"
+    t.string   "category_code"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
 
 end
