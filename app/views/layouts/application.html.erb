@@ -14,10 +14,11 @@
   <%= csrf_meta_tags %>
 </head>
 <body class="<%= body_class %>">
+    <%= render "navigation" -%>
   <%= render "flashes" -%>
   <%= yield %>
   
-<%= render 'footer' %>
+  <%= render 'footer' %>
 
   <%= render "javascript" %>
   <%= render "css_overrides" %>
