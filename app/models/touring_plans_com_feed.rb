@@ -31,7 +31,6 @@ class TouringPlansComFeed
     return links
   end
 
-
   def get_hotel_details_by_permalink(hotel_permalink)
     # http://touringplans.com/walt-disney-world/dining/chuck-wagon.json
     hotel_name  = hotel_permalink.split("-").join(" ")
@@ -54,8 +53,7 @@ class TouringPlansComFeed
 
     @hotel
   end
- 
-  
+
   def _construct_hotel_url(permalink)
     hotel_permalink = []
     hotel_permalink << _hotel_permalink_root
@@ -94,6 +92,6 @@ class TouringPlansComFeed
      "cost_estimate"=>"",
      "lodging_area_code"=>"",
      "category_code"=>""}
-    
   end
+
 end
