@@ -1,0 +1,780 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+				<!-- Google Analytics Content Experiment code -->
+<script>function utmx_section(){}function utmx(){}(function(){var
+k='12488259-25',d=document,l=d.location,c=d.cookie;
+if(l.search.indexOf('utm_expid='+k)>0)return;
+function f(n){if(c){var i=c.indexOf(n+'=');if(i>-1){var j=c.
+indexOf(';',i);return escape(c.substring(i+n.length+1,j<0?c.
+length:j))}}}var x=f('__utmx'),xx=f('__utmxx'),h=l.hash;d.write(
+'<sc'+'ript src="'+'http'+(l.protocol=='https:'?'s://ssl':
+'://www')+'.google-analytics.com/ga_exp.js?'+'utmxkey='+k+
+'&utmx='+(x?x:'')+'&utmxx='+(xx?xx:'')+'&utmxtime='+new Date().
+valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
+'" type="text/javascript" charset="utf-8"><\/sc'+'ript>')})();
+</script><script>utmx('url','A/B');</script>
+<!-- End of Google Analytics Content Experiment code -->
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","errorBeacon":"bam.nr-data.net","licenseKey":"50bc3fe88a","applicationID":"21887098","transactionName":"JwldQUcMVFRdSxwLVxADX0YaE0pXSFxBF0E7D11RUBs=","queueTime":0,"applicationTime":149,"agent":""}</script>
+<script type="text/javascript">window.NREUM||(NREUM={}),__nr_require=function(e,t,n){function r(n){if(!t[n]){var o=t[n]={exports:{}};e[n][0].call(o.exports,function(t){var o=e[n][1][t];return r(o||t)},o,o.exports)}return t[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({1:[function(e,t,n){function r(e,t){return function(){o(e,[(new Date).getTime()].concat(a(arguments)),null,t)}}var o=e("handle"),i=e(2),a=e(3);"undefined"==typeof window.newrelic&&(newrelic=NREUM);var u=["setPageViewName","setCustomAttribute","finished","addToTrace","inlineHit"],c=["addPageAction"],f="api-";i(u,function(e,t){newrelic[t]=r(f+t,"api")}),i(c,function(e,t){newrelic[t]=r(f+t)}),t.exports=newrelic,newrelic.noticeError=function(e){"string"==typeof e&&(e=new Error(e)),o("err",[e,(new Date).getTime()])}},{}],2:[function(e,t,n){function r(e,t){var n=[],r="",i=0;for(r in e)o.call(e,r)&&(n[i]=t(r,e[r]),i+=1);return n}var o=Object.prototype.hasOwnProperty;t.exports=r},{}],3:[function(e,t,n){function r(e,t,n){t||(t=0),"undefined"==typeof n&&(n=e?e.length:0);for(var r=-1,o=n-t||0,i=Array(0>o?0:o);++r<o;)i[r]=e[t+r];return i}t.exports=r},{}],ee:[function(e,t,n){function r(){}function o(e){function t(e){return e&&e instanceof r?e:e?u(e,a,i):i()}function n(n,r,o){e&&e(n,r,o);for(var i=t(o),a=l(n),u=a.length,c=0;u>c;c++)a[c].apply(i,r);var s=f[g[n]];return s&&s.push([m,n,r,i]),i}function p(e,t){w[e]=l(e).concat(t)}function l(e){return w[e]||[]}function d(e){return s[e]=s[e]||o(n)}function v(e,t){c(e,function(e,n){t=t||"feature",g[n]=t,t in f||(f[t]=[])})}var w={},g={},m={on:p,emit:n,get:d,listeners:l,context:t,buffer:v};return m}function i(){return new r}var a="nr@context",u=e("gos"),c=e(2),f={},s={},p=t.exports=o();p.backlog=f},{}],gos:[function(e,t,n){function r(e,t,n){if(o.call(e,t))return e[t];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,t,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return e[t]=r,r}var o=Object.prototype.hasOwnProperty;t.exports=r},{}],handle:[function(e,t,n){function r(e,t,n,r){o.buffer([e],r),o.emit(e,t,n)}var o=e("ee").get("handle");t.exports=r,r.ee=o},{}],id:[function(e,t,n){function r(e){var t=typeof e;return!e||"object"!==t&&"function"!==t?-1:e===window?0:a(e,i,function(){return o++})}var o=1,i="nr@id",a=e("gos");t.exports=r},{}],loader:[function(e,t,n){function r(){if(!w++){var e=v.info=NREUM.info,t=s.getElementsByTagName("script")[0];if(e&&e.licenseKey&&e.applicationID&&t){c(l,function(t,n){e[t]||(e[t]=n)});var n="https"===p.split(":")[0]||e.sslForHttp;v.proto=n?"https://":"http://",u("mark",["onload",a()],null,"api");var r=s.createElement("script");r.src=v.proto+e.agent,t.parentNode.insertBefore(r,t)}}}function o(){"complete"===s.readyState&&i()}function i(){u("mark",["domContent",a()],null,"api")}function a(){return(new Date).getTime()}var u=e("handle"),c=e(2),f=window,s=f.document;NREUM.o={ST:setTimeout,CT:clearTimeout,XHR:f.XMLHttpRequest,REQ:f.Request,EV:f.Event,PR:f.Promise,MO:f.MutationObserver},e(1);var p=""+location,l={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-943.min.js"},d=window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&!/CriOS/.test(navigator.userAgent),v=t.exports={offset:a(),origin:p,features:{},xhrWrappable:d};s.addEventListener?(s.addEventListener("DOMContentLoaded",i,!1),f.addEventListener("load",r,!1)):(s.attachEvent("onreadystatechange",o),f.attachEvent("onload",r)),u("mark",["firstbyte",a()],null,"api");var w=0},{}]},{},["loader"]);</script>
+			<title>Disney World Hotels</title>
+	<link rel="publisher" href="https://plus.google.com/+touringplans" />
+	
+  <script>
+//<![CDATA[
+window.gon={};
+//]]>
+</script>
+  <script>
+//<![CDATA[
+window.gon={};
+//]]>
+</script>
+  <link rel="stylesheet" media="all" href="//cdn1.touringplans.com/assets/application-489ceb958eb0a52e9f287027629ec07c.css" />
+  <script src="//cdn2.touringplans.com/assets/application-63a024c3e674e9a209d920ea9a556b9d.js"></script>
+  <script src="//cdn3.touringplans.com/assets/hotels-f96562077e0d753112a6dd4d08009020.js"></script>
+  <meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="ORZqq3sfNt9GRVABDTksJkmxUHwFbZSZaCUriOU3c1iCz01am0VLIUx5gaSi4L/o530Vm0PaCucwc8JcOWADMg==" />
+
+
+	<!--[if lt IE 7]>
+		<script defer type="text/javascript" src="/javascripts/pngfix.js"></script>
+		<script type="text/javascript">
+		sfHover = function() {
+			var sfEls = document.getElementById("chrome_nav").getElementsByTagName("LI");
+			for (var i=0; i<sfEls.length; i++) {
+				sfEls[i].onmouseover=function() {
+					this.className+=" sfhover";
+				}
+				sfEls[i].onmouseout=function() {
+					this.className=this.className.replace(new RegExp(" sfhover\\b"), "");
+				}
+			}
+		}
+		if (window.attachEvent) window.attachEvent("onload", sfHover);
+		</script>
+	<![endif]-->
+
+		<style type="text/css">#header {background: url('//cdn2.touringplans.com/static/mastheads/properties/wdw_9.jpg') center bottom no-repeat;}</style>
+	
+
+		<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-5592685-7', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+</head>
+
+<body id="home">
+
+	<div id="header">
+		<div id="chrome">
+	<div id="chrome-inner" class="selfclear">
+		<div id="logo">
+			<a href="/">
+				<img alt="touringplans.com" border="0" src="//cdn1.touringplans.com/assets/logo_type-67e9d7d74dc1120b02eb5222f6c4011d.png" width="187" height="27" />
+			</a>
+		</div>
+
+
+		<div id="chrome_nav">
+			<ul>
+					<li>
+						<a href="/walt-disney-world/crowd-calendar">Crowd Calendar <img alt="dropdown_arrow" width="8" height="4" src="//cdn0.touringplans.com/assets/dropdown_arrow-1be5512d6c06232d1a708611fbcbe173.gif" /></a>
+						<div style="width: 27em;">
+							<ul>
+								<li>
+									<a rel="nofollow" href="/walt-disney-world/crowd-calendar">Disney World Crowd Calendar</a>
+								</li>
+								<li>
+									<a href="/walt-disney-world/crowd-tracker">Disney World Crowd Tracker</a>
+								</li>
+								<li>
+									<a href="/walt-disney-world/crowd-levels">Disney World Crowd Levels</a>
+								</li>
+								<li>
+									<a href="/walt-disney-world/park-recommendations">Disney World Park Recommendations</a>
+								</li>
+								<li>
+									<a href="/walt-disney-world/historical-crowds">Disney World Historical Crowds</a>
+								</li>
+							</ul>
+						</div>
+					</li>
+					<li>
+						<a href="/walt-disney-world/touring-plans">Touring Plans <img alt="dropdown_arrow" width="8" height="4" src="//cdn0.touringplans.com/assets/dropdown_arrow-1be5512d6c06232d1a708611fbcbe173.gif" /></a>
+						<div style="width: 25em;">
+							<ul>
+								<li>
+									<a rel="nofollow" href="/walt-disney-world/touring-plans">Disney World Touring Plans</a>
+								</li>
+								<li>
+									<a href="/magic-kingdom/touring-plans">Magic Kingdom Touring Plans</a>
+								</li>
+								<li>
+									<a href="/epcot/touring-plans">Epcot Touring Plans</a>
+								</li>
+								<li>
+									<a href="/hollywood-studios/touring-plans">Hollywood Studios Touring Plans</a>
+								</li>
+								<li>
+									<a href="/animal-kingdom/touring-plans">Animal Kingdom Touring Plans</a>
+								</li>
+								<li>
+									<a href="/walt-disney-world/touring-plans/personalized">Personalized Touring Plans</a>
+								</li>
+							</ul>
+						</div>
+					</li>
+						<li>
+							<a href="/disney-world-app">Lines <img alt="dropdown_arrow" width="8" height="4" src="//cdn0.touringplans.com/assets/dropdown_arrow-1be5512d6c06232d1a708611fbcbe173.gif" /></a>
+							<div>
+								<ul>
+									<li>
+										<a rel="nofollow" href="/disney-world-app">Disney World App</a>
+									</li>
+									<li>
+										<a href="/disney-world-iphone-app">Disney World iPhone App</a>
+									</li>
+									<li>
+										<a href="/disney-world-android-app">Disney World Android App</a>
+									</li>
+									<li>
+										<a href="/disney-world-web-app">Disney World Smartphone App</a>
+									</li>
+									<li>
+										<a href="http://m.touringplans.com/wdw">Disney World Browser App</a>
+									</li>
+								</ul>
+							</div>
+						</li>
+					<li>
+						<a href="/walt-disney-world/parks">Parks <img alt="dropdown_arrow" width="8" height="4" src="//cdn0.touringplans.com/assets/dropdown_arrow-1be5512d6c06232d1a708611fbcbe173.gif" /></a>
+						<div>
+							<ul>
+									<li><a title="Magic Kingdom" href="/magic-kingdom">Magic Kingdom</a></li>
+									<li><a title="Epcot" href="/epcot">Epcot</a></li>
+									<li><a title="Disney&#39;s Hollywood Studios" href="/hollywood-studios">Disney&#39;s Hollywood Studios</a></li>
+									<li><a title="Disney&#39;s Animal Kingdom" href="/animal-kingdom">Disney&#39;s Animal Kingdom</a></li>
+									<li><a title="Typhoon Lagoon" href="/typhoon-lagoon">Typhoon Lagoon</a></li>
+									<li><a title="Blizzard Beach" href="/blizzard-beach">Blizzard Beach</a></li>
+								<li>
+									<a href="/walt-disney-world/closures">Disney World Refurbs</a>
+								</li>
+								<li>
+									<a href="/walt-disney-world/showtimes">Disney World Showtimes</a>
+								</li>
+							</ul>
+						</div>
+					</li>
+					<li>
+						<a href="#">More <img alt="dropdown_arrow" width="8" height="4" src="//cdn0.touringplans.com/assets/dropdown_arrow-1be5512d6c06232d1a708611fbcbe173.gif" /></a>
+						<div>
+							<ul>
+								<li>
+									<a href="/ebooks">eBooks</a>
+								</li>
+								<li>
+									<a target="_blank" href="http://www.zazzle.com/touringplans">Merchandise</a>
+								</li>
+								<li>
+									<a href="http://blog.touringplans.com">TouringPlans.com Blog</a>
+								</li>
+								<li>
+									<a href="/walt-disney-world/survey">Unofficial Guide Survey</a>
+								</li>
+								<li><a href="/walt-disney-world/ticket-calculator">Disney World Tickets</a></li>
+								<li>
+									<a href="/walt-disney-world/dining">Disney World Dining</a>
+								</li>
+								<li>
+									<a href="/walt-disney-world/hotels">Disney World Hotels</a>
+								</li>
+
+								<li>
+									<a href="/walt-disney-world/touring">Disney World Touring</a>
+								</li>
+
+				    		<li><a href="/walt-disney-world/disney-springs">Disney Springs</a></li>
+
+								<li>Other Destinations--------------------</li>
+										<li><a href="/disneyland-resort">Disneyland Resort</a></li>
+										<li><a href="/universal-orlando">Universal Orlando Resort</a></li>
+										<li><a href="/disney-cruise-line">Disney Cruise Line</a></li>
+
+								
+							</ul>
+						</div>
+					</li>
+			</ul>
+		</div>
+		<div id="user_bar">
+				<span>Not logged in</span>
+				<a href="/login">Login</a> |
+				<a class="" href="/join">Subscribe</a>
+		</div>
+	</div>
+</div>
+
+
+		<div id="masthead">
+					<h1>Disney World Hotels</h1>
+		</div><!-- /masthead -->
+
+  </div><!-- /header -->
+  <div id="content" class="full selfclear">
+		<div id="breadcrumb">
+	<a rel="nofollow" href="/">Home</a> &raquo;
+	<a href="/walt-disney-world">Disney World</a> &raquo;
+	Hotels
+</div>
+
+<div id="center" class="column">
+	
+    <p style="font-size: 16px;">When you're selecting a Walt Disney World Resort there are a few things you’ll want to work out:</p>
+
+<ul style="font-size: 16px;">
+<li><strong>Budget</strong> Each of Disney's four resort categories come with its own price range. Disney's Value resorts start at around $100 per night and offer basic amenities. At the top end, Disney's deluxe resorts can cost $400 to $800 per night, and offer more lavish rooms. Determining your budget will likely point to a specific category.<br><br></li>
+
+<li><strong>Number of Travelers</strong> If there are four or fewer travelers any hotel will do, but you still may want the extra space or larger beds offered in one of the upper categories. If you have more than four travelers, that will narrow your search.<br><br></li>
+
+<li><strong>If You'll Visit One Park a Lot</strong> The resorts are spread out around Walt Disney World’s 43 square miles. Some are closer to the Magic Kingdom, some are closer to Animal Kingdom, and some are more centrally located. If you plan on spending most days in one park, that could narrow down your hotel choices.</li>
+</ul>
+
+<p style="font-size: 16px;">Here's a quick summary of the four resort categories, their prices, room sizes, and our picks for the best resort in that category. Further down you'll find more details on each hotel, including room and resort amenities, restaurants, pools, shopping, and transportation to the parks.</p>
+
+<p style="font-size: 16px;">Click below to jump directly to the section about...
+
+<ul style="font-size: 16px;">
+<li><a href="#value">Value Resort Hotels and Value Suites</a></li>
+<li><a href="#moderate">Moderate Resort Hotels</a></li>
+<li><a href="#deluxe">Deluxe Resort Hotels</a></li>
+<li><a href="#villa">Deluxe Villas</a></li>
+</ul>
+</p>
+
+<table>
+<caption align="top" style="text-align:center; font-size: 16px;">Best Hotels in Each Resort Category</caption>
+<tr align="center" style="font-size: 16px;">
+<th style="font-size: 15px;"><strong>Category</strong></th><th style="font-size: 15px;"><strong>Cheapest Rack Rate*</strong></th><th style="font-size: 15px;"><strong>Room Size</strong></th><th style="font-size: 15px;"><strong>Bed Size</strong></th><th style="font-size: 15px;"><strong>Recommended Resort</strong></th>
+</tr>
+<tr align="center">
+<th style="font-size: 15px;"><strong>Value</strong></th><td style="font-size: 15px;">$110</td><td style="font-size: 15px;">260-277 sq ft</td><td style="font-size: 15px;">Double</td><td style="font-size: 15px;"><a target="_blank" href="/walt-disney-world/hotels/disneys-pop-century-resort">Pop Century</a></td>
+</tr>
+<tr align="center">
+<th style="font-size: 15px;"><strong>Value Suite</strong></th><td style="font-size: 15px;">$320</td><td style="font-size: 15px;">565 sq ft</td><td style="font-size: 15px;">Double</td><td style="font-size: 15px;"><a target="_blank" href="/walt-disney-world/hotels/disneys-art-of-animation-resort">Art of Animation</a></td>
+</tr>
+<tr align="center">
+<th style="font-size: 15px;"><strong>Moderate</strong></th><td style="font-size: 15px;">$203</td><td style="font-size: 15px;">314 sq ft</td><td style="font-size: 15px;">Queen</td><td style="font-size: 15px;"><a target="_blank" href="/walt-disney-world/hotels/disneys-port-orleans-resort-french-quarter">Port Orleans - French Quarter</a></td>
+</tr>
+<tr align="center">
+<th style="font-size: 15px;"><strong>Deluxe</strong></th><td style="font-size: 15px;">$366</td><td style="font-size: 15px;">344-440 sq ft</td><td style="font-size: 15px;">Queen</td><td style="font-size: 15px;"><a target="_blank" href="/walt-disney-world/hotels/disneys-grand-floridian-resort">Grand Floridian</a></td>
+</tr>
+<tr align="center">
+<th style="font-size: 15px;"><strong>Deluxe Villa</strong></th><td style="font-size: 15px;">$393</td><td style="font-size: 15px;">344-2,349 sq ft</td><td style="font-size: 15px;">Queen or King</td><td style="font-size: 16px;"><a target="_blank" href="/walt-disney-world/hotels/bay-lake-tower-at-disneys-contemporary-resort">Bay Lake Tower</a></td>
+</tr>
+</table>
+<br>
+
+
+
+<p style="font-size: 16px;">*The "Rack Rate" is a term for a full price, or non-discounted hotel room rate.</p>
+
+<h1>Resort Hotel Categories</h1>
+<br>
+
+<p style="font-size: 16px;">There are four categories of resort found on Walt Disney World property: Value Resort Hotels, Moderate Resort Hotels, Deluxe Resort Hotels, and Deluxe Villas. The resorts in each category come with their own amenities and price ranges.</p>
+
+<p style="font-size: 16px;">All Disney Resort Hotels have certain amenities such as a flat panel television, mini-refrigerator, hair dryer, safe, and iron. Each resort also has at least one pool. </p>
+
+<div class="pullquote alignright">
+<h4>Unofficial Tip</h4>
+<p>Our new <a href=/hotel_maps>Hotel Room Views</a> tool shows a picture of the view you’ll get from every hotel room in Walt Disney World. More than 30,000 photos. Completely searchable. We’ll even tell you the exact words to give Disney to request a specific room.
+</p>
+</div>
+
+
+<a name="value"></a><br>
+
+<h2>Value Resort Hotels</h2>
+
+</br
+><ul><li style="font-size: 16px;"><font style="color: #ffffff; background-color: #00B200"><strong>TouringPlans.com Choice:</font> <a target="_blank" href="/walt-disney-world/hotels/disneys-art-of-animation-resort"> Art of Animation Resort</a>.</strong> Better theming than other Value Resorts, nicer pools, a better food court, and the availability of family suites make this an easy choice. (<em>Honorable Mention: Pop Century</em>)</li></ul>
+
+<p style="font-size: 16px;">The most economical of Walt Disney World Resorts, the Value options are excellent options for those on a budget. The standard room in a Value resort is 260 square feet with two full-size beds. The rooms contain a bathroom with a shower and toilet, with a changing area just outside the bathroom containing a single sink. </p>
+
+<p style="font-size: 16px;">For a little more space, both the Art of Animation and All Star Music Resorts offer family suites, which are the size of two standard rooms. In these suites, one room contains a single queen-sized bet while the other is a living room with a few different fold-out bed options. If you have a larger family or just want a little extra room, the Value Suites are the most economical option.</p>
+
+<div class="pullquote alignleft">
+<h4>Unofficial Tip</h4>
+<p>Clicking on any hotel link on this page will take you to our fully detailed resort pages where you will find a full amenity list among many other things.
+</p>
+</div>
+
+<p style="font-size: 16px;">Each Value Resort Hotel has at least two pools, one main feature pool and one or two “quiet” pools. In addition, each of the feature pools has a nearby child play area with soft groundcover and gentle fountains. All of the pools are themed similarly to the resort.</p>
+
+<p style="font-size: 16px;">The lobby building at each resort contains a gift shop, arcade, and food court. There are no table service restaurants at Value Resorts and the only bar is the small one near the feature pool.</p>
+
+<p style="font-size: 16px;"><strong>Value Resorts as ranked by our staff and readers:</strong>
+<ul>
+<li style="font-size: 16px;"><a href="/walt-disney-world/hotels/disneys-art-of-animation-resort">Disney’s Art of Animation Resort</a> - Our #1 rated Value Resort</li>
+<li style="font-size: 16px;"><a href="/walt-disney-world/hotels/disneys-pop-century-resort">Disney’s Pop Century Resort</a></li>
+<li style="font-size: 16px;"><a href="/walt-disney-world/hotels/disneys-all-star-sports-resort">Disney’s All-Star Sports Resort </a></li>
+<li style="font-size: 16px;"><a href="/walt-disney-world/hotels/disneys-all-star-music-resort">Disney’s All-Star Music Resort</a></li>
+<li style="font-size: 16px;"><a href="/walt-disney-world/hotels/disneys-all-star-movies-resort">Disney’s All-Star Movies Resort</a></li>
+</ul>
+</p>
+
+
+<div class="center_image">
+<a class="image" href="//cdn3.touringplans.com/static/hotels/orl013/overview/BigWheelIcon2-DisneysPopCenturyResort-medium.jpg"><img width="195" height="150" src="//cdn3.touringplans.com/static/hotels/orl013/overview/BigWheelIcon2-DisneysPopCenturyResort-medium.jpg" alt="Bigwheelicon2 disneyspopcenturyresort medium" /></a>
+<a class="image" href="//cdn1.touringplans.com/static/hotels/orl013/overview/Room2-medium.jpg"><img width="195" height="150" src="//cdn1.touringplans.com/static/hotels/orl013/overview/Room2-medium.jpg" alt="Room2 medium" /></a>
+<a class="image" href="//cdn1.touringplans.com/static/hotels/orl237/DSC_0907.JPG"><img width="195" height="150" src="//cdn1.touringplans.com/static/hotels/orl237/DSC_0907.JPG" alt="Dsc 0907" /></a>
+<p>
+Typical Value Resort theme, room, and bathroom area
+</p>
+</div>
+
+<div class="center_image">
+	<a class="image" href="//cdn2.touringplans.com/static/hotels/orl242/aoa11.jpg"><img width="195" height="150" src="//cdn2.touringplans.com/static/hotels/orl242/aoa11.jpg" alt="Aoa11" /></a>
+	<a class="image" href="//cdn0.touringplans.com/static/hotels/orl242/aoa18.jpg"><img width="195" height="150" src="//cdn0.touringplans.com/static/hotels/orl242/aoa18.jpg" alt="Aoa18" /></a>
+	<a class="image" href="//cdn0.touringplans.com/static/hotels/orl242/aoa19.jpg"><img width="195" height="150" src="//cdn0.touringplans.com/static/hotels/orl242/aoa19.jpg" alt="Aoa19" /></a>
+<p>
+Art of Animation Value Suite. Larger room, but a similar style of exterior theme.
+</p>
+</div>
+
+
+<a name="moderate"></a><br>
+
+<h2>Moderate Resort Hotels</h2>
+
+<br><ul><li style="font-size: 16px;"><font style="color: #ffffff; background-color: #00B200"><strong>TouringPlans.com Choice:</font> <a target="_blank" href="/walt-disney-world/hotels/disneys-port-orleans-resort-french-quarter">Port Orleans - French Quarter</a>.</strong> French Quarter is compact and pleasant, and within walking distance of Riverside effectively doubling the food and pool options.(<em>Honorable Mention: Port Orleans – Riverside</em>)</li></ul>
+
+<p style="font-size: 16px;"> Moderate Resorts are the mid-level hotels at Walt Disney World. With bigger rooms and more amenities, the Moderate Resorts are a step up from the Value. The standard room in a Moderate resort is 314 square feet with two queen-size beds. The rooms contain a bathroom with a shower and toilet, with a changing area just outside the bathroom containing either a single or double sink, depending on the resort (Caribbean Beach, Port Orleans-French Quarter, and Port Orleans-Riverside have doubles).</p>
+
+<p style="font-size: 16px;">If there are 5 people traveling in your party, some rooms at Port Orleans-Riverside can officially sleep five. For a little more space, the Cabins at Fort Wilderness are considered Moderate. Actually, it’s a lot more space as their 504 square feet are equivalent in size to a 1-bedroom suite. The Cabins are made up of a living room and bedroom and are capable of sleeping 6 adults. The Cabin also has just one small bathroom so be ready if there are 6 adults.</p>
+
+<p style="font-size: 16px;">Any pirates or princesses traveling in your party may be interested to know that there are special rooms found at the Caribbean Beach and Port Orleans-Riverside Resorts. The Caribbean Beach Resort has re-themed many rooms to a fun <em>Pirates of the Caribbean</em> motif while Riverside has a couple of buildings worth of whimsical, yet not overly girly, <em>Princess and the Frog </em>rooms. In both cases the rooms are very detailed and well done, but also in buildings that are quite far from the food court area. They are also more expensive than standard rooms.</p>
+
+<p style="font-size: 16px;">Each Moderate Resort Hotel has one main feature pool and all but Port Orleans-French Quarter (the smallest resort) has anywhere from three to six “quiet” pools. The feature pools each have a water slide and a nearby child play area with shallow water and gentle fountains. All of the pools are themed similarly to the resort with the exception of the Cabins at Fort Wilderness, where the pool is a simple concrete structure.</p>
+
+<p style="font-size: 16px;">The lobby building at each resort contains a gift shop, arcade, food court, and table service restaurant. The lone exception is Port Orleans-French Quarter, which has no table service. Caribbean Beach has a simple pool bar near the feature pool, but all other Moderate Resorts have one full service lounge found in the lobby building in addition to their pool bar.</p>
+
+<p style="font-size: 16px;"><strong>Moderate Resorts as ranked by our staff and readers:</strong>
+<ul>
+<li style="font-size: 16px;"><a href="/walt-disney-world/hotels/disneys-port-orleans-resort-french-quarter">Disney’s Port Orleans Resort – French Quarter</a> - Our #1 Rated Moderate Resort</li>
+<li style="font-size: 16px;"><a href="/walt-disney-world/hotels/disneys-port-orleans-resort-riverside">Disney’s Port Orleans Resort – Riverside</a></li>
+<li style="font-size: 16px;"><a href="/walt-disney-world/hotels/disneys-coronado-springs-resort">Disney’s Coronado Springs Resort</a></li>
+<li style="font-size: 16px;"><a href="/walt-disney-world/hotels/disneys-caribbean-beach-resort">Disney’s Caribbean Beach Resort</a></li>
+<li style="font-size: 16px;"><a href="/walt-disney-world/hotels/fort-wilderness-resort-cabins">Disney’s Fort Wilderness Resort Cabins</a></li>
+</ul>
+</p>
+
+<div class="center_image">
+
+
+<a class="image" href="//cdn0.touringplans.com/static/hotels/orl007/DSC_2059.JPG">
+	<img width="225" height="175" src="//cdn1.touringplans.com/static/hotels/orl007/DSC_2059.JPG" alt="Dsc 2059" /></a>
+<a class="image" href="//cdn0.touringplans.com/static/hotels/orl009/Room1.jpg">
+	<img width="225" height="175" src="//cdn2.touringplans.com/static/hotels/orl009/Room1.jpg" alt="Room1" /></a>
+
+<a class="image" href="//cdn2.touringplans.com/static/hotels/orl015/overview/por20.jpg">
+	<img width="225" height="175" src="//cdn3.touringplans.com/static/hotels/orl015/overview/por20.jpg" alt="Por20" /></a>
+<a class="image" href="//cdn3.touringplans.com/static/hotels/orl014/POFQ-Room1.JPG">
+	<img width="225" height="175" src="//cdn3.touringplans.com/static/hotels/orl014/POFQ-Room1.JPG" alt="Pofq room1" /></a>
+
+<p>
+Moderate Resort rooms. Clockwise from top left: Caribbean Beach (pirate room), Coronado Springs, Port Orleans-French Quarter, Port Orleans-Riverside (princess room)
+</p>
+</div>
+
+<div class="center_image">
+	<a class="image" href="//cdn1.touringplans.com/static/hotels/orl007/overview/CBR%20-%20Grounds%204%20(B).jpg"><img width="225" height="175" src="//cdn1.touringplans.com/static/hotels/orl007/overview/CBR%20-%20Grounds%204%20(B).jpg" alt="Cbr%20 %20grounds%204%20(b)" /></a>
+	<a class="image" href="//cdn3.touringplans.com/static/hotels/orl009/Glam1.jpg"><img width="225" height="175" src="//cdn3.touringplans.com/static/hotels/orl009/Glam1.jpg" alt="Glam1" /></a>
+	<a class="image" href="//cdn2.touringplans.com/static/hotels/orl015/overview/por01.jpg"><img width="225" height="175" src="//cdn2.touringplans.com/static/hotels/orl015/overview/por01.jpg" alt="Por01" /></a>
+	<a class="image" href="//cdn3.touringplans.com/static/hotels/orl014/IMG_2130.JPG"><img width="225" height="175" src="//cdn3.touringplans.com/static/hotels/orl014/IMG_2130.JPG" alt="Img 2130" /></a>
+<p>
+Moderate Resort grounds. Clockwise from top left: Caribbean Beach, Coronado Springs, Port Orleans-French Quarter, Port Orleans-Riverside
+</p>
+</div>
+
+
+<a name="deluxe"></a><br>
+
+<h2>Deluxe Resort Hotels</h2>
+
+<br><ul><li style="font-size: 16px;"><font style="color: #ffffff; background-color: #00B200"><strong>TouringPlans.com Choice:</font>
+	<a target="_blank" href="/walt-disney-world/hotels/disneys-grand-floridian-resort">Grand Floridian Resort</a>.</strong> Disney World’s flagship resort is deserving of the title. The Grand Floridian is elegant, beautiful, well-located, and contains some of the best restaurants on property. (<em>Honorable Mention: Polynesian Resort when it’s not under construction</em>)</li></ul>
+
+<p style="font-size: 16px;">Deluxe Resorts are the top of the line when it comes to standard-sized hotel rooms at Walt Disney World. With even bigger rooms and even more amenities, the Deluxe Resorts are another step up from the Moderates. Unfortunately for the purposes of this summary, although excellent for frequent visitors, there is also quite a bit of variation in the various Deluxe Resorts. The standard rooms in a Deluxe resort range from 344 square feet (Animal Kingdom Lodge and Wilderness Lodge) all the way up to 440 square feet (Grand Floridian). All Deluxe Resort rooms are equipped with two queen-size beds. The rooms contain a bathroom with a shower and toilet, with a changing area just outside the bathroom containing either a single or double sink, depending on the resort.</p>
+
+<p style="font-size: 16px;">Each Deluxe Resort Hotel has one main feature pool and most have at least one “quiet” pool. The feature pools each have a water slide and a nearby child play area with shallow water and gentle fountains. All of the pools are themed similarly to the resort.</p>
+
+<p style="font-size: 16px;">Each resort contains a gift shop, arcade, food court, and at least one table service restaurant. All Deluxe resorts also have at least one full service lounge in addition to their pool bar.</p>
+
+<p style="font-size: 16px;">There are a myriad of different room configurations, view options, and price ranges for the Deluxe Resorts. Rather than list all the options here we encourage you to take some time browsing our immensely detailed resort pages below.</p>
+
+<p style="font-size: 16px;"><strong>Deluxe Resorts as ranked by our staff and readers:</strong><ul>
+<li style="font-size: 16px;"><a href="/walt-disney-world/hotels/disneys-grand-floridian-resort">Disney’s Grand Floridian Resort</a> - Our #1 Rated Deluxe Resort</li>
+<li style="font-size: 16px;"><a href="/walt-disney-world/hotels/disneys-polynesian-resort">Disney’s Polynesian Resort</a></li>
+<li style="font-size: 16px;"><a href="/walt-disney-world/hotels/disneys-contemporary-resort">Disney’s Contemporary Resort</a></li>
+<li style="font-size: 16px;"><a href="/walt-disney-world/hotels/disneys-beach-club-resort">Disney’s Beach Club Resort</a></li>
+<li style="font-size: 16px;"><a href="/walt-disney-world/hotels/disneys-animal-kingdom-lodge">Disney’s Animal Kingdom Lodge</a></li>
+<li style="font-size: 16px;"><a href="/walt-disney-world/hotels/disneys-yacht-club-resort">Disney’s Yacht Club Resort</a></li>
+<li style="font-size: 16px;"><a href="/walt-disney-world/hotels/disneys-boardwalk-inn">Disney’s Boardwalk Inn</a></li>
+<li style="font-size: 16px;"><a href="/walt-disney-world/hotels/disneys-wilderness-lodge">Disney’s Wilderness Lodge</a></li>
+<li style="font-size: 16px;"><a href="/walt-disney-world/hotels/dolphin-at-walt-disney-world">Dolphin at Walt Disney World</a> <em>(Not operated by Disney)</em></li>
+<li style="font-size: 16px;"><a href="/walt-disney-world/hotels/swan-at-walt-disney-world"> Swan at Walt Disney World</a> <em>(Not operated by Disney)</em></li>
+<li style="font-size: 16px;"><a href="/walt-disney-world/hotels/shades-of-green-at-walt-disney-world"> Shades of Green at Walt Disney World</a> <em>(Not operated by Disney)</em></li>
+</ul>
+
+</p>
+
+<div class="center_image">
+	<a class="image" href="//cdn2.touringplans.com/static/hotels/orl008/DSC_9150.JPG"><img width="195" height="150" src="//cdn2.touringplans.com/static/hotels/orl008/DSC_9150.JPG" alt="Dsc 9150" /></a>
+	<a class="image" href="//cdn2.touringplans.com/static/hotels/orl012/DSC_6044.JPG"><img width="195" height="150" src="//cdn2.touringplans.com/static/hotels/orl012/DSC_6044.JPG" alt="Dsc 6044" /></a>
+	<a class="image" href="//cdn0.touringplans.com/static/hotels/orl010/standard1.JPG"><img width="195" height="150" src="//cdn0.touringplans.com/static/hotels/orl010/standard1.JPG" alt="Standard1" /></a>
+<p>
+Typical Standard Deluxe rooms. From left to right: Contemporary Resort, Polynesian Resort, Grand Floridian Resort
+</p>
+</div>
+
+<div class="center_image">
+	<a class="image" href="//cdn1.touringplans.com/static/hotels/orl002/DSC_7119.JPG"><img width="195" height="150" src="//cdn1.touringplans.com/static/hotels/orl002/DSC_7119.JPG" alt="Dsc 7119" /></a>
+	<a class="image" href="//cdn1.touringplans.com/static/hotels/orl017/DSC_2240.JPG"><img width="195" height="150" src="//cdn1.touringplans.com/static/hotels/orl017/DSC_2240.JPG" alt="Dsc 2240" /></a>
+	<a class="image" href="//cdn3.touringplans.com/static/hotels/orl019/DSC_7675.JPG"><img width="195" height="150" src="//cdn3.touringplans.com/static/hotels/orl019/DSC_7675.JPG" alt="Dsc 7675" /></a>
+<p>
+Examples of Deluxe Resort grounds. From left to right: Animal Kindom Lodge lobby, Wilderness Lodge exterior, Beach and Yacht Club Resort pool.
+</p>
+</div>
+
+
+<a name="villa"></a><br>
+
+<h2>Deluxe Villas</h2>
+
+<br><ul><li style="font-size: 16px;"><font style="color: #ffffff; background-color: #00B200"><strong>TouringPlans.com Choice:</font> <a target="_blank" href="/walt-disney-world/hotels/bay-lake-tower-at-disneys-contemporary-resort">Bay Lake Tower</a>.</strong> One of the best locations on property. (<em>Honorable Mention: Grand Floridian Villas</em>)</li></ul>
+
+<p style="font-size: 16px;">Deluxe Villas represent the most luxurious hotel rooms at Walt Disney World. Part of the Disney Vacation Club program, most of the Villa Resorts are part of a Deluxe Resort with the exceptions being Old Key West and Saratoga Springs. There are several types of Villa room: Studio, 1-Bedroom, 2-bedroom, and 3-bedroom Grand Villas. The Studio rooms are generally the same as a Deluxe Resort room described above, while the others are much larger and contain kitchens and usually more than one bathroom.</p>
+
+<p style="font-size: 16px;">Since most of the Deluxe Villas share space with Deluxe Resorts, they share most amenities such as pools, restaurants, and bars. Where there are separate locations, the amenities are very similar to that of a Deluxe Resort.</p>
+
+<p style="font-size: 16px;">As with the Deluxe Resorts, there are too many different room configurations, view options, and price ranges to list all the options here. As before, we encourage you to take some time browsing our immensely detailed Villa pages below.</p>
+
+
+<p style="font-size: 16px;"><strong>Deluxe Villa Resorts as ranked by our staff and readers:</strong>
+<ul>
+<li style="font-size: 16px;"><a href="/walt-disney-world/hotels/bay-lake-tower-at-disneys-contemporary-resort">Bay Lake Tower at Disney’s Contemporary Resort</a> - Our #1 Rated Deluxe Villa Resort</li>
+<li style="font-size: 16px;"><a href="/walt-disney-world/hotels/the-villas-at-disneys-grand-floridian-resort-and-spa">The Villas at Disney’s Grand Floridian Resort & Spa</a></li>
+<li style="font-size: 16px;"><a href="/walt-disney-world/hotels/disneys-animal-kingdom-villas">Disney’s Animal Kingdom Villas</a></li>
+<li style="font-size: 16px;"><a href="/walt-disney-world/hotels/disneys-beach-club-villas">Disney’s Beach Club Villas</a></li>
+<li style="font-size: 16px;"><a href="/walt-disney-world/hotels/disneys-old-key-west-resort">Disney’s Old Key West Resort</a></li>
+<li style="font-size: 16px;"><a href="/walt-disney-world/hotels/disneys-boardwalk-villas">Disney’s Boardwalk Villas</a></li>
+<li style="font-size: 16px;"><a href="/walt-disney-world/hotels/disneys-saratoga-springs-resort-spa">Disney’s Saratoga Springs Resort & Spa</a></li>
+<li style="font-size: 16px;"><a href="/walt-disney-world/hotels/disneys-wilderness-lodge-villas">Disney’s Wilderness Lodge Villas</a></li>
+<li style="font-size: 16px;"><a href="/walt-disney-world/hotels/treehouse-villas-at-disneys-saratoga-springs-resort">Treehouse Villas at Disney’s Saratoga Springs Resort</a></li>
+</ul>
+</p>
+
+<div class="center_image">
+	<a class="image" href="//cdn1.touringplans.com/static/hotels/orl239/DSC00640.JPG"><img width="195" height="150" src="//cdn1.touringplans.com/static/hotels/orl239/DSC00640.JPG" alt="Dsc00640" /></a>
+	<a class="image" href="//cdn1.touringplans.com/static/hotels/orl011/DSC_1496.jpg"><img width="195" height="150" src="//cdn1.touringplans.com/static/hotels/orl011/DSC_1496.jpg" alt="Dsc 1496" /></a>
+	<a class="image" href="//cdn0.touringplans.com/static/hotels/orl238/IMG_9031.JPG"><img width="195" height="150" src="//cdn0.touringplans.com/static/hotels/orl238/IMG_9031.JPG" alt="Img 9031" /></a>
+<p>
+Examples of Deluxe Villa rooms. From left to right: Studio at Bay Lake Tower, kitchen area in an Old Key West two-bedroom, Kidani Village Grand Villa living room.
+</p>
+</div>
+
+
+
+<br>
+<br>
+
+<h1>Resort Hotel Locations</h1>
+<br>
+
+<p style="font-size: 16px;">The Walt Disney World resorts are spread all across the property’s 27,000 acres. While that is a significantly large area, the resorts are primarily grouped in 4 sections: Magic Kingdom, Epcot, Animal Kingdom, and Bonnet Creek.</p>
+
+<h2>Magic Kingdom Area Resorts</h2>
+<br>
+
+<ul>
+<li style="font-size: 16px;"><a href="/walt-disney-world/hotels/disneys-contemporary-resort">Disney’s Contemporary Resort</a> (Deluxe Resort)</li>
+<li style="font-size: 16px;"><a href="/walt-disney-world/hotels/disneys-grand-floridian-resort">Disney’s Grand Floridian Resort</a> (Deluxe Resort)</li>
+<li style="font-size: 16px;"><a href="/walt-disney-world/hotels/disneys-polynesian-resort">Disney’s Polynesian Resort</a> (Deluxe Resort)</li>
+<li style="font-size: 16px;"><a href="/walt-disney-world/hotels/disneys-wilderness-lodge">Disney’s Wilderness Lodge</a> (Deluxe Resort)</li>
+<li style="font-size: 16px;"><a href="/walt-disney-world/hotels/bay-lake-tower-at-disneys-contemporary-resort">Bay Lake Tower at Disney’s Contemporary Resort</a> (Deluxe Villa)</li>
+<li style="font-size: 16px;"><a href="/walt-disney-world/hotels/the-villas-at-disneys-grand-floridian-resort-and-spa">The Villas at Disney’s Grand Floridian Resort & Spa</a> (Deluxe Villa)</li>
+<li style="font-size: 16px;"><a href="/walt-disney-world/hotels/disneys-wilderness-lodge-villas">Disney’s Wilderness Lodge Villas</a> (Deluxe Villa)</li>
+<li style="font-size: 16px;"><a href="/walt-disney-world/hotels/fort-wilderness-resort-cabins">Disney’s Fort Wilderness Resort Cabins</a> (Moderate Resort)</li>
+</ul>
+
+<p style="font-size: 16px;">The Grand Floridian, Polynesian, Contemporary, and their associated Villas border Seven Seas Lagoon and are on or very near the monorail loop that connects them to the Magic Kingdom Park. Guests at the Contemporary and Bay Lake Tower can walk to the Magic Kingdom. The remaining Resorts are on the shores of the neighboring Bay Lake and access the park via boat. All Magic Kingdom area resorts are very convenient to the Magic Kingdom, but further away from other parks, especially Animal Kingdom.</p>
+
+<h2>Epcot Area Resorts</h2>
+<br>
+
+<ul>
+<li style="font-size: 16px;"><a href="/walt-disney-world/hotels/disneys-beach-club-resort">Disney’s Beach Club Resort</a> (Deluxe Resort)</li>
+<li style="font-size: 16px;"><a href="/walt-disney-world/hotels/disneys-boardwalk-inn">Disney’s Boardwalk Inn</a> (Deluxe Resort)</li>
+<li style="font-size: 16px;"><a href="/walt-disney-world/hotels/disneys-yacht-club-resort">Disney’s Yacht Club Resort</a> (Deluxe Resort)</li>
+<li style="font-size: 16px;"><a href="/walt-disney-world/hotels/dolphin-at-walt-disney-world">Dolphin at Walt Disney World</a> <em>(Not operated by Disney)</em> (Deluxe Resort)</li>
+<li style="font-size: 16px;"><a href="/walt-disney-world/hotels/swan-at-walt-disney-world"> Swan at Walt Disney World</a> <em>(Not operated by Disney)</em> (Deluxe Resort)</li>
+<li style="font-size: 16px;"><a href="/walt-disney-world/hotels/disneys-beach-club-villas">Disney’s Beach Club Villas</a> (Deluxe Villa)</li>
+<li style="font-size: 16px;"><a href="/walt-disney-world/hotels/disneys-boardwalk-villas">Disney’s Boardwalk Villas</a> (Deluxe Villa)</li>
+<li style="font-size: 16px;"><a href="/walt-disney-world/hotels/disneys-caribbean-beach-resort">Disney’s Caribbean Beach Resort</a> (Moderate Resort)</li>
+<li style="font-size: 16px;"><a href="/walt-disney-world/hotels/disneys-coronado-springs-resort">Disney’s Coronado Springs Resort</a> (Moderate Resort)</li>
+<li style="font-size: 16px;"><a href="/walt-disney-world/hotels/disneys-art-of-animation-resort">Disney’s Art of Animation Resort</a> (Value Resort)</li>
+<li style="font-size: 16px;"><a href="/walt-disney-world/hotels/disneys-pop-century-resort">Disney’s Pop Century Resort</a> (Value Resort)</li>
+</ul>
+
+<p style="font-size: 16px;">The Beach Club, Yacht Club, Dolphin, Swan, Boardwalk Inn, Beach Club Villas, and Boardwalk Villas have access to both Epcot and Disney’s Hollywood Studios via boats or walking paths. Caribbean Beach, Coronado Springs, Pop Century, and Art of Animation have access to all parks via bus. Epcot area resorts are the most centrally located, although traveling to and from the Magic Kingdom can still take several minutes. Despite Epcot being connected to the Magic Kingdom via the monorail system, there is no easy way to get from the Epcot Resorts to the front entrance of Epcot, where the monorail is.</p>
+
+<h2>Animal Kingdom Area Resorts</h2>
+<br>
+
+<ul>
+<li style="font-size: 16px;"><a href="/walt-disney-world/hotels/disneys-animal-kingdom-lodge">Disney’s Animal Kingdom Lodge</a> (Deluxe Resort)</li>
+<li style="font-size: 16px;"><a href="/walt-disney-world/hotels/disneys-animal-kingdom-villas">Disney’s Animal Kingdom Villas</a> (Deluxe Villa)</li>
+<li style="font-size: 16px;"><a href="/walt-disney-world/hotels/disneys-all-star-movies-resort">Disney’s All-Star Movies Resort</a> (Value Resort)</li>
+<li style="font-size: 16px;"><a href="/walt-disney-world/hotels/disneys-all-star-music-resort">Disney’s All-Star Music Resort</a> (Value Resort)</li>
+<li style="font-size: 16px;"><a href="/walt-disney-world/hotels/disneys-all-star-sports-resort"> Disney’s All-Star Sports Resort </a> (Value Resort)</li>
+</ul>
+
+<p style="font-size: 16px;">Near Disney’s Animal Kingdom there are unfortunately no resorts within walking distance. While all of the above resorts are convenient to the Animal Kingdom Park, they are further away from the other parks, especially the Magic Kingdom.</p>
+
+<h2>Bonnet Creek Area Resorts</h2>
+<br>
+
+<ul>
+<li style="font-size: 16px;"><a href="/walt-disney-world/hotels/disneys-old-key-west-resort">Disney’s Old Key West Resort</a> (Deluxe Villa)</li>
+<li style="font-size: 16px;"><a href="/walt-disney-world/hotels/disneys-saratoga-springs-resort-spa">Disney’s Saratoga Springs Resort & Spa</a> (Deluxe Villa)</li>
+<li style="font-size: 16px;"><a href="/walt-disney-world/hotels/disneys-port-orleans-resort-french-quarter">Disney’s Port Orleans Resort – French Quarter</a> (Moderate Resort)</li>
+<li style="font-size: 16px;"><a href="/walt-disney-world/hotels/disneys-port-orleans-resort-riverside">Disney’s Port Orleans Resort – Riverside</a> (Moderate Resort)</li>
+</ul>
+
+<p style="font-size: 16px;">Bonnet Creek is a road that is roughly found just east of Epcot, moving north toward the Magic Kingdom area. These resorts access all parks via bus, but they do have a boat that connects them to Disney Springs (formerly Downtown Disney). Like Epcot Resorts, the Bonnet Creek hotels are reasonably centrally located, although further away from Animal Kingdom. They are not particularly close to the Magic Kingdom either, but the traffic patterns of Disney World make the drive between these resorts and the Magic Kingdom quicker than most other non-Magic Kingdom resorts.</p>
+
+
+	<table>
+	<caption>Disney World Hotel Data</caption>
+	<thead>
+		<th>Overview</th>
+		<th>Author Ratings</th>
+		<th>Reader Ratings</th>
+		<th>Amenities</th>
+	</thead>
+	<tr>
+		<td>
+			<a href="/walt-disney-world/hotels/number-rooms">Num. Rooms</a><br />
+			<a href="/walt-disney-world/hotels/cost-ranges">Cost Ranges</a><br />
+			<a href="/walt-disney-world/hotels/themes">Themes</a><br />
+			<a href="/walt-disney-world/hotels/websites">Websites</a><br />
+			<a href="/walt-disney-world/hotels/phone-numbers">Phone Numbers</a><br />
+			<a href="/walt-disney-world/hotels/fax-numbers">Fax Numbers</a><br />
+			<a href="/walt-disney-world/hotels/addresses">Addresses</a>
+		</td>
+		<td>
+			<a href="/walt-disney-world/hotels/overall-ratings">Overall</a><br />
+			<a href="/walt-disney-world/hotels/room-ratings">Rooms</a><br />
+			<a href="/walt-disney-world/hotels/fitness-center-ratings">Fitness Centers</a><br />
+			<a href="/walt-disney-world/hotels/pool-ratings">Pools</a><br />
+			<a href="/walt-disney-world/hotels/sound-ratings">Sound</a><br />
+			<a href="/walt-disney-world/hotels/lighting-ratings">Lighting</a><br />
+			<a href="/walt-disney-world/hotels/pillow-ratings">Pillows</a><br />
+		</td>
+		<td>
+			<a href="/walt-disney-world/hotels/overall">Overall</a><br />
+			<a href="/walt-disney-world/hotels/room-quality">Room Quality</a><br />
+			<a href="/walt-disney-world/hotels/check-in-efficiency">Check-in Efficiency</a><br />
+			<a href="/walt-disney-world/hotels/quietness-of-room">Quietness of Room</a><br />
+			<a href="/walt-disney-world/hotels/shuttle-service">Shuttle Service</a><br />
+			<a href="/walt-disney-world/hotels/hotel-pool">Hotel Pool</a><br />
+			<a href="/walt-disney-world/hotels/staff">Staff</a><br />
+			<a href="/walt-disney-world/hotels/food-court">Food Court</a><br />
+		<td>
+			<a href="/walt-disney-world/hotels/fitness-centers">Fitness Centers</a><br />
+			<a href="/walt-disney-world/hotels/water-sports">Water Sports</a><br />
+			<a href="/walt-disney-world/hotels/marinas">Marinas</a><br />
+			<a href="/walt-disney-world/hotels/beaches">Beaches</a><br />
+			<a href="/walt-disney-world/hotels/tennis">Tennis</a><br />
+			<a href="/walt-disney-world/hotels/biking">Biking</a><br />
+			<a href="/walt-disney-world/hotels/suites">Suites</a><br />
+			<a href="/walt-disney-world/hotels/concierge-floors">Concierge Floors</a><br />
+			<a href="/walt-disney-world/hotels/room-service">Room Service</a><br />
+			<a href="/walt-disney-world/hotels/wired-internet">Wired Internet</a><br />
+			<a href="/walt-disney-world/hotels/wireless-internet">Wireless Internet</a><br />
+			<a href="/walt-disney-world/hotels/shuttle-to-parks">Shuttle to Parks</a>
+		</td>
+	</tr>
+</table>
+
+</div>
+<div id="left" class="column">
+	<div id="nav">
+	<ul>
+		<li><a class="now" href="/walt-disney-world/hotels">Hotels Home</a></li>
+		<li><a href="/hotel_maps">Hotel Room Views</a></li>
+		<li>
+				<a href="/walt-disney-world/disney-travel-packages">Travel Packages</a>
+		</li>
+		<li><a href="/walt-disney-world/staying-onsite-or-offsite">Onsite or Offsite</a></li>
+
+		<li><a href="/walt-disney-world/resort-benefits">Resort Benefits</a></li>
+
+			<li><a href="/walt-disney-world/best-spas">Best Spas</a></li>
+			<li><a href="/walt-disney-world/resort-dining">Resort Dining</a></li>
+	</ul>
+</div>
+
+</div><!-- /left -->
+
+<!-- New WDW hardcoded content is full width -->
+
+<!-- crazyegg -->
+<script type="text/javascript">
+setTimeout(function(){var a=document.createElement("script");
+var b=document.getElementsByTagName("script")[0];
+a.src=document.location.protocol+"//dnn506yrbagrg.cloudfront.net/pages/scripts/0022/5853.js?"+Math.floor(new Date().getTime()/3600000);
+a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+</script>
+<!-- end crazyegg -->
+
+	</div>
+
+	<div id="footer">
+		<div class="container">
+
+			<div id="copy">
+				<span><a href="/"><img alt="TouringPlans.com" border="0" src="//cdn1.touringplans.com/assets/footer_logo-b0c107b8e4a400bd0d15e3c4a6f7498d.png" width="187" height="36" /></a></span>
+			</div>
+			<div id="links">
+			<p>
+			<a href="http://blog.touringplans.com/" rel="nofollow" target="_blank"><img alt="Blog" border="0" src="//cdn0.touringplans.com/assets/tp_blogfooter-2d7871d9226b7795a43296fc4a844c8f.gif" width="100" height="27" /></a>
+			<a href="http://twitter.com/TouringPlans" rel="nofollow" target="_blank"><img alt="Twitter" border="0" style="padding-bottom: 6px" src="//cdn1.touringplans.com/assets/twitter-9a81a78bfbec407fe480a2ad5291ea46.gif" width="100" height="19" /></a>
+			<a href="http://facebook.com/TouringPlans" rel="nofollow" target="_blank"><img alt="Facebook" border="0" style="padding-bottom: 6px" src="//cdn3.touringplans.com/assets/facebook-b733952c5a7e8696d6b1ed6094e1805f.gif" width="100" height="19" /></a>
+			<a href="http://youtube.com/touringplans" rel="nofollow" target="_blank"><img alt="TouringPlans YouTube Channel" border="0" src="//cdn1.touringplans.com/assets/youtube-color-24cc1000efa26a629ca441ea2ba53215.png" width="64" height="27" /></a></p>
+			<p><a href="http://blog.touringplans.com">Blog</a> | <a href="/faq">FAQ</a> | <a href="/terms-of-use">Terms of Use &amp; Privacy Policy</a> | <a href="/team">Team</a> | <a href="/api">API</a> | <a href="/travel-professionals">Travel Professionals</a> | <a href="/contribute">Jobs</a> | <a href="/contact-us">Contact Us</a>
+			</p>
+
+			</div>
+
+    </div><!-- /container -->
+	</div><!-- /footer -->
+
+	
+
+  <script type="text/javascript">
+    document.getElementById('breadcrumb').innerHTML += ""+
+'<!-- ADD SEARCH -->' +
+'				<div id="fullsearch" class="menusearch">' +
+'				<form class="searchfrm" action="/search">' +
+'				<div class="sitesearchholder selfclear"><input name="q" type="text" class="site-search-field" placeholder="Search Touring Plans..."> <button class="btn searchbtn">>></button></div>' +
+'				</form>' +
+'				</div>' +
+'				<!-- ADD SEARCH -->';
+	</script>
+
+  <!-- FOOTER SUBSCRIBE PROMPT: BEGIN -->
+
+	<script>
+		function showFooter(){
+       document.getElementById("sticky_footer_ad").style.display = "";
+    }
+
+		function close_sticky_footer(){
+      var date = new Date();
+      date.setTime(date.getTime()+(4*60*60*1000));
+      var expires = "; expires="+date.toGMTString();
+      document.cookie = 'footerpopup=closed' + expires + '; path=/'
+      document.getElementById("sticky_footer_ad").style.display = "none";
+      return false;
+    };
+    setTimeout(showFooter,20000);
+  </script>
+
+	<style>
+	@media only screen and (min-width: 1171px) {
+	  #sticky_footer_content {height: 290px; width: 1050px;}
+	}
+
+	@media only screen and (min-width: 0px) and (max-width: 1170px) {
+	  #sticky_footer_ad {height: 200px;}
+	  #sticky_footer_content {height: 200px; width: 940px;}
+	  #sticky_footer_image {display:none;}
+	  #sticky_footer_content #sticky_footer_text{
+	    float: none;
+	    margin: 0 auto;
+	    width: 840px;
+	  }
+	  #sticky_footer_text h3 {font-size: 22px;}
+	  #sticky_footer_text p{
+	    font-size: 18px;
+	    margin-top: 5px;
+	    padding-bottom: 5px;
+	  }
+	}
+	</style>
+
+
+  <div id="sticky_footer_ad" style="display:none">
+    <div id="sticky_footer_content" class="radius-20-top">
+      <div id="sticky_footer_close"><a href="#" onclick="close_sticky_footer();">X</a></div>
+      <div class="sub-content" id="sticky_footer_image">
+        <div id="topsubscribeimagearea" class="othertopsubitems pictxtholder" style="overflow: hidden; display: block;">
+            <img alt="topsub_examplefamily" class="radius-20-top" src="//cdn2.touringplans.com/assets/topsub_examplefamily-a12f85874f1b01f743a6c65f6fd23cfd.jpg" />
+            <p class="picquote">"Our TouringPlans subscription was a lifesaver on our trip. One of the busiest days of the year, and we never waited longer than 20 minutes!"</p>
+            <p class="picname">- Smith Family, KY</p>
+        </div>
+      </div>
+
+      <div class="sub-content" id="sticky_footer_text">
+          <h3>Subscribe Now: 1 Full Year for Only $12.95!</h3>
+          <p><strong>SAVE TIME AND MONEY: </strong>
+          Our trip planning tools show you the least crowded park to visit every day, customized touring plans for visiting Disney's best rides, honest restaurant reviews, how to save on Disney tickets, the best hotel rooms to ask for, and so much more.
+          </p>
+          <input type="submit" name="Submit" value="Subscribe" class="button medium blue" id="submittopsubscribe" onclick="window.location.href='https://touringplans.com/walt-disney-world/join'; return false;">
+      </div>
+    </div>
+  </div>
+		<!-- Quantcast Tag -->
+		<script type="text/javascript">
+		  var _qevents = _qevents || [];
+
+		  (function() {
+		   var elem = document.createElement('script');
+
+		   elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+		   elem.async = true;
+		   elem.type = "text/javascript";
+		   var scpt = document.getElementsByTagName('script')[0];
+		   scpt.parentNode.insertBefore(elem, scpt);
+		  })();
+		</script>
+		<script type="text/javascript">
+		  _qevents.push( { qacct:"p-4bj4pSvBlEKFA"} );
+		</script>
+		<noscript>
+		  <div style="display: none;"><img src="//pixel.quantserve.com/pixel/p-test123.gif" height="1" width="1" alt="Quantcast"/></div>
+		</noscript>
+    <!-- End Quantcast tag -->
+    <!-- start crazy egg -->
+    <script type="text/javascript">
+      setTimeout(function(){var a=document.createElement("script");
+      var b=document.getElementsByTagName("script")[0];
+      a.src=document.location.protocol+"//dnn506yrbagrg.cloudfront.net/pages/scripts/0022/5853.js?"+Math.floor(new Date().getTime()/3600000);
+      a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+    </script>
+    <!-- end crazy egg -->
+</body>
+</html>
