@@ -62,3 +62,7 @@ group :staging, :production do
   gem "rails_stdout_logging"
   gem "rack-timeout"
 end
+
+## app specific
+gem 'httparty', '~> 0.13.7' # grab the contents of a url
+gem 'crack', '~> 0.4.3' # parse the xml or json of that page

@@ -1,4 +1,10 @@
 FactoryGirl.define do
+  factory :touring_plans_com_feed do
+    
+  end
+  factory :touring_plans_hotel do
+    
+  end
   factory :hotel do
     name "MyString"
     address "MyString"
