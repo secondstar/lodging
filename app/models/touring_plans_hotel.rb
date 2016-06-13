@@ -22,13 +22,12 @@ class TouringPlansHotel
       hotel = Hotel.where(permalink: remote_hotel["permalink"]).first_or_create
       hotel.update(name: remote_hotel["name"], 
         address: remote_hotel["address"], 
-        city: remote_hotel["name"], 
-        state_code: remote_hotel["name"], 
-        zip_code: remote_hotel["name"], 
-        phone_number: remote_hotel["name"], 
-        url: remote_hotel["name"], 
+        city: remote_hotel["city"], 
+        state_code: remote_hotel["state_code"], 
+        zip_code: remote_hotel["zip_code"], 
+        phone_number: remote_hotel["phone_number"], 
+        url: remote_hotel["url"], 
         off_site: remote_hotel["off_site"],
-        
         water_sports: remote_hotel["water_sports"],
         marina: remote_hotel["marina"],
         beach: remote_hotel["beach"],
