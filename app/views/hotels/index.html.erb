@@ -2,86 +2,12 @@
 
 <h1>Listing Hotels</h1>
 
-<h1 id="hotels">hotels</h1>
-<% @hotels.each do |hotel| %>
-    <div class="grid-items-lines">
-      <a href="javascript:void(0)" class="grid-item">
-        <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_square.png" alt="">
-        <h1><%= hotel.name %></h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-      </a>
-      <div class="right-cover"></div>
-      <div class="bottom-cover"></div>
-    </div>
-    
-<% end %>
-
-<%= render 'grid_items_lines' %>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Address</th>
-      <th>City</th>
-      <th>State code</th>
-      <th>Zip code</th>
-      <th>Phone number</th>
-      <th>Url</th>
-      <th>Off site</th>
-      <th>Water sports</th>
-      <th>Marina</th>
-      <th>Beach</th>
-      <th>Tennis</th>
-      <th>Biking</th>
-      <th>Suites</th>
-      <th>Concierge floor</th>
-      <th>Room service</th>
-      <th>Wired internet</th>
-      <th>Wireless internet</th>
-      <th>Num rooms</th>
-      <th>Cost range</th>
-      <th>Shuttle to parks</th>
-      <th>Cost estimate</th>
-      <th>Lodging area code</th>
-      <th>Category code</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<div class="grid-items-lines">
     <% @hotels.each do |hotel| %>
-      <tr>
-        <td><%= hotel.name %></td>
-        <td><%= hotel.address %></td>
-        <td><%= hotel.city %></td>
-        <td><%= hotel.state_code %></td>
-        <td><%= hotel.zip_code %></td>
-        <td><%= hotel.phone_number %></td>
-        <td><%= hotel.url %></td>
-        <td><%= hotel.off_site %></td>
-        <td><%= hotel.water_sports %></td>
-        <td><%= hotel.marina %></td>
-        <td><%= hotel.beach %></td>
-        <td><%= hotel.tennis %></td>
-        <td><%= hotel.biking %></td>
-        <td><%= hotel.suites %></td>
-        <td><%= hotel.concierge_floor %></td>
-        <td><%= hotel.room_service %></td>
-        <td><%= hotel.wired_internet %></td>
-        <td><%= hotel.wireless_internet %></td>
-        <td><%= hotel.num_rooms %></td>
-        <td><%= hotel.cost_range %></td>
-        <td><%= hotel.shuttle_to_parks %></td>
-        <td><%= hotel.cost_estimate %></td>
-        <td><%= hotel.lodging_area_code %></td>
-        <td><%= hotel.category_code %></td>
-        <td><%= link_to 'Show', hotel %></td>
-      </tr>
+    
+      <%= render :partial => 'grid_item_lines', locals: {name: hotel.name, permalink: hotel.permalink, id: hotel.id} %>
     <% end %>
-  </tbody>
-</table>
+  <div class="right-cover"></div>
+  <div class="bottom-cover"></div>
+</div>
 
-<br>
-
-<%= link_to 'New Hotel', new_hotel_path %>

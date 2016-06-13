@@ -3,7 +3,7 @@ require 'open-uri'
 
 class TouringPlansComFeed
   attr_reader :source_index_uri
-  def initialize(source_index_uri: 'https://touringplans.com/walt-disney-world/hotels')
+  def initialize(source_index_uri: 'https://touringplans.com/walt-disney-world/hotels/websites')
     @source_index_uri = source_index_uri
   end
   
@@ -14,26 +14,23 @@ class TouringPlansComFeed
   format :json
 
   def collect_list_of_disney_hotels(doc_link: @source_index_uri)
-    doc = Nokogiri::HTML(open("https://touringplans.com/walt-disney-world/hotels"))
-    links = []
-    anchors = doc.css("a").to_a
-
-    anchors.each do |anchor|
-      if( /walt-disney-world\/hotels\/*disney*/.match(anchor['href'])||/walt-disney-world\/hotels\/fort/.match(anchor['href'])
-        )
-      link = Hash.new
-      link[:name] = anchor.text
-      permalink   = anchor['href'].split("/").last.to_s
-      link[:permalink] = permalink
-      links << link
-      end
+    doc = Nokogiri::HTML(open(doc_link))
+    permalinks            = []
+    anchor_rows           = doc.css("table")[0].css("tr")    
+    anchor_rows.each do |row|
+      links_in_the_row          = row.css("a")
+      permalink                 = Hash.new
+      permalink[:name]  = links_in_the_row[0].text
+      permalink[:path]          = links_in_the_row[0]['href']
+      permalinks << permalink
     end
-    return links
+    
+    return permalinks
   end
 
   def get_hotel_details_by_permalink(hotel_permalink)
     # http://touringplans.com/walt-disney-world/dining/chuck-wagon.json
-    hotel_name  = hotel_permalink.split("-").join(" ")
+    # hotel_name  = "broken hotel permalink"
     link        = _construct_hotel_url(hotel_permalink)
     # puts "link: #{link}"
     response = TouringPlansComFeed.get(link)
@@ -43,17 +40,32 @@ class TouringPlansComFeed
       when 404
         @hotel               = _echo_back_empty_hash
         @hotel["permalink"]  = hotel_permalink
-        @hotel["name"]       = hotel_name
+        @hotel["name"]       = "broken hotel permalink"
       when 500...600
         puts "ZOMG ERROR #{response.code}"
         @hotel               = _echo_back_empty_hash
         @hotel["permalink"]  = hotel_permalink
-        @hotel["name"]       = hotel_name
+        @hotel["name"]       = "broken hotel permalink"
     end
 
     @hotel
   end
 
+  def _get_source_index_table
+    # pulls data from TP table of hotel links for onsite hotels and sets the rows in an array
+    page = Nokogiri::HTML(open(@source_index_uri))
+    Array(page.css("table")[0].css("tr"))
+  end
+  
+  def _extract_permalinks_from_source_index_table
+    permalinks =[]
+    list.each do |row|
+      links = row.css("a")
+      path = links[0]['href']
+      permalinks <<  path.to_s
+    end
+    return permalinks
+  end
   def _construct_hotel_url(permalink)
     hotel_permalink = []
     hotel_permalink << _hotel_permalink_root
@@ -63,7 +75,7 @@ class TouringPlansComFeed
   end
 
    def _hotel_permalink_root
-    @source_index_uri
+    'https://touringplans.com'
   end
   
   def _echo_back_empty_hash
