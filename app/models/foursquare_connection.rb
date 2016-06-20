@@ -3,22 +3,37 @@ class FoursquareConnection
   format :json
   
 
-  DEFAULT_API_VERSION = "20160609"
-  DEFAULT_BASE_URI    = "https://api.foursquare.com/v2/venues/search?"
-  DEFAULT_QUERY       = {}
-  DEFAULT_LAT_AND_LNG = '28.37777,-81.56498'
+  DEFAULT_BASE_API_VERSION  = '2'
+  DEFAULT_API_VERSION       = "20160609"
+  DEFAULT_BASE_URI          = "https://api.foursquare.com"
+  DEFAULT_QUERY             = {}
+  DEFAULT_LAT_AND_LNG       = '28.37777,-81.56498'
+  DEFAULT_FOURSQUARE_ID     = FOURSQUARE_ID
+  DEFAULT_FOURSQUARE_SECRET = FOURSQUARE_SECRET
 
   base_uri DEFAULT_BASE_URI
 
   def initialize(options={})
-    @api_version = options.fetch(:api_version, DEFAULT_API_VERSION)
-    @query       = options.fetch(:query, DEFAULT_QUERY)
-    @lat_and_lng = options.fetch(:lat_and_lng, DEFAULT_LAT_AND_LNG)
-    @connection  = self.class
+    @base_api_version = options.fetch(:base_api_version, DEFAULT_BASE_API_VERSION)
+    @api_version      = options.fetch(:api_version, DEFAULT_API_VERSION)
+    @query            = options.fetch(:query, DEFAULT_QUERY)
+    @lat_and_lng      = options.fetch(:lat_and_lng, DEFAULT_LAT_AND_LNG)
+    @client_id        = options.fetch(:credentials, DEFAULT_FOURSQUARE_ID)
+    @client_secret    = options.fetch(:credentials, DEFAULT_FOURSQUARE_SECRET)
+    @connection       = self.class
   end
 
   def query(params={})
     @query.update(params)
+    client_id           = [:client_id, @client_id]
+    client_secret       = [:client_secret, @client_secret]
+    api_version         = [:v, @api_version]
+    ll                  = [:ll, @lat_and_lng]
+    key_value_pairs     = [client_id, client_secret, api_version, ll]
+    required_keys_hash  = Hash[key_value_pairs]
+    required_keys_hash
+
+    @query.merge(required_keys_hash)
   end
 
   def get(relative_path, query={})
@@ -26,16 +41,21 @@ class FoursquareConnection
     connection.get relative_path, query: @query.merge(query)
   end
 
+  def the_relative_path
+    relative_path = add_api_version(relative_path)
+  end
+
   private
 
   attr_reader :connection
 
   def add_api_version(relative_path)
-    "#{api_version_path}#{relative_path}"
+    "/#{api_version_path}#{relative_path}"
   end
 
   def api_version_path
-    "v=#{@api_version}&m=foursquare&ll=#{@lat_and_lng}"
+    "v#{@base_api_version}"
+    # "/#{@base_api_version}/venues/search?v=#{@api_version}&m=foursquare&ll=#{@lat_and_lng}"
   end
 
 end
