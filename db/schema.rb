@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160612170952) do
+ActiveRecord::Schema.define(version: 20160614183731) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,20 @@ ActiveRecord::Schema.define(version: 20160612170952) do
   end
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
+
+  create_table "foursquare_reviews", force: :cascade do |t|
+    t.string   "foursquare_id"
+    t.string   "name"
+    t.string   "address"
+    t.string   "cross_street"
+    t.string   "lat"
+    t.string   "lng"
+    t.string   "alt_venues"
+    t.string   "searched_for"
+    t.datetime "archived_at"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
 
   create_table "hotels", force: :cascade do |t|
     t.string   "name"
