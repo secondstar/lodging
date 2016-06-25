@@ -13,6 +13,8 @@ class FoursquareConnection
 
   base_uri DEFAULT_BASE_URI
 
+  attr_reader :connection, :routes, :client_id, :client_secret, :base_api_version, :lat_and_lng, :api_version
+
   def initialize(options={})
     @base_api_version = options.fetch(:base_api_version, DEFAULT_BASE_API_VERSION)
     @api_version      = options.fetch(:api_version, DEFAULT_API_VERSION)
@@ -55,7 +57,6 @@ class FoursquareConnection
 
   def api_version_path
     "v#{@base_api_version}"
-    # "/#{@base_api_version}/venues/search?v=#{@api_version}&m=foursquare&ll=#{@lat_and_lng}"
   end
 
 end

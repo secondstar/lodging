@@ -1,20 +1,38 @@
+# require "representable/object"
 require 'representable/json'
+require 'representable/hash'
+ 
 
 class FoursquareRepresenter < Representable::Decorator
+  # include Representable::Object
   include Representable::JSON
+  include Representable::Hash
+  
+  
 
   property :id
   property :name
-  property :contact
-  property :location
-  property :categories
   property :verified
-  property :stats
   property :url
-  property :delivery
+  property :hasMenu
   property :allowMenuUrlEdit
-  property :specials
-  property :hereNow
   property :referralId
-  property :venueChains
+  # nested :location do
+  #   property :address
+  # end
+  
+  
+  nested :location do
+    property :address
+    property :lat
+    property :lng
+    property :distance
+    property :postalCode
+    property :cc
+    property :city
+    property :state
+    property :country
+    property :state
+    property :formattedAddress
+  end
 end
