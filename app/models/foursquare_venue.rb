@@ -43,7 +43,8 @@ class FoursquareVenue
   # end
   
   def search_venues(search_term)
-    connection = @connection
+    connection      = @connection
+    responses = []
     # connection.query({client_id: @connection.client_id, client_secret:@connection.client_secret})
     #
     # client   = FoursquareClient.new(connection: connection, routes: ROUTES)
@@ -58,9 +59,15 @@ class FoursquareVenue
     
     client = FoursquareClient.new(connection: connection, routes: ROUTES)
     search_venues = client.search_venues.fetch('response').fetch('venues')
-    venue = search_venues.first
-    strained_venue = venue.except("contact", "location","categories", "hereNow", "stats", "specials")
-    response = Representation.new(strained_venue)
+    search_venues.each do |venue|
+      strained_venue  = venue.except("contact", "location","categories", "hereNow", "stats", "specials")
+      response        = OpenStruct.new(strained_venue)
+      responses << response
+    end
+    responses
+    # venue = search_venues.first
+    # strained_venue = venue.except("contact", "location","categories", "hereNow", "stats", "specials")
+    # response = Representation.new(strained_venue)
   end
   
   def find_venue(venue_id)
