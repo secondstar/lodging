@@ -21,7 +21,7 @@ class Representation < OpenStruct
     @hash_table
   end
 
-  # private
+  private
 
   def bind_parent(parent)
     if parent

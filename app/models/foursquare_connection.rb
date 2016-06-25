@@ -8,29 +8,35 @@ class FoursquareConnection
   DEFAULT_BASE_URI          = "https://api.foursquare.com"
   DEFAULT_QUERY             = {}
   DEFAULT_LAT_AND_LNG       = '28.37777,-81.56498'
+  DEFAULT_RADIUS            = '6000'
   DEFAULT_FOURSQUARE_ID     = FOURSQUARE_ID
   DEFAULT_FOURSQUARE_SECRET = FOURSQUARE_SECRET
 
   base_uri DEFAULT_BASE_URI
 
-  attr_reader :connection, :routes, :client_id, :client_secret, :base_api_version, :lat_and_lng, :api_version
+  attr_reader :connection, :routes, :client_id, :client_secret, :base_api_version, :lat_and_lng, :api_version, :radius
 
   def initialize(options={})
     @base_api_version = options.fetch(:base_api_version, DEFAULT_BASE_API_VERSION)
     @api_version      = options.fetch(:api_version, DEFAULT_API_VERSION)
     @query            = options.fetch(:query, DEFAULT_QUERY)
     @lat_and_lng      = options.fetch(:lat_and_lng, DEFAULT_LAT_AND_LNG)
+    @radius           = options.fetch(:lat_and_lng, DEFAULT_RADIUS)
     @client_id        = options.fetch(:credentials, DEFAULT_FOURSQUARE_ID)
     @client_secret    = options.fetch(:credentials, DEFAULT_FOURSQUARE_SECRET)
     @connection       = self.class
   end
 
+  def title
+    "i am foursquare"
+  end
   def query(params={})
     @query.update(params)
     client_id           = [:client_id, @client_id]
     client_secret       = [:client_secret, @client_secret]
     api_version         = [:v, @api_version]
     ll                  = [:ll, @lat_and_lng]
+    radius              = [:radius, @radius]
     key_value_pairs     = [client_id, client_secret, api_version, ll]
     required_keys_hash  = Hash[key_value_pairs]
     required_keys_hash

@@ -19,21 +19,6 @@ class FoursquareClient
     "i am foursquare"
   end
   
-  # def search_reviews(query = "")
-  #   reviews = client.search_venues(
-  #       query:      query,
-  #       categoryId: @categoryId,
-  #       radius:     @search_radius
-  #       )
-  #   review = reviews
-  # end
-  
-  # def client
-  #   client = Foursquare2::Client.new(:client_id => @client_id,
-  #       :client_secret => @client_secret,
-  #       :api_version => @api_version)
-  # end
-  #
   private
 
   attr_reader :connection, :routes
