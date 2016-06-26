@@ -21,7 +21,8 @@ class TouringPlansComFeed
       links_in_the_row          = row.css("a")
       permalink                 = Hash.new
       permalink[:name]  = links_in_the_row[0].text
-      permalink[:path]          = links_in_the_row[0]['href']
+      permalink[:permalink]          = links_in_the_row[0]['href']
+      permalink[:wdw_uri]          = links_in_the_row[1].text
       permalinks << permalink
     end
     

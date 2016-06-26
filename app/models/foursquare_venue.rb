@@ -62,6 +62,11 @@ class FoursquareVenue
     # response = Representation.new(strained_venue)
   end
   
+  def find_venue(search_term)
+    responses = self.search_venues(search_term)
+    result    = responses.first
+    
+  end
   def venue(venue_id: @connection.venue_id)
     connection      = @connection
     responses = []
