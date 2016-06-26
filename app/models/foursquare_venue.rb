@@ -1,11 +1,3 @@
-# require "#{Rails.root}/lib/apis/representations/search_venue"
-# require "#{Rails.root}/lib/apis/client"
-# require "#{Rails.root}/lib/apis/connection"
-# require "#{Rails.root}/lib/apis/foursquare_routes"
-# require "#{Rails.root}/lib/apis/representation"
-# require "/Users/captainproton/Sites/wdwhub/lodging/lib/apis/representation"
-# require "#{Rails.root}/lib/apis/representations/search_venue"
-# require "#{Rails.root}/lib/apis/representer"
 require "search_venue"
 
 class FoursquareVenue
@@ -51,7 +43,7 @@ class FoursquareVenue
     # response = Representation.new(client.elections)
     # connection = @connection
 
-    connection.query({query: search_term,
+    connection.query({query: search_term.to_s,
       client_id: @connection.client_id, 
       client_secret: @connection.client_secret, 
       v: @connection.api_version, 
@@ -70,7 +62,18 @@ class FoursquareVenue
     # response = Representation.new(strained_venue)
   end
   
-  def find_venue(venue_id)
-    client = FoursquareClient
+  def venue(venue_id: @connection.venue_id)
+    connection      = @connection
+    responses = []
+    
+    connection.query({client_id: @connection.client_id, 
+      client_secret: @connection.client_secret, 
+      v: @connection.api_version, 
+      ll: @connection.lat_and_lng})
+    
+    client = FoursquareClient.new(connection: connection, routes: ROUTES)
+    venue = client.venue.fetch('response').fetch('venue')
+    response        = OpenStruct.new(venue)
+    # response = Representation.new(venue)
   end
 end

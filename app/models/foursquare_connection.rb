@@ -11,10 +11,11 @@ class FoursquareConnection
   DEFAULT_RADIUS            = '6000'
   DEFAULT_FOURSQUARE_ID     = FOURSQUARE_ID
   DEFAULT_FOURSQUARE_SECRET = FOURSQUARE_SECRET
+  DEFAULT_VENUE_ID          = ""
 
   base_uri DEFAULT_BASE_URI
 
-  attr_reader :connection, :routes, :client_id, :client_secret, :base_api_version, :lat_and_lng, :api_version, :radius
+  attr_reader :connection, :routes, :client_id, :client_secret, :base_api_version, :lat_and_lng, :api_version, :radius, :venue_id
 
   def initialize(options={})
     @base_api_version = options.fetch(:base_api_version, DEFAULT_BASE_API_VERSION)
@@ -24,12 +25,14 @@ class FoursquareConnection
     @radius           = options.fetch(:lat_and_lng, DEFAULT_RADIUS)
     @client_id        = options.fetch(:credentials, DEFAULT_FOURSQUARE_ID)
     @client_secret    = options.fetch(:credentials, DEFAULT_FOURSQUARE_SECRET)
+    @venue_id         = options.fetch(:venue_id, DEFAULT_VENUE_ID) 
     @connection       = self.class
   end
 
   def title
     "i am foursquare"
   end
+  
   def query(params={})
     @query.update(params)
     client_id           = [:client_id, @client_id]
@@ -58,7 +61,7 @@ class FoursquareConnection
   attr_reader :connection
 
   def add_api_version(relative_path)
-    "/#{api_version_path}#{relative_path}"
+    "/#{api_version_path}#{relative_path}/#{@venue_id}"
   end
 
   def api_version_path
