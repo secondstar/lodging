@@ -1,0 +1,3 @@
+class FoursquareRepresenter::Location
+  
+end

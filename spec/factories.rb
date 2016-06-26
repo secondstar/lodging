@@ -1,4 +1,21 @@
 FactoryGirl.define do
+  factory :foursquare_review do
+    foursquare_id "MyString"
+    name "MyString"
+    address "MyString"
+    cross_street "MyString"
+    lat "MyString"
+    lng "MyString"
+    alt_venues "MyString"
+    searched_for "MyString"
+    archived_at "2016-06-14 11:37:31"
+  end
+  factory :foursquare_missing_venue do
+    
+  end
+  factory :foursquare_guaranteed_venue do
+    
+  end
   factory :touring_plans_com_feed do
     
   end
