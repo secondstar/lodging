@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160626165626) do
+ActiveRecord::Schema.define(version: 20160627000823) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,8 +42,20 @@ ActiveRecord::Schema.define(version: 20160626165626) do
     t.string   "alt_venues"
     t.string   "searched_for"
     t.datetime "archived_at"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
+    t.text     "categories"
+    t.string   "referral_id"
+    t.text     "location"
+    t.text     "canonical_url"
+    t.boolean  "verified"
+    t.boolean  "dislike"
+    t.boolean  "ok"
+    t.decimal  "rating",              precision: 10, scale: 2
+    t.string   "rating_color"
+    t.string   "rating_signals"
+    t.boolean  "allow_menu_url_edit"
+    t.string   "specials"
   end
 
   create_table "hotels", force: :cascade do |t|
