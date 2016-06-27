@@ -6,6 +6,11 @@ class FoursquareGuaranteedVenue
     @connection       = connection
   end
   
+  def self.search_by_wdw_uri(wdw_uri)
+    # wdw_uris = tphi.seed_data.collect {|seed| seed[:wdw_uri]}
+    FoursquareVenue.new.search_venues(wdw_uri.to_s) || FoursquareMissingVenue.new
+  end
+  
   def self.find_by_wdw_uri(wdw_uri)
     # wdw_uris = tphi.seed_data.collect {|seed| seed[:wdw_uri]}
     FoursquareVenue.new.find_venue(wdw_uri.to_s) || FoursquareMissingVenue.new

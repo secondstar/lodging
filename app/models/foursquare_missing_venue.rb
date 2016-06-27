@@ -18,7 +18,18 @@ class FoursquareMissingVenue
   def location
     {}
   end
+
+  def address
+    "n/a"
+  end
   
+  def lat
+    "28.419503"
+  end
+  
+  def lng
+    "-81.581219"
+  end
   def canonical_url
     "not avaliable"
   end
@@ -44,7 +55,7 @@ class FoursquareMissingVenue
   end
   
   def rating_signals
-    0
+    0.to_s
   end
   
   def allow_menu_url_edit
@@ -70,4 +81,6 @@ class FoursquareMissingVenue
   def tips
     {}
   end
+  
+  
 end
