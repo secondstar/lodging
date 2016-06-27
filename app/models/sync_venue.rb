@@ -62,4 +62,23 @@ class SyncVenue
     sorted.pop(corrected_nogos_ids.length)
     all_ids = [sorted, corrected_nogos_ids].flatten
   end
+  
+  def self.photos(venue_id)
+    photos = FoursquareGuaranteedVenue.venue_photos(venue_id: venue_id)
+    photos.each do |photo|
+      puts photo
+      fp = FoursquarePhoto.where(foursquare_photo_id: photo.id).first_or_create
+      fp.update(source: photo.source,
+                prefix: photo.prefix,
+                suffix: photo.suffix,
+                width:  photo.width,
+                height: photo.height,
+                visibility: photo.visibility,
+                foursquare_user_id: photo.user.fetch('id', 'user ID for photo not available'),
+                foursquare_photo_id: photo.id
+      )
+    end
+
+  end
+  
 end

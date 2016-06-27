@@ -16,7 +16,7 @@ class FoursquareMissingVenue
   end
   
   def location
-    {}
+    {}.to_s
   end
 
   def address
@@ -63,23 +63,23 @@ class FoursquareMissingVenue
   end
   
   def specials
-    {"count"=>0, "items"=>[]}
+    {"count"=>0, "items"=>[]}.to_s
   end
   
   def photos
-    {}
+    {}.to_s
   end
   
   def reasons
-    {}
+    {}.to_s
   end
   
   def page
-    {}
+    {}.to_s
   end
   
   def tips
-    {}
+    {}.to_s
   end
   
   

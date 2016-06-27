@@ -19,21 +19,6 @@ class FoursquareVenue
     "i am foursquare"
   end
   
-  # def search_reviews(query = "")
-  #   reviews = client.search_venues(:ll => "#{@center_lat}, #{@center_lng}",
-  #       query:      query,
-  #       categoryId: @categoryId,
-  #       radius:     @search_radius
-  #       )
-  #   review = reviews
-  # end
-  #
-  # def client
-  #   client = Foursquare2::Client.new(:client_id => @client_id,
-  #       :client_secret => @client_secret,
-  #       :api_version => @api_version)
-  # end
-  
   def search_venues(search_term)
     connection      = @connection
     responses = []
@@ -81,4 +66,13 @@ class FoursquareVenue
     response        = OpenStruct.new(venue)
     # response = Representation.new(venue)
   end
+  
+  def venue_photos(venue_id: @connection.venue_id)
+    venue = self.venue(venue_id: venue_id)
+    photos = venue.photos.fetch("groups", 'groups not available')[0].fetch('items', 'no photos available')
+    response = photos.collect {|photo| OpenStruct.new(photo) }
+    
+
+  end
+  
 end

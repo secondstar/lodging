@@ -21,4 +21,10 @@ class FoursquareGuaranteedVenue
     fv = FoursquareVenue.new(connection: connection).venue || FoursquareMissingVenue.new
     
   end
+  
+  def self.venue_photos(venue_id:)
+    # "paradise"
+    fv = FoursquareVenue.new(connection: FoursquareConnection.new(venue_id: venue_id, query:{limit: 30})).venue_photos  || FoursquareMissingVenue.new
+  end
+  
 end
