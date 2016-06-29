@@ -1,5 +1,6 @@
 require 'nokogiri'
 require 'open-uri'
+require 'uri'
 
 class TouringPlansComFeed
   attr_reader :source_index_uri
@@ -21,7 +22,8 @@ class TouringPlansComFeed
       links_in_the_row          = row.css("a")
       permalink                 = Hash.new
       permalink[:name]  = links_in_the_row[0].text
-      permalink[:path]          = links_in_the_row[0]['href']
+      permalink[:permalink]          = links_in_the_row[0]['href']
+      permalink[:wdw_uri]          = _parse_for_uri(links_in_the_row[1]['href'])
       permalinks << permalink
     end
     
@@ -104,6 +106,11 @@ class TouringPlansComFeed
      "cost_estimate"=>"",
      "lodging_area_code"=>"",
      "category_code"=>""}
+  end
+  
+  def _parse_for_uri(link)
+    uri = URI.parse(link)
+    result = "#{uri.host}#{uri.path}".split("www.").last
   end
 
 end

@@ -1,4 +1,15 @@
 FactoryGirl.define do
+  factory :foursquare_photo do
+    source "MyString"
+    prefix "MyString"
+    suffix "MyString"
+    width 1
+    height 1
+    visibility "MyString"
+    foursquare_user_id "MyString"
+    foursquare_photo_id "MyString"
+    foursquare_review nil
+  end
   factory :foursquare_review do
     foursquare_id "MyString"
     name "MyString"
