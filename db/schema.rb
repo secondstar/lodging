@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160627165022) do
+ActiveRecord::Schema.define(version: 20160627222200) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,9 +41,12 @@ ActiveRecord::Schema.define(version: 20160627165022) do
     t.string   "visibility"
     t.string   "foursquare_user_id"
     t.string   "foursquare_photo_id"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.integer  "foursquare_review_id"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
+
+  add_index "foursquare_photos", ["foursquare_review_id"], name: "index_foursquare_photos_on_foursquare_review_id", using: :btree
 
   create_table "foursquare_reviews", force: :cascade do |t|
     t.string   "foursquare_id"

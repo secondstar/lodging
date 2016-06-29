@@ -8,6 +8,7 @@ FactoryGirl.define do
     visibility "MyString"
     foursquare_user_id "MyString"
     foursquare_photo_id "MyString"
+    foursquare_review nil
   end
   factory :foursquare_review do
     foursquare_id "MyString"

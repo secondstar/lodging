@@ -6,7 +6,7 @@ class FoursquareVenue
   ROUTES = FoursquareRoutes.routes
   
   def initialize(routes: ROUTES,
-    connection: FoursquareConnection.new(api_version: '20160607', query:{})
+    connection: FoursquareConnection.new(api_version: '20160607', query:{verified: true})
     )
     @connection       = connection
     
@@ -28,14 +28,14 @@ class FoursquareVenue
     # response = Representation.new(client.elections)
     # connection = @connection
 
-    connection.query({query: search_term.to_s,
+    connection.query({query: "#{search_term.to_s} resort",
       client_id: @connection.client_id, 
       client_secret: @connection.client_secret, 
       v: @connection.api_version, 
       ll: @connection.lat_and_lng})
     
     client = FoursquareClient.new(connection: connection, routes: ROUTES)
-    search_venues = client.search_venues.fetch('response').fetch('venues')
+    search_venues = client.search_venues.fetch('response', "no response found").fetch('venues', "no venues found")
     search_venues.each do |venue|
       strained_venue  = venue.except("contact", "location","categories", "hereNow", "stats", "specials")
       response        = OpenStruct.new(strained_venue)
@@ -61,16 +61,18 @@ class FoursquareVenue
       v: @connection.api_version, 
       ll: @connection.lat_and_lng})
     
-    client = FoursquareClient.new(connection: connection, routes: ROUTES)
-    venue = client.venue.fetch('response').fetch('venue')
-    response        = OpenStruct.new(venue)
+    client    = FoursquareClient.new(connection: connection, routes: ROUTES)
+    venue     = client.venue.fetch('response').fetch('venue')
+    response  = OpenStruct.new(venue)
     # response = Representation.new(venue)
   end
   
   def venue_photos(venue_id: @connection.venue_id)
-    venue = self.venue(venue_id: venue_id)
-    photos = venue.photos.fetch("groups", 'groups not available')[0].fetch('items', 'no photos available')
-    response = photos.collect {|photo| OpenStruct.new(photo) }
+    venue         = self.venue(venue_id: venue_id)
+    photo_groups  = venue.photos.fetch("groups", 'groups not available').first
+    return if Array(photo_groups).length == 0
+    photos        = photo_groups.fetch('items', 'no photos available')
+    response      = photos.collect {|photo| OpenStruct.new(photo) }
     
 
   end

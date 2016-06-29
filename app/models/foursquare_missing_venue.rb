@@ -19,7 +19,7 @@ class FoursquareMissingVenue
     {}.to_s
   end
 
-  def address
+  def formatted_address
     "n/a"
   end
   
