@@ -10,11 +10,11 @@ RSpec.describe FoursquareTip, type: :model do
     end
   end
   
-  describe '#f2c_venue_tips' do
+  describe '#venue_tips' do
     let(:venue_id) { "4b9b0114f964a520ffea35e3" }
     let(:search_term) { 'dvc' }
     let(:bay_tower_tips_query) { File.read( Rails.root + 'spec/support/fixtures/bay-lake-at-contempory-tips.json' ) }
-    subject { FoursquareTip.new.f2c_venue_tips(venue_id, search_term) }
+    subject { FoursquareTip.new.venue_tips(venue_id, search_term) }
     
     before do
       stub_request(:get, "https://api.foursquare.com/v2/venues/4b9b0114f964a520ffea35e3/tips?client_id=R1TDM0FYS2YSOFTWG2QU2DS0OE00BZLMQCQPMKUGO5CJGNYH&client_secret=1N5G1D22C2410VE3RJXPS10Y31E2WA0BT45KYJFTGR0S35QN&v=20160609").

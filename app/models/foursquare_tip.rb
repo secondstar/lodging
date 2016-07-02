@@ -14,8 +14,9 @@ class FoursquareTip
     "foursquare2 tip"
   end
   
-  def f2c_venue_tips(venue_id, search_term)
+  def venue_tips(venue_id, search_term)
     tips_json = client.venue_tips(venue_id, :query => search_term)
     tips      = tips_json.items.collect {|item| OpenStruct.new(item) }
   end
+
 end
