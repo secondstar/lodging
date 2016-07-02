@@ -67,7 +67,7 @@ class FoursquareMissingVenue
   end
   
   def photos
-    {}.to_s
+    {groups: 'none'}.to_s
   end
   
   def reasons

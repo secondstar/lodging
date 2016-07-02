@@ -88,9 +88,9 @@ RSpec.describe FoursquareMissingVenue, type: :model do
     end
   end
 
-  describe '#referralId' do
+  describe '#referral_id' do
     it 'is a String ' do
-      expect(subject.referralId).to be_a(String)
+      expect(subject.referral_id).to be_a(String)
     end
   end
 

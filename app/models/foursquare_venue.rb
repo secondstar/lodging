@@ -52,6 +52,7 @@ class FoursquareVenue
     result    = responses.first
     
   end
+  
   def venue(venue_id: @connection.venue_id)
     connection      = @connection
     responses = []
@@ -66,15 +67,5 @@ class FoursquareVenue
     response  = OpenStruct.new(venue)
     # response = Representation.new(venue)
   end
-  
-  def venue_photos(venue_id: @connection.venue_id)
-    venue         = self.venue(venue_id: venue_id)
-    photo_groups  = venue.photos.fetch("groups", 'groups not available').first
-    return if Array(photo_groups).length == 0
-    photos        = photo_groups.fetch('items', 'no photos available')
-    response      = photos.collect {|photo| OpenStruct.new(photo) }
-    
 
-  end
-  
 end
