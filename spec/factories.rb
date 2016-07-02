@@ -1,4 +1,13 @@
 FactoryGirl.define do
+  factory :foursquare_venue_photo do
+    
+  end
+  factory :foursquare_tip do
+    
+  end
+  factory :foursquare2_client do
+    
+  end
   factory :foursquare_photo do
     source "MyString"
     prefix "MyString"
