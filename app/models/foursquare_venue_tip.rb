@@ -1,4 +1,4 @@
-class FoursquareTip
+class FoursquareVenueTip
   
   DEFAULT_QUERY             = {}
   DEFAULT_VENUE_ID          = ""
