@@ -42,6 +42,7 @@ class HotelSync
         theme:                tp_hotel.theme              || hotel_default_values.theme
 
       )
+      return hotel
   end
   
   def update_all_from_touringplans_com
@@ -49,4 +50,6 @@ class HotelSync
       update_from_touringplans_com(wdw_uri)
     end
   end
+  
+  
 end

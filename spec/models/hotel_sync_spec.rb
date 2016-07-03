@@ -10,12 +10,18 @@ RSpec.describe HotelSync, type: :model do
   end
   
   describe '#update_from_touringplans_com(wdw_uri)' do
-    it 'works' do
+
+    # it 'works' do
+    #   tph = create(:touring_plans_hotel)
+    #   wdw_uri  = tph.wdw_uri
+    #   name     = tph.name
+    #   expect(HotelSync.new.update_from_touringplans_com(wdw_uri)).to eq("something") #update works!
+    # end
+    
+    it 'returns an updated Hotel' do
       tph = create(:touring_plans_hotel)
       wdw_uri  = tph.wdw_uri
-      name     = tph.name
-      # expect(name).to eq("something")
-      expect(HotelSync.new.update_from_touringplans_com(wdw_uri)).to eq(true) #update works!
+      expect(HotelSync.new.update_from_touringplans_com(wdw_uri)).to be_a(Hotel)
     end
     
   end
