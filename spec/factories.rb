@@ -50,7 +50,32 @@ FactoryGirl.define do
     
   end
   factory :touring_plans_hotel do
-    
+    name "name string"
+    address "address MyString"
+    city "city MyString"
+    state_code "FL"
+    zip_code "11111"
+    phone_number "5555551212"
+    wdw_uri "//disneyworld.disney.go.com/resorts/art-of-animation-resort"
+    off_site false
+    water_sports false
+    marina false
+    beach false
+    tennis false
+    biking false
+    suites false
+    concierge_floor false
+    room_service false
+    wired_internet false
+    wireless_internet false
+    num_rooms 1
+    cost_range "MyString"
+    shuttle_to_parks "MyString"
+    cost_estimate "MyString"
+    lodging_area_code "MyString"
+    category_code "MyString"
+    permalink "MyString"
+    theme "computer modern"
   end
   factory :hotel do
     name "MyString"

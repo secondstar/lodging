@@ -66,6 +66,7 @@ end
 ## app specific
 gem 'httparty', '~> 0.13.7' # grab the contents of a url
 gem 'crack', '~> 0.4.3' # parse the xml or json of that page
-gem 'foursquare2', '~> 2.0', '>= 2.0.2'
+gem 'foursquare2', '~> 2.0', '>= 2.0.2' #foursquare api
 gem 'representable', '~> 3.0'
 gem 'multi_json', '~> 1.12', '>= 1.12.1'
+gem 'fuzzy_match', '~> 2.1' # best match strings
