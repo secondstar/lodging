@@ -109,8 +109,7 @@ class TouringPlansComFeed
   end
   
   def _parse_for_uri(link)
-    uri = URI.parse(link)
-    result = "#{uri.host}#{uri.path}".split("www.").last
+    link.split(/p*:/).last
   end
 
 end
