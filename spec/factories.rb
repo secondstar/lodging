@@ -1,4 +1,7 @@
 FactoryGirl.define do
+  factory :hotel_sync do
+    
+  end
   factory :foursquare_tip do
     venue_id "MyString"
     text "MyString"
