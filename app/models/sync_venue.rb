@@ -31,7 +31,8 @@ class SyncVenue
               rating:         fgv.rating || venue_default_values.rating,
               rating_color:   fgv.ratingColor || venue_default_values.rating_color,
               rating_signals: fgv.ratingSignals.to_s || venue_default_values.rating_signals,
-              specials:       fgv.specials.to_s.to_s || venue_default_values.specials
+              specials:       fgv.specials.to_s.to_s || venue_default_values.specials,
+              wdw_uri:        fgv.url.split(/p*:/).last || venue_default_values.wdw_uri
     
               # searched_for: wdw_uri
     )
