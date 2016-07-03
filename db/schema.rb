@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160702223927) do
+ActiveRecord::Schema.define(version: 20160703014202) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(version: 20160702223927) do
     t.string   "rating_signals"
     t.boolean  "allow_menu_url_edit"
     t.string   "specials"
+    t.text     "wdw_uri"
   end
 
   create_table "foursquare_tips", force: :cascade do |t|
