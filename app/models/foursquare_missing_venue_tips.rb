@@ -1,5 +1,8 @@
 class FoursquareMissingVenueTips
 
+  def venue_id
+    "n/a"
+  end
  def id
    "n/a"
  end
@@ -25,7 +28,7 @@ class FoursquareMissingVenueTips
  end
  
  def likes
-   {}
+   {}.to_s
  end
  
  def agree_count

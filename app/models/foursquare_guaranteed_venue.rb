@@ -26,7 +26,7 @@ class FoursquareGuaranteedVenue
   end
   
   def self.venue_tips(venue_id:, search_term: '')
-    fvt = FoursquareTip.new.venue_tips(venue_id, search_term)  || FoursquareMissingVenueTips.new
+    fvt = FoursquareVenueTip.new.venue_tips(venue_id, search_term)  || FoursquareMissingVenueTips.new
   end
 
 end

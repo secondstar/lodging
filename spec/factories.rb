@@ -1,8 +1,15 @@
 FactoryGirl.define do
-  factory :foursquare_venue_photo do
-    
-  end
   factory :foursquare_tip do
+    venue_id "MyString"
+    text "MyString"
+    type ""
+    canonical_url "MyText"
+    lang "MyString"
+    likes "MyText"
+    agree_count 1
+    disagree_count 1
+  end
+  factory :foursquare_venue_photo do
     
   end
   factory :foursquare2_client do

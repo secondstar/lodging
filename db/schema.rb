@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160627222200) do
+ActiveRecord::Schema.define(version: 20160702223927) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,6 +73,23 @@ ActiveRecord::Schema.define(version: 20160627222200) do
     t.boolean  "allow_menu_url_edit"
     t.string   "specials"
   end
+
+  create_table "foursquare_tips", force: :cascade do |t|
+    t.string   "venue_id"
+    t.string   "text"
+    t.string   "tip_kind"
+    t.text     "canonical_url"
+    t.string   "lang"
+    t.text     "likes"
+    t.integer  "agree_count"
+    t.integer  "disagree_count"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.integer  "foursquare_review_id"
+    t.string   "foursquare_id"
+  end
+
+  add_index "foursquare_tips", ["foursquare_review_id"], name: "index_foursquare_tips_on_foursquare_review_id", using: :btree
 
   create_table "hotels", force: :cascade do |t|
     t.string   "name"
@@ -137,4 +154,5 @@ ActiveRecord::Schema.define(version: 20160627222200) do
     t.string   "theme"
   end
 
+  add_foreign_key "foursquare_tips", "foursquare_reviews"
 end

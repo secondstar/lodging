@@ -73,6 +73,42 @@ class SyncVenue
 
   end
 
+  def self.all_tips
+    # update all venues and get venue ID's
+    all_saved_venues = FoursquareReview.all.select(:foursquare_id)
+    all_saved_venue_ids = all_saved_venues.collect {|review| review[:foursquare_id] }
+    
+    all_saved_venue_ids.each do |venue_id|
+      self.tips(venue_id)
+    end
+  end
+
+  def self.tips(venue_id)
+    tips = FoursquareGuaranteedVenue.venue_tips(venue_id: venue_id, search_term: '')
+    review = FoursquareReview.where(foursquare_id: venue_id).first_or_create
+    puts "Tips available #{tips.count}"
+    total_tips = 0
+    tips.each do |tip|
+      total_tips += 1
+      puts "Tips fufilled #{total_tips}/#{tips.count}"
+      ft = review.foursquare_tips.where(foursquare_id: tip.id).first_or_create
+      
+      # ft = review.foursquare_tips.create(
+      ft.update(
+                venue_id:       venue_id.to_s,
+                foursquare_id:  tip.id.to_s,
+                text:           tip.text.to_s,
+                tip_kind:       tip.type.to_s,
+                canonical_url:  tip.canonicalUrl.to_s,
+                lang:           tip.lang.to_s,
+                likes:          tip.likes.to_s,
+                agree_count:    tip.agreeCount,
+                disagree_count: tip.disagreeCount
+      )
+    end
+
+  end
+
 # -------------------
   def self._collect_venue_ids
     search_terms_list = _collect_uris_and_search_terms
