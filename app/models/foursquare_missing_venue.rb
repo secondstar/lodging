@@ -82,5 +82,7 @@ class FoursquareMissingVenue
     {}.to_s
   end
   
-  
+  def wdw_uri
+    "//disneyworld.disney.go.com/resorts"
+  end
 end

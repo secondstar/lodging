@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160702223927) do
+ActiveRecord::Schema.define(version: 20160704015319) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,12 +44,13 @@ ActiveRecord::Schema.define(version: 20160702223927) do
     t.integer  "foursquare_review_id"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
+    t.string   "foursquare_venue_id"
   end
 
   add_index "foursquare_photos", ["foursquare_review_id"], name: "index_foursquare_photos_on_foursquare_review_id", using: :btree
 
   create_table "foursquare_reviews", force: :cascade do |t|
-    t.string   "foursquare_id"
+    t.string   "venue_id"
     t.string   "name"
     t.string   "address"
     t.string   "cross_street"
@@ -72,7 +73,11 @@ ActiveRecord::Schema.define(version: 20160702223927) do
     t.string   "rating_signals"
     t.boolean  "allow_menu_url_edit"
     t.string   "specials"
+    t.text     "wdw_uri"
+    t.integer  "hotel_id"
   end
+
+  add_index "foursquare_reviews", ["hotel_id"], name: "index_foursquare_reviews_on_hotel_id", using: :btree
 
   create_table "foursquare_tips", force: :cascade do |t|
     t.string   "venue_id"
@@ -98,7 +103,7 @@ ActiveRecord::Schema.define(version: 20160702223927) do
     t.string   "state_code"
     t.string   "zip_code"
     t.string   "phone_number"
-    t.string   "url"
+    t.string   "wdw_uri"
     t.boolean  "off_site"
     t.boolean  "water_sports"
     t.boolean  "marina"
@@ -154,5 +159,6 @@ ActiveRecord::Schema.define(version: 20160702223927) do
     t.string   "theme"
   end
 
+  add_foreign_key "foursquare_reviews", "hotels"
   add_foreign_key "foursquare_tips", "foursquare_reviews"
 end

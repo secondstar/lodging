@@ -1,7 +1,4 @@
 class MissingTouringPlansHotel
-  def initialize(permalink)
-    @permalink = permalink
-  end
   
   def name
     "broken hotel permalink"
@@ -12,10 +9,11 @@ class MissingTouringPlansHotel
   end
 
   def address
+    "n/a"
   end
 
   def city
-  ""
+  "n/a"
   end
 
   def state_code
@@ -31,47 +29,47 @@ class MissingTouringPlansHotel
   end
 
   def off_site
-  ""
+    false
   end
 
   def water_sports
-  ""
+    false
   end
 
   def marina
-  ""
+    false
   end
 
   def beach
-  ""
+    false
   end
 
   def tennis
-  ""
+  false
   end
 
   def biking
-  ""
+  false
   end
 
   def suites
-  ""
+    false
   end
 
   def concierge_floor
-  ""
+    false
   end
 
   def room_service
-  ""
+    false
   end
 
   def wired_internet
-  ""
+    false
   end
 
   def wireless_internet
-  ""
+    false
   end
 
   def num_rooms
@@ -87,7 +85,7 @@ class MissingTouringPlansHotel
   end
 
   def shuttle_to_parks
-  ""
+  "t"
   end
 
   def cost_estimate
@@ -103,6 +101,6 @@ class MissingTouringPlansHotel
   end
 
   def permalink
-    @permalink.to_s
+    "/"
   end
 end
