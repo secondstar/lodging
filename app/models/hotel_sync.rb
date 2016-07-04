@@ -1,9 +1,12 @@
 require 'fuzzy_match'
 
 class HotelSync
-  attr_reader :wdw_uris
-  def initialize(wdw_uris: TouringPlansHotel.all.collect {|hotel| hotel.wdw_uri} )
+  attr_reader :wdw_uris, :all_hotel_names
+  def initialize( wdw_uris: TouringPlansHotel.all.collect {|hotel| hotel.wdw_uri},
+                  all_hotel_names: Hotel.all.collect {|hotel| hotel.name}
+    )
     @wdw_uris = wdw_uris
+    @all_hotel_names = all_hotel_names
   end
   
   
@@ -48,6 +51,19 @@ class HotelSync
   def update_all_from_touringplans_com
     wdw_uris.each do |wdw_uri|
       update_from_touringplans_com(wdw_uri)
+    end
+  end
+  
+  def attach_foursquare_review_to_hotel(hotel_name)
+    fz                      = FuzzyMatch.new(FoursquareReview.all, :read => :name)
+    hotel                   = Hotel.find_by(name: hotel_name)
+    foursquare_review  = fz.find(hotel_name) #best name match
+    foursquare_review.update(hotel_id: hotel.id)
+  end
+  
+  def attach_each_foursquare_review_to_its_hotel
+    all_hotel_names.each do |hotel_name|
+      attach_foursquare_review_to_hotel(hotel_name)
     end
   end
   

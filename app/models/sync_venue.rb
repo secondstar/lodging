@@ -8,7 +8,7 @@ class SyncVenue
   
   def self.foursquare_summary(wdw_uri)
     fgv = FoursquareGuaranteedVenue.find_by_wdw_uri(wdw_uri)
-    fr = FoursquareReview.where(foursquare_id: fgv.id).first_or_create
+    fr = FoursquareReview.where(venue_id: fgv.id).first_or_create
     fr.update(name: fgv.name, 
               searched_for: wdw_uri
     )
@@ -16,7 +16,7 @@ class SyncVenue
   
   def self.venue(v_id)
     fgv                   = FoursquareGuaranteedVenue.venue(v_id) || FoursquareMissingVenue.new
-    fr                    = FoursquareReview.where(foursquare_id: v_id).first_or_create
+    fr                    = FoursquareReview.where(venue_id: v_id).first_or_create
     venue_default_values  = FoursquareMissingVenue.new
     fr.update(name:           fgv.name,
               address:        fgv.location.fetch("formattedAddress", venue_default_values.formatted_address),
@@ -47,8 +47,8 @@ class SyncVenue
 
   def self.all_photos
     # update all venues and get venue ID's
-    all_saved_venues = FoursquareReview.all.select(:foursquare_id)
-    all_saved_venue_ids = all_saved_venues.collect {|review| review[:foursquare_id] }
+    all_saved_venues = FoursquareReview.all.select(:venue_id)
+    all_saved_venue_ids = all_saved_venues.collect {|review| review[:venue_id] }
     
     all_saved_venue_ids.each do |venue_id|
       self.photos(venue_id)
@@ -57,10 +57,10 @@ class SyncVenue
 
   def self.photos(venue_id)
     photos = FoursquareGuaranteedVenue.venue_photos(venue_id: venue_id)
-    review = FoursquareReview.where(foursquare_id: venue_id).first_or_create
+    review = FoursquareReview.where(venue_id: venue_id).first_or_create
     photos.each do |photo|
-      puts photo
-      fp = review.foursquare_photos.where(foursquare_photo_id: photo.id).first_or_create
+      puts "parent venue: #{photo.foursquare_venue_id} photo id: #{photo.id}"
+      fp = FoursquarePhoto.where(foursquare_photo_id: photo.id).first_or_create
       fp.update(source: photo.source.to_s,
                 prefix: photo.prefix.to_s,
                 suffix: photo.suffix.to_s,
@@ -68,6 +68,7 @@ class SyncVenue
                 height: photo.height.to_i,
                 visibility: photo.visibility.to_s,
                 foursquare_user_id: photo.user.fetch('id'),
+                foursquare_venue_id: venue_id,
                 foursquare_photo_id: photo.id
       )
     end
@@ -76,8 +77,8 @@ class SyncVenue
 
   def self.all_tips
     # update all venues and get venue ID's
-    all_saved_venues = FoursquareReview.all.select(:foursquare_id)
-    all_saved_venue_ids = all_saved_venues.collect {|review| review[:foursquare_id] }
+    all_saved_venues = FoursquareReview.all.select(:venue_id)
+    all_saved_venue_ids = all_saved_venues.collect {|review| review[:venue_id] }
     
     all_saved_venue_ids.each do |venue_id|
       self.tips(venue_id)
@@ -86,7 +87,7 @@ class SyncVenue
 
   def self.tips(venue_id)
     tips = FoursquareGuaranteedVenue.venue_tips(venue_id: venue_id, search_term: '')
-    review = FoursquareReview.where(foursquare_id: venue_id).first_or_create
+    review = FoursquareReview.where(venue_id: venue_id).first_or_create
     puts "Tips available #{tips.count}"
     total_tips = 0
     tips.each do |tip|

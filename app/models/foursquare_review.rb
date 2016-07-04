@@ -1,4 +1,11 @@
 class FoursquareReview < ActiveRecord::Base
-  has_many :foursquare_photos
-  has_many :foursquare_tips
+  belongs_to :hotel
+  
+  def tips
+    FoursquareTip.where(venue_id: venue_id)
+  end
+  
+  def photos
+    FoursquarePhoto.where(foursquare_venue_id: venue_id)
+  end
 end
