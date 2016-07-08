@@ -5,6 +5,12 @@ class HotelsController < ApplicationController
   def index
     @hotels = Hotel.all
     @hotel_groups = @hotels.select(:id, :name, :category_code).group_by {|h| h.category_code}
+    @geojson = 
+    respond_to do |format|
+      format.html
+      format.json { render json: @geojson }  # respond with the created JSON object
+    end
+    
   end
 
   # GET /hotels/1
