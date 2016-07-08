@@ -1,0 +1,246 @@
+(function() {
+  var bounds, convertDayRangeToList, map, myLayer;
+
+  convertDayRangeToList = function(days) {
+    var array, converted, endDay, intToName, nameToInt, startDay;
+    converted = "";
+    intToName = new Array;
+    intToName[1] = "sunday";
+    intToName[2] = "monday";
+    intToName[3] = "tuesday";
+    intToName[4] = "wednesday";
+    intToName[5] = "thursday";
+    intToName[6] = "friday";
+    intToName[7] = "saturday";
+    nameToInt = new Array;
+    nameToInt["sunday"] = 1;
+    nameToInt["monday"] = 2;
+    nameToInt["tuesday"] = 3;
+    nameToInt["wednesday"] = 4;
+    nameToInt["thursday"] = 5;
+    nameToInt["friday"] = 6;
+    nameToInt["saturday"] = 7;
+    if (!/^[\x00-\x7F]*$/.test(days)) {
+      startDay = days.match(/^[\x00-\x7F]*/);
+      endDay = days.match(/[\x00-\x7F]*$/);
+      array = intToName.slice(nameToInt[startDay[0]], nameToInt[endDay[0]] + 1);
+      converted = array.join();
+    } else if (days.indexOf(",") !== -1) {
+      converted = days;
+    } else {
+      if (days === "everyday") {
+        intToName.splice(0, 1);
+        converted = intToName.join();
+      } else {
+        converted = days;
+      }
+    }
+    return converted;
+  };
+
+  if ($('.overlay').length === 1) {
+    return;
+  }
+
+  $("body").append("<div class=\"overlay\"><div class=\"modal happy-hour-modal\"><button class=\"close-modal\">&times;<\/button><div id=\"modal-map\"><\/div><div class=\"wrapper\"><h1 class=\"title\">elenis philoxenia<\/h1><section class=\"location\"><p class=\"coordinates\"><span class=\"lat\">45.5240405<\/span><span class=\"lon\">-122.6799766<\/span><\/p><p class=\"address\">112 NW 9th Ave<\/p><p class=\"contact-info\"><span class=\"phone-number\">503-227-2158<\/span><span class=\"website\"> &#124; <a class=\'link\' href=\'http://elenisrestaurant.com\'>website<\/a><\/span><\/p><p class=\"happy-hour happening-now\" id=\"happy-hour-1\"><img alt=\"Checkmark\" class=\"denote-happening-now\" height=\"15\" src=\"/assets/checkmark-bbe08b886375300aa7fe115a415e067a.svg\" /><span class=\"days\">Tuesday&ndash;Friday<\/span>, <span class=\"time\">5:00pm&ndash;7:00pm<\/span> (<span class=\"kind\">food+drinks<\/span>)<\/p><ul class=\"happy-hour-buttons\"><li><button class=\"like-button\" type=\"button\"><img alt=\"Thumbs up\" src=\"/assets/thumbs-up-5541b73c746b5a71e50dbb86f2ebb408.svg\" /><span class=\"like-text\">like<\/span><span class=\"like-count\">0<\/span><\/button><\/li><li><button class=\"update-happy-hour-button\" type=\"button\">update<\/button><\/li><\/ul><form accept-charset=\"UTF-8\" action=\"/update\" class=\"update-form\" data-remote=\"true\" id=\"new_update\" method=\"post\"><div style=\"margin:0;padding:0;display:inline\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><\/div><section class=\"modal-body\"><fieldset class=\"form-group\"><input id=\"update_name\" name=\"update[name]\" type=\"hidden\" value=\"elenis philoxenia\" /><div class=\"modal-field address-field\"><label for=\"update_address\">address<\/label><input class=\"text-field\" id=\"update_address\" name=\"update[address]\" type=\"text\" /><\/div><div class=\"modal-field phone-number-field float\"><label for=\"update_phone_number\">phone number<\/label><input class=\"text-field\" id=\"update_phone_number\" name=\"update[phone_number]\" type=\"tel\" /><\/div><div class=\"modal-field website-field float\"><label for=\"update_website\">website<\/label><input class=\"text-field\" id=\"update_website\" name=\"update[website]\" type=\"url\" /><\/div><\/fieldset><fieldset class=\"happy-hour-1 form-group\"><div class=\"modal-field days-field\"><label for=\"update_days\">day(s)<\/label><div class=\"checkbox-field\"><input name=\"update[sunday]\" type=\"hidden\" value=\"0\" /><input id=\"update_sunday\" name=\"update[sunday]\" type=\"checkbox\" value=\"1\" /><label for=\"update_sunday\">sunday<\/label><\/div><div class=\"checkbox-field\"><input name=\"update[monday]\" type=\"hidden\" value=\"0\" /><input id=\"update_monday\" name=\"update[monday]\" type=\"checkbox\" value=\"1\" /><label for=\"update_monday\">monday<\/label><\/div><div class=\"checkbox-field\"><input name=\"update[tuesday]\" type=\"hidden\" value=\"0\" /><input id=\"update_tuesday\" name=\"update[tuesday]\" type=\"checkbox\" value=\"1\" /><label for=\"update_tuesday\">tuesday<\/label><\/div><div class=\"checkbox-field\"><input name=\"update[wednesday]\" type=\"hidden\" value=\"0\" /><input id=\"update_wednesday\" name=\"update[wednesday]\" type=\"checkbox\" value=\"1\" /><label for=\"update_wednesday\">wednesday<\/label><\/div><div class=\"checkbox-field\"><input name=\"update[thursday]\" type=\"hidden\" value=\"0\" /><input id=\"update_thursday\" name=\"update[thursday]\" type=\"checkbox\" value=\"1\" /><label for=\"update_thursday\">thursday<\/label><\/div><div class=\"checkbox-field\"><input name=\"update[friday]\" type=\"hidden\" value=\"0\" /><input id=\"update_friday\" name=\"update[friday]\" type=\"checkbox\" value=\"1\" /><label for=\"update_friday\">friday<\/label><\/div><div class=\"checkbox-field\"><input name=\"update[saturday]\" type=\"hidden\" value=\"0\" /><input id=\"update_saturday\" name=\"update[saturday]\" type=\"checkbox\" value=\"1\" /><label for=\"update_saturday\">saturday<\/label><\/div><\/div><div class=\"modal-field start-time-field float\"><label for=\"update_start_time\">start time<\/label><select id=\"update_start_hour\" name=\"update[start_hour]\"><option value=\"1\">1<\/option>\n<option value=\"2\">2<\/option>\n<option value=\"3\">3<\/option>\n<option value=\"4\">4<\/option>\n<option value=\"5\">5<\/option>\n<option value=\"6\">6<\/option>\n<option value=\"7\">7<\/option>\n<option value=\"8\">8<\/option>\n<option value=\"9\">9<\/option>\n<option value=\"10\">10<\/option>\n<option value=\"11\">11<\/option>\n<option value=\"12\">12<\/option><\/select><select id=\"update_start_minute\" name=\"update[start_minute]\"><option value=\"00\">00<\/option>\n<option value=\"30\">30<\/option><\/select><select id=\"update_start_day_period\" name=\"update[start_day_period]\"><option value=\"am\">am<\/option>\n<option value=\"pm\">pm<\/option><\/select><\/div><div class=\"modal-field end-time-field float\"><label for=\"update_end_time\">end time<\/label><select id=\"update_end_hour\" name=\"update[end_hour]\"><option value=\"1\">1<\/option>\n<option value=\"2\">2<\/option>\n<option value=\"3\">3<\/option>\n<option value=\"4\">4<\/option>\n<option value=\"5\">5<\/option>\n<option value=\"6\">6<\/option>\n<option value=\"7\">7<\/option>\n<option value=\"8\">8<\/option>\n<option value=\"9\">9<\/option>\n<option value=\"10\">10<\/option>\n<option value=\"11\">11<\/option>\n<option value=\"12\">12<\/option><\/select><select id=\"update_end_minute\" name=\"update[end_minute]\"><option value=\"00\">00<\/option>\n<option value=\"30\">30<\/option><\/select><select id=\"update_end_day_period\" name=\"update[end_day_period]\"><option value=\"am\">am<\/option>\n<option value=\"pm\">pm<\/option><\/select><\/div><div class=\"modal-field type-field clear\"><label for=\"update_type\">type<\/label><select id=\"update_type\" name=\"update[type]\"><option value=\"food\">food<\/option>\n<option value=\"drinks\">drinks<\/option>\n<option value=\"food+drinks\">food+drinks<\/option><\/select><\/div><div class=\"modal-field checkbox-field\"><input name=\"update[delete_happy_hour]\" type=\"hidden\" value=\"0\" /><input id=\"update_delete_happy_hour\" name=\"update[delete_happy_hour]\" type=\"checkbox\" value=\"1\" /><label for=\"update_delete_happy_hour\">this happy hour no longer exists<\/label><\/div><\/fieldset><fieldset class=\"form-group\"><div class=\"modal-field comment-field float\"><label for=\"update_comment\">comment (optional)<\/label><input class=\"text-field\" id=\"update_comment\" name=\"update[comment]\" type=\"text\" /><\/div><div class=\"modal-field email-field float\"><label for=\"update_email\">your email (optional)<\/label><input class=\"text-field\" id=\"update_email\" name=\"update[email]\" type=\"email\" /><\/div><\/fieldset><div class=\"update-form-footer\"><button class=\"button-default close-update\" type=\"button\">cancel<\/button><input class=\"button-primary submit-update\" name=\"commit\" type=\"submit\" value=\"submit\" /><\/div><\/section><\/form><\/section><\/div><\/div><\/div>").next().hide();
+
+  myLayer = L.mapbox.tileLayer("vladigleba.map-5xg3ep2l", {
+    detectRetina: true
+  });
+
+  map = L.mapbox.map("modal-map", null, {
+    zoomControl: false
+  }).addLayer(myLayer);
+
+  map.scrollWheelZoom.disable();
+
+  if (!map.tap) {
+    new L.Control.Zoom().addTo(map);
+  }
+
+  bounds = [];
+
+  $('.location').each(function() {
+    var address, lat, lon;
+    lat = $(this).find('.lat').text();
+    lon = $(this).find('.lon').text();
+    address = $(this).find('.address').text();
+    L.mapbox.featureLayer({
+      type: 'Feature',
+      geometry: {
+        type: 'Point',
+        coordinates: [lon, lat]
+      },
+      properties: {
+        title: address,
+        'marker-color': '#00607d',
+        'marker-symbol': 'circle',
+        'marker-size': 'medium'
+      }
+    }).addTo(map);
+    return bounds.push([lat, lon]);
+  });
+
+  map.fitBounds(bounds, {
+    maxZoom: 17
+  });
+
+  $('.update-form').hide();
+
+  $(".overlay").fadeIn("fast");
+
+  $(".modal").animate({
+    top: "0"
+  }, 200);
+
+  $(".close-modal").click(function() {
+    return $(".modal").animate({
+      top: "800px"
+    }, 200, function() {
+      return $(".overlay").fadeOut("fast", function() {
+        return $(".overlay").remove();
+      });
+    });
+  });
+
+  $('.like-button').click(function() {
+    var clickedButton, place, street;
+    clickedButton = $(this);
+    place = $('.wrapper .title').text();
+    street = clickedButton.parent().parent().parent().find('.address').text();
+    if (clickedButton.find('.like-text').text() === 'like') {
+      return $.ajax({
+        data: {
+          place: place,
+          street: street
+        },
+        url: '/like.js',
+        success: function(data) {
+          var incremented, likeCount;
+          clickedButton.find('.like-text').html('unlike');
+          likeCount = clickedButton.find('.like-count');
+          incremented = parseInt(likeCount.text()) + 1;
+          return likeCount.html(incremented);
+        }
+      });
+    } else if (clickedButton.find('.like-text').text() === 'unlike') {
+      return $.ajax({
+        data: {
+          place: place,
+          street: street
+        },
+        url: '/unlike.js',
+        success: function(data) {
+          var decremented, likeCount;
+          clickedButton.find('.like-text').html('like');
+          likeCount = clickedButton.find('.like-count');
+          decremented = parseInt(likeCount.text()) - 1;
+          return likeCount.html(decremented);
+        }
+      });
+    }
+  });
+
+  $('.update-happy-hour-button').click(function() {
+    var address, clickedButton, form, parent, phoneNumber, website;
+    clickedButton = $(this);
+    parent = $(this).parent().parent().parent();
+    form = $(this).parent().parent().next();
+    address = parent.find('.address').text();
+    phoneNumber = parent.find('.phone-number').text();
+    website = parent.find('.website a').attr('href');
+    if (website === void 0) {
+      website = 'http://';
+    }
+    form.find('.address-field > input').val(address);
+    form.find('.phone-number-field > input').val(phoneNumber);
+    form.find('.website-field > input').val(website);
+    clickedButton.parent().parent().next().slideToggle();
+    return parent.find('.happy-hour').each(function() {
+      var days, daysList, endTime, hook, kind, startTime, time;
+      hook = $(this).attr('id');
+      time = $(this).find('.time').text();
+      startTime = time.match(/^[\x00-\x7F]*/).join().split(":");
+      endTime = time.match(/[\x00-\x7F]*$/).join().split(":");
+      days = $(this).find('.days').text().toLowerCase();
+      daysList = convertDayRangeToList(days);
+      form.find('.' + hook + ' .days-field .checkbox-field').each(function() {
+        var label;
+        label = $(this).find('label').text();
+        if (daysList.indexOf(label) !== -1) {
+          return $(this).find('input[type="checkbox"]').attr('checked', true);
+        }
+      });
+      form.find('.' + hook + ' .start-time-field #update_start_hour').val(startTime[0]);
+      form.find('.' + hook + ' .start-time-field #update_start_minute').val(startTime[1].substring(0, 2));
+      form.find('.' + hook + ' .start-time-field #update_start_day_period').val(startTime[1].substring(2, 4));
+      form.find('.' + hook + ' .end-time-field #update_end_hour').val(endTime[0]);
+      form.find('.' + hook + ' .end-time-field #update_end_minute').val(endTime[1].substring(0, 2));
+      form.find('.' + hook + ' .end-time-field #update_end_day_period').val(endTime[1].substring(2, 4));
+      kind = $(this).find('.kind').text();
+      return form.find('.' + hook + ' .type-field select').val(kind);
+    });
+  });
+
+  $('.close-update').click(function() {
+    return $(this).parent().parent().parent().slideToggle();
+  });
+
+  $(".submit-update").click(function() {
+    var addressUnchanged, checkboxUnchanged, daysUnchanged, endTimeUnchanged, form, location, phoneNumberUnchanged, startTimeUnchanged, typeUnchanged, websiteUnchanged;
+    form = $(this).parent().parent();
+    location = form.parent();
+    addressUnchanged = form.find('.address-field > input').val() === location.find('.address').text();
+    phoneNumberUnchanged = form.find('.phone-number-field > input').val() === location.find('.phone-number').text();
+    websiteUnchanged = form.find('.website-field > input').val() === location.find('.website a').attr('href');
+    daysUnchanged = new Boolean;
+    typeUnchanged = new Boolean;
+    checkboxUnchanged = new Boolean;
+    startTimeUnchanged = new Boolean;
+    endTimeUnchanged = new Boolean;
+    location.find('.happy-hour').each(function() {
+      var days, endTime, hook, startTime, time;
+      hook = $(this).attr('id');
+      days = convertDayRangeToList($(this).find('.days').text().toLowerCase());
+      form.find('.' + hook + ' .days-field .checkbox-field').each(function() {
+        if ($(this).find('input[type="checkbox"]').is(':checked') && days.indexOf($(this).find('label').text()) !== -1) {
+          return daysUnchanged = true;
+        } else if (!$(this).find('input[type="checkbox"]').is(':checked') && days.indexOf($(this).find('label').text()) === -1) {
+          return daysUnchanged = true;
+        } else {
+          return daysUnchanged = false;
+        }
+      });
+      time = $(this).find('.time').text();
+      startTime = time.match(/^[\x00-\x7F]*/).join().split(":");
+      endTime = time.match(/[\x00-\x7F]*$/).join().split(":");
+      if (form.find('.' + hook + ' .start-time-field #update_start_hour').val() === startTime[0] && form.find('.' + hook + ' .start-time-field #update_start_minute').val() === startTime[1].substring(0, 2) && form.find('.' + hook + ' .start-time-field #update_start_day_period').val() === startTime[1].substring(2, 4)) {
+        startTimeUnchanged = true;
+      } else {
+        startTimeUnchanged = false;
+      }
+      if (form.find('.' + hook + ' .end-time-field #update_end_hour').val() === endTime[0] && form.find('.' + hook + ' .end-time-field #update_end_minute').val() === endTime[1].substring(0, 2) && form.find('.' + hook + ' .end-time-field #update_end_day_period').val() === endTime[1].substring(2, 4)) {
+        endTimeUnchanged = true;
+      } else {
+        endTimeUnchanged = false;
+      }
+      typeUnchanged = form.find('.' + hook + ' .type-field select').val() === location.find('.kind').text();
+      if (form.find('.' + hook + ' > .checkbox-field input[type="checkbox"]').is(':checked')) {
+        return checkboxUnchanged = false;
+      } else {
+        return checkboxUnchanged = true;
+      }
+    });
+    if (typeUnchanged && daysUnchanged && startTimeUnchanged && endTimeUnchanged && addressUnchanged && phoneNumberUnchanged && websiteUnchanged && checkboxUnchanged) {
+      $('#map').before('<div class="alert alert-error">' + '<button class="dismiss-button" type="button">&times;</button>' + '<p>Nothing was updated.</p>' + '</div>').prev().hide().fadeIn('fast');
+      $(".dismiss-button").click(function() {
+        return $(this).parent().fadeOut("fast", function() {
+          return $(this).remove();
+        });
+      });
+      return false;
+    }
+    return $(this).addClass("disabled-button");
+  });
+
+}).call(this);

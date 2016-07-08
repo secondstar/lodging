@@ -2,6 +2,7 @@
 
 <html data-ember-extension="1" lang="en">
 <head>
+    <%= csrf_meta_tags %>
     <title>phindee - happy hours in downtown Portland</title>
     <meta content="text/html; charset=utf-8" http-equiv="content-type">
     <meta content=
@@ -14,9 +15,6 @@
     "/public_assets/hotels.css" media="all"
     rel="stylesheet">
     <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-    <meta content="authenticity_token" name="csrf-param">
-    <meta content="eK2kWajTey3Sxt1o2Qat5ahDjodMGGW/hIggUn0d2iE=" name=
-    "csrf-token">
 </head>
 
 <body>
@@ -24,9 +22,16 @@
     <script src='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.js'>
     </script>
     <link href='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.css' rel='stylesheet'>
-    <script data-turbolinks-track="true" src=
-    "/public_assets/hotels.js">
+    <script data-turbolinks-track="true" src="/public_assets/hotels.js">
     </script>
+  <%= render "javascript" %>
+<script>
+L.mapbox.accessToken = 'pk.eyJ1IjoiY2FwdHByb3RvbiIsImEiOiI3cDFLWWRnIn0.guU68dUaxKCX_MPrZHAesQ';
+var map = L.mapbox.map('map')
+    .setView([28.414932859359325, -81.57443784177302], 15);
 
+// Use styleLayer to add a Mapbox style created in Mapbox Studio
+L.mapbox.styleLayer('mapbox://styles/mapbox/emerald-v8').addTo(map);
+</script>
 </body>
 </html>
