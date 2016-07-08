@@ -17,6 +17,7 @@ class HotelSync
   def update_from_touringplans_com(wdw_uri)
       hotel = Hotel.where(wdw_uri: wdw_uri).first_or_create
       tp_hotel = TouringPlansHotel.where(wdw_uri: wdw_uri).first
+      permalink = tp_hotel.permalink.split("/").last
       hotel_default_values  = MissingTouringPlansHotel.new
       hotel.update(name:      tp_hotel.name               || hotel_default_values.address,
         address:              tp_hotel.address            || hotel_default_values.address,
@@ -42,6 +43,7 @@ class HotelSync
         lodging_area_code:    tp_hotel.lodging_area_code  || hotel_default_values.lodging_area_code,
         category_code:        tp_hotel.category_code      || hotel_default_values.category_code,
         cost_range:           tp_hotel.cost_range         || hotel_default_values.cost_range,
+        permalink:            permalink                   || hotel_default_values.permalink,
         theme:                tp_hotel.theme              || hotel_default_values.theme
 
       )
