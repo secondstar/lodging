@@ -2,8 +2,10 @@
 <script src='https://api.mapbox.com/mapbox-gl-js/v0.20.1/mapbox-gl.js'></script>
 <script>
 L.mapbox.accessToken = 'pk.eyJ1IjoiY2FwdHByb3RvbiIsImEiOiI3cDFLWWRnIn0.guU68dUaxKCX_MPrZHAesQ';
-L.mapbox.map('map-two', 'mapbox.dc-markers', {
-    // the options here restrict the zooms to zoom levels 14 through 18
+L.mapbox.map('map', 'mapbox.dc-markers', {
+    // the options here prevent mouse wheel or trackpad scrolling
+    // and restrict the zooms to zoom levels 14 through 18
+    scrollWheelZoom: false,
     maxZoom: 14,
     minZoom: 10
 }).setView([38.8906,-77.01313], 12);
@@ -13,6 +15,6 @@ L.mapbox.map('map-two', 'mapbox.dc-markers', {
 
 <%= render :partial => "search_form" %>
 
-<div id='map-two' class='map'> </div>
+<div id='map' class='map'> </div>
 
 <%= render :partial => "sidebar" %>
