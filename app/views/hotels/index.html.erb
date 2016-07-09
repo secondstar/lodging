@@ -1,69 +1,21 @@
-<form class="search-form">
-    <img alt="Search icon" class="search-icon" src=
-    "/public_assets/assets/search-icon-254d8fcc90f1a01258d1c102c3ea66f5.svg"><span aria-live="polite"
-    class="ui-helper-hidden-accessible" role=
-    "status"></span><input autocomplete="off" class=
-    "search-field ui-autocomplete-input" type="text">
+<% content_for :javascript do %>
+<script src='https://api.mapbox.com/mapbox-gl-js/v0.20.1/mapbox-gl.js'></script>
+<script>
+mapboxgl.accessToken = 'pk.eyJ1Ijoid2R3aHViIiwiYSI6IjNjM2U0NDFkZWUwODRjY2VkNTNjZGJmODU4ZWY0MmE2In0.iC5WVjFF5PRuaosilQqbVA';
+var map = new mapboxgl.Map({
+    container:        'map',
+    style:            'mapbox://styles/mapbox/streets-v9',
+    center:           [-81.5220, 28.3760],
+    zoom:             11.8
+});
+</script>
 
-    <ul class=
-    "ui-autocomplete ui-front ui-menu ui-widget ui-widget-content ui-corner-all"
-    id="ui-id-1" style="display: none;" tabindex="0">
-    </ul>
-</form>
+<% end %>
 
+<%= render :partial => "search_form" %>
 
 <div class="leaflet-container leaflet-fade-anim" id="map" tabindex="0">
     <!-- map goes here -->
 </div>
 
-
-<div class="sidebar">
-    <header>
-        <h1>WDW Hub</h1>
-
-
-        <p>  </p>
-
-
-        <dl>
-            <dt><img alt="Silverware" src=
-            "/public_assets/assets/silverware-9d0a4d173d9e135f903fccb2d009de22.svg">
-            </dt>
-
-
-            <dd class="food">(food)</dd>
-
-
-            <dt><img alt="Glass" src=
-            "/public_assets/assets/glass-9b07ca51d32a1325e6e433eae1e1612d.svg">
-            </dt>
-
-
-            <dd>(drinks)</dd>
-        </dl>
-    </header>
-
-
-    <article>
-        <div class="controls">
-            <a class="add-new-happy-hour" data-remote="true" href=
-            "http://phindee.com/add">add a new one</a><button class=
-            "show-user-location">show my location</button>
-        </div>
-
-
-        <ol>
-            <%= render :partial => 'hotel_summary', collection: @hotels, as: :hotel %>
-
-        </ol>
-    </article>
-
-
-    <footer>
-        <p>© 2016 WDW Hub</p>
-
-
-        <p>designed &amp; built by <a class="link" href=
-        "http://secondstarlabs.com/">Second Star Labs</a></p>
-    </footer>
-</div>
+<%= render :partial => "sidebar" %>

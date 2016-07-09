@@ -70,3 +70,4 @@ gem 'foursquare2', '~> 2.0', '>= 2.0.2' #foursquare api
 gem 'representable', '~> 3.0'
 gem 'multi_json', '~> 1.12', '>= 1.12.1'
 gem 'fuzzy_match', '~> 2.1' # best match strings
+gem 'responders', '~> 2.2' #putting back responders into rails. Hey DHH, :P.
