@@ -13,9 +13,22 @@
     // get JSON object
     // on success, parse it and
     // hand it over to MapBox for mapping
-var featureLayer = L.mapbox.featureLayer()
-     .loadURL('hotels.json')
-     .addTo(map);
+    var featureLayer = L.mapbox.featureLayer()
+         .loadURL('hotels.json')
+         //wait for the layer to be "on", or "loaded", to use a function that will setIcon with an L.icon object
+         .on('ready', function(layer) {
+                this.eachLayer(function(marker) {
+                    //when layer.feature is within the popup, it returns "undefined"
+                    marker.bindPopup("<p>" + marker.feature.properties.name + "</p>");
+                });
+        })
+
+         .addTo(map);
+
+     var popup = L.popup()
+         .setLatLng([28.4149,-81.6044])
+         .setContent('<p>Hello world!<br />This is a nice popup.</p>')
+         .openOn(map);     
 </script>
 
 <% end %>
