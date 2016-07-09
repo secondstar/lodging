@@ -1,21 +1,18 @@
 <% content_for :javascript do %>
 <script src='https://api.mapbox.com/mapbox-gl-js/v0.20.1/mapbox-gl.js'></script>
 <script>
-mapboxgl.accessToken = 'pk.eyJ1Ijoid2R3aHViIiwiYSI6IjNjM2U0NDFkZWUwODRjY2VkNTNjZGJmODU4ZWY0MmE2In0.iC5WVjFF5PRuaosilQqbVA';
-var map = new mapboxgl.Map({
-    container:        'map',
-    style:            'mapbox://styles/mapbox/streets-v9',
-    center:           [-81.5220, 28.3760],
-    zoom:             11.8
-});
+L.mapbox.accessToken = 'pk.eyJ1IjoiY2FwdHByb3RvbiIsImEiOiI3cDFLWWRnIn0.guU68dUaxKCX_MPrZHAesQ';
+L.mapbox.map('map-two', 'mapbox.dc-markers', {
+    // the options here restrict the zooms to zoom levels 14 through 18
+    maxZoom: 14,
+    minZoom: 10
+}).setView([38.8906,-77.01313], 12);
 </script>
 
 <% end %>
 
 <%= render :partial => "search_form" %>
 
-<div class="leaflet-container leaflet-fade-anim" id="map" tabindex="0">
-    <!-- map goes here -->
-</div>
+<div id='map-two' class='map'> </div>
 
 <%= render :partial => "sidebar" %>
