@@ -1,15 +1,21 @@
 <% content_for :javascript do %>
 <script src='https://api.mapbox.com/mapbox-gl-js/v0.20.1/mapbox-gl.js'></script>
 <script>
-L.mapbox.accessToken = 'pk.eyJ1IjoiY2FwdHByb3RvbiIsImEiOiI3cDFLWWRnIn0.guU68dUaxKCX_MPrZHAesQ';
-L.mapbox.map('map', 'mapbox.dc-markers', {
-    // the options here prevent mouse wheel or trackpad scrolling
-    // and restrict the zooms to zoom levels 14 through 18
-    scrollWheelZoom: false,
-    maxZoom: 14,
-    minZoom: 10
-}).setView([28.4149,-81.6044], 13);
+    L.mapbox.accessToken = 'pk.eyJ1IjoiY2FwdHByb3RvbiIsImEiOiI3cDFLWWRnIn0.guU68dUaxKCX_MPrZHAesQ';
+    map = L.mapbox.map('map', 'mapbox.dc-markers', {
+        // the options here prevent mouse wheel or trackpad scrolling
+        // and restrict the zooms to zoom levels 14 through 18
+        scrollWheelZoom: false,
+        maxZoom: 14,
+        minZoom: 10
+    }).setView([28.4149,-81.6044], 13);
 
+    // get JSON object
+    // on success, parse it and
+    // hand it over to MapBox for mapping
+var featureLayer = L.mapbox.featureLayer()
+     .loadURL('hotels.json')
+     .addTo(map);
 </script>
 
 <% end %>
