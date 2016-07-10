@@ -17,15 +17,16 @@ class FoursquareGuaranteedVenue
   end
   
   def self.venue(venue_id)
-    # "paradise"
     fv = FoursquareVenue.new(connection: FoursquareConnection.new(venue_id: venue_id, api_version: '20160607', query:{verified: true})).venue || FoursquareMissingVenue.new
     
   end
   
   def self.venue_photos(venue_id:)
-    fv = FoursquareVenue.new(connection: 
-         FoursquareConnection.new(venue_id: venue_id, 
-                              query:{limit: 30, verified: true})).venue_photos  || FoursquareMissingVenuePhoto.new
+    fvp = FoursquareVenuePhoto.new.venue_photos(venue_id)  || FoursquareMissingVenuePhoto.new
   end
   
+  def self.venue_tips(venue_id:, search_term: '')
+    fvt = FoursquareVenueTip.new.venue_tips(venue_id, search_term)  || FoursquareMissingVenueTips.new
+  end
+
 end

@@ -1,0 +1,13 @@
+<%= javascript_include_tag :application %>
+  <script src='https://api.tiles.mapbox.com/mapbox.js/v2.2.4/mapbox.js'></script>
+
+<%= yield :javascript %>
+
+<%= render "analytics" %>
+
+<% if Rails.env.test? %>
+  <%= javascript_tag do %>
+    $.fx.off = true;
+    $.ajaxSetup({ async: false });
+  <% end %>
+<% end %>

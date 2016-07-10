@@ -1,0 +1,245 @@
+(function() {
+  var bounds, convertDayRangeToList, map, myLayer;
+
+  convertDayRangeToList = function(days) {
+    var array, converted, endDay, intToName, nameToInt, startDay;
+    converted = "";
+    intToName = new Array;
+    intToName[1] = "sunday";
+    intToName[2] = "monday";
+    intToName[3] = "tuesday";
+    intToName[4] = "wednesday";
+    intToName[5] = "thursday";
+    intToName[6] = "friday";
+    intToName[7] = "saturday";
+    nameToInt = new Array;
+    nameToInt["sunday"] = 1;
+    nameToInt["monday"] = 2;
+    nameToInt["tuesday"] = 3;
+    nameToInt["wednesday"] = 4;
+    nameToInt["thursday"] = 5;
+    nameToInt["friday"] = 6;
+    nameToInt["saturday"] = 7;
+    if (!/^[\x00-\x7F]*$/.test(days)) {
+      startDay = days.match(/^[\x00-\x7F]*/);
+      endDay = days.match(/[\x00-\x7F]*$/);
+      array = intToName.slice(nameToInt[startDay[0]], nameToInt[endDay[0]] + 1);
+      converted = array.join();
+    } else if (days.indexOf(",") !== -1) {
+      converted = days;
+    } else {
+      if (days === "everyday") {
+        intToName.splice(0, 1);
+        converted = intToName.join();
+      } else {
+        converted = days;
+      }
+    }
+    return converted;
+  };
+
+  if ($('.overlay').length === 1) {
+    return;
+  }
+  $("body").append("<%= escape_javascript(render partial: 'show', locals: { hotel: @hotel }) %>").next().hide(); 
+  
+  myLayer = L.mapbox.tileLayer("vladigleba.map-5xg3ep2l", {
+    detectRetina: true
+  });
+
+  map = L.mapbox.map("modal-map", null, {
+    zoomControl: false
+  }).addLayer(myLayer);
+
+  map.scrollWheelZoom.disable();
+
+  if (!map.tap) {
+    new L.Control.Zoom().addTo(map);
+  }
+
+  bounds = [];
+
+  $('.location').each(function() {
+    var address, lat, lon;
+    lat = $(this).find('.lat').text();
+    lon = $(this).find('.lon').text();
+    address = $(this).find('.address').text();
+    L.mapbox.featureLayer({
+      type: 'Feature',
+      geometry: {
+        type: 'Point',
+        coordinates: [lon, lat]
+      },
+      properties: {
+        title: address,
+        'marker-color': '#00607d',
+        'marker-symbol': 'circle',
+        'marker-size': 'medium'
+      }
+    }).addTo(map);
+    return bounds.push([lat, lon]);
+  });
+
+  map.fitBounds(bounds, {
+    maxZoom: 17
+  });
+
+  $('.update-form').hide();
+
+  $(".overlay").fadeIn("fast");
+
+  $(".modal").animate({
+    top: "0"
+  }, 200);
+
+  $(".close-modal").click(function() {
+    return $(".modal").animate({
+      top: "800px"
+    }, 200, function() {
+      return $(".overlay").fadeOut("fast", function() {
+        return $(".overlay").remove();
+      });
+    });
+  });
+
+  $('.like-button').click(function() {
+    var clickedButton, place, street;
+    clickedButton = $(this);
+    place = $('.wrapper .title').text();
+    street = clickedButton.parent().parent().parent().find('.address').text();
+    if (clickedButton.find('.like-text').text() === 'like') {
+      return $.ajax({
+        data: {
+          place: place,
+          street: street
+        },
+        url: '/like.js',
+        success: function(data) {
+          var incremented, likeCount;
+          clickedButton.find('.like-text').html('unlike');
+          likeCount = clickedButton.find('.like-count');
+          incremented = parseInt(likeCount.text()) + 1;
+          return likeCount.html(incremented);
+        }
+      });
+    } else if (clickedButton.find('.like-text').text() === 'unlike') {
+      return $.ajax({
+        data: {
+          place: place,
+          street: street
+        },
+        url: '/unlike.js',
+        success: function(data) {
+          var decremented, likeCount;
+          clickedButton.find('.like-text').html('like');
+          likeCount = clickedButton.find('.like-count');
+          decremented = parseInt(likeCount.text()) - 1;
+          return likeCount.html(decremented);
+        }
+      });
+    }
+  });
+
+  $('.update-happy-hour-button').click(function() {
+    var address, clickedButton, form, parent, phoneNumber, website;
+    clickedButton = $(this);
+    parent = $(this).parent().parent().parent();
+    form = $(this).parent().parent().next();
+    address = parent.find('.address').text();
+    phoneNumber = parent.find('.phone-number').text();
+    website = parent.find('.website a').attr('href');
+    if (website === void 0) {
+      website = 'http://';
+    }
+    form.find('.address-field > input').val(address);
+    form.find('.phone-number-field > input').val(phoneNumber);
+    form.find('.website-field > input').val(website);
+    clickedButton.parent().parent().next().slideToggle();
+    return parent.find('.happy-hour').each(function() {
+      var days, daysList, endTime, hook, kind, startTime, time;
+      hook = $(this).attr('id');
+      time = $(this).find('.time').text();
+      startTime = time.match(/^[\x00-\x7F]*/).join().split(":");
+      endTime = time.match(/[\x00-\x7F]*$/).join().split(":");
+      days = $(this).find('.days').text().toLowerCase();
+      daysList = convertDayRangeToList(days);
+      form.find('.' + hook + ' .days-field .checkbox-field').each(function() {
+        var label;
+        label = $(this).find('label').text();
+        if (daysList.indexOf(label) !== -1) {
+          return $(this).find('input[type="checkbox"]').attr('checked', true);
+        }
+      });
+      form.find('.' + hook + ' .start-time-field #update_start_hour').val(startTime[0]);
+      form.find('.' + hook + ' .start-time-field #update_start_minute').val(startTime[1].substring(0, 2));
+      form.find('.' + hook + ' .start-time-field #update_start_day_period').val(startTime[1].substring(2, 4));
+      form.find('.' + hook + ' .end-time-field #update_end_hour').val(endTime[0]);
+      form.find('.' + hook + ' .end-time-field #update_end_minute').val(endTime[1].substring(0, 2));
+      form.find('.' + hook + ' .end-time-field #update_end_day_period').val(endTime[1].substring(2, 4));
+      kind = $(this).find('.kind').text();
+      return form.find('.' + hook + ' .type-field select').val(kind);
+    });
+  });
+
+  $('.close-update').click(function() {
+    return $(this).parent().parent().parent().slideToggle();
+  });
+
+  $(".submit-update").click(function() {
+    var addressUnchanged, checkboxUnchanged, daysUnchanged, endTimeUnchanged, form, location, phoneNumberUnchanged, startTimeUnchanged, typeUnchanged, websiteUnchanged;
+    form = $(this).parent().parent();
+    location = form.parent();
+    addressUnchanged = form.find('.address-field > input').val() === location.find('.address').text();
+    phoneNumberUnchanged = form.find('.phone-number-field > input').val() === location.find('.phone-number').text();
+    websiteUnchanged = form.find('.website-field > input').val() === location.find('.website a').attr('href');
+    daysUnchanged = new Boolean;
+    typeUnchanged = new Boolean;
+    checkboxUnchanged = new Boolean;
+    startTimeUnchanged = new Boolean;
+    endTimeUnchanged = new Boolean;
+    location.find('.happy-hour').each(function() {
+      var days, endTime, hook, startTime, time;
+      hook = $(this).attr('id');
+      days = convertDayRangeToList($(this).find('.days').text().toLowerCase());
+      form.find('.' + hook + ' .days-field .checkbox-field').each(function() {
+        if ($(this).find('input[type="checkbox"]').is(':checked') && days.indexOf($(this).find('label').text()) !== -1) {
+          return daysUnchanged = true;
+        } else if (!$(this).find('input[type="checkbox"]').is(':checked') && days.indexOf($(this).find('label').text()) === -1) {
+          return daysUnchanged = true;
+        } else {
+          return daysUnchanged = false;
+        }
+      });
+      time = $(this).find('.time').text();
+      startTime = time.match(/^[\x00-\x7F]*/).join().split(":");
+      endTime = time.match(/[\x00-\x7F]*$/).join().split(":");
+      if (form.find('.' + hook + ' .start-time-field #update_start_hour').val() === startTime[0] && form.find('.' + hook + ' .start-time-field #update_start_minute').val() === startTime[1].substring(0, 2) && form.find('.' + hook + ' .start-time-field #update_start_day_period').val() === startTime[1].substring(2, 4)) {
+        startTimeUnchanged = true;
+      } else {
+        startTimeUnchanged = false;
+      }
+      if (form.find('.' + hook + ' .end-time-field #update_end_hour').val() === endTime[0] && form.find('.' + hook + ' .end-time-field #update_end_minute').val() === endTime[1].substring(0, 2) && form.find('.' + hook + ' .end-time-field #update_end_day_period').val() === endTime[1].substring(2, 4)) {
+        endTimeUnchanged = true;
+      } else {
+        endTimeUnchanged = false;
+      }
+      typeUnchanged = form.find('.' + hook + ' .type-field select').val() === location.find('.kind').text();
+      if (form.find('.' + hook + ' > .checkbox-field input[type="checkbox"]').is(':checked')) {
+        return checkboxUnchanged = false;
+      } else {
+        return checkboxUnchanged = true;
+      }
+    });
+    if (typeUnchanged && daysUnchanged && startTimeUnchanged && endTimeUnchanged && addressUnchanged && phoneNumberUnchanged && websiteUnchanged && checkboxUnchanged) {
+      $('#map').before('<div class="alert alert-error">' + '<button class="dismiss-button" type="button">&times;</button>' + '<p>Nothing was updated.</p>' + '</div>').prev().hide().fadeIn('fast');
+      $(".dismiss-button").click(function() {
+        return $(this).parent().fadeOut("fast", function() {
+          return $(this).remove();
+        });
+      });
+      return false;
+    }
+    return $(this).addClass("disabled-button");
+  });
+
+}).call(this);

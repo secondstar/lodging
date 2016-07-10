@@ -1,0 +1,11 @@
+<li>
+    <div class="type">
+        <%= image_tag "#{hotel.photos.first.prefix}300x300#{hotel.photos.first.suffix}" %>
+    </div>
+    <div class="info">
+        <h2><%= link_to hotel.name, hotel_path(hotel.id), remote: true %></h2>
+
+
+    </div>
+    <img alt="Right arrow" src="/public_assets/assets/right-arrow-0d1ba3c494d476ab7d0906cf7e933e26.svg">
+</li>

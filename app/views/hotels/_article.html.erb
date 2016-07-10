@@ -1,0 +1,14 @@
+<article>
+    
+    <div class="controls">
+        <a class="add-new-happy-hour" data-remote="true" href=
+        "http://phindee.com/add">add a new one</a><button class=
+        "show-user-location">show my location</button>
+    </div>
+
+
+    <ol>
+        <%= render :partial => "hotel_summary", collection: @hotels, as: :hotel %>
+
+    </ol>
+</article>

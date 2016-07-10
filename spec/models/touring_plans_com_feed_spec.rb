@@ -42,9 +42,10 @@ RSpec.describe TouringPlansComFeed, type: :model do
     subject { TouringPlansComFeed.new.get_hotel_details_by_permalink(permalink) }
     
     before(:each) do
-      stub_request(:get, "https://touringplans.com/walt-disney-world/hotels/websites/disneys-art-of-animation-resort.json?output=json").
+      stub_request(:get, "https://touringplans.com/disneys-art-of-animation-resort.json?output=json").
         with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby'}).
         to_return(:status => 200, :body => hotel, :headers => {})
+    
       
     end
 
@@ -64,8 +65,6 @@ RSpec.describe TouringPlansComFeed, type: :model do
     end
     
     it 'has a name' do
-      
-      # subject["name"].must_equal "Mr. Kamal's"
       expect(subject["name"]).to eq("Disney's Art of Animation Resort")
     end
   end

@@ -67,7 +67,7 @@ class FoursquareMissingVenue
   end
   
   def photos
-    {}.to_s
+    {groups: 'none'}.to_s
   end
   
   def reasons
@@ -82,5 +82,7 @@ class FoursquareMissingVenue
     {}.to_s
   end
   
-  
+  def wdw_uri
+    "//disneyworld.disney.go.com/resorts"
+  end
 end
