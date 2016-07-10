@@ -102,8 +102,8 @@ FactoryGirl.define do
   end
   
   factory :hotel do
-    name "MyString"
-    address "MyString"
+    sequence(:name) { |n| "Hotel Name#{n}"}
+    sequence(:address) { |n| "Address#{n}"}
     city "MyString"
     state_code "MyString"
     zip_code "MyString"
@@ -129,8 +129,8 @@ FactoryGirl.define do
     # foursquare_venue_id "4dacf7411e72c4e8dcb3ebf5"
     sequence(:foursquare_venue_id) { |n| "4dacf7411e72c4e8dcb3ebf#{n}/"}
     
-    after(:stub, :create, :build_stubbed) do |foursquare_venue_id|
-      FactoryGirl.create(:foursquare_review, :venue_id => foursquare_venue_id)
+    after(:create) do |hotel|
+      FactoryGirl.create(:foursquare_review, :venue_id => hotel.foursquare_venue_id)
     end
     
   end

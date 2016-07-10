@@ -1,69 +1,201 @@
-<form class="search-form">
-    <img alt="Search icon" class="search-icon" src=
-    "/public_assets/assets/search-icon-254d8fcc90f1a01258d1c102c3ea66f5.svg"><span aria-live="polite"
-    class="ui-helper-hidden-accessible" role=
-    "status"></span><input autocomplete="off" class=
-    "search-field ui-autocomplete-input" type="text">
+<% content_for :javascript do %>
+<script src='https://api.mapbox.com/mapbox-gl-js/v0.20.1/mapbox-gl.js'></script>
+<script>
+    L.mapbox.accessToken = 'pk.eyJ1IjoiY2FwdHByb3RvbiIsImEiOiI3cDFLWWRnIn0.guU68dUaxKCX_MPrZHAesQ';
+    map = L.mapbox.map('map', 'mapbox.dc-markers', {
+        // the options here prevent mouse wheel or trackpad scrolling
+        // and restrict the zooms to zoom levels 14 through 18
+        scrollWheelZoom: false,
+        maxZoom: 14,
+        minZoom: 10
+    }).setView([28.3849,-81.6044], 13);
 
-    <ul class=
-    "ui-autocomplete ui-front ui-menu ui-widget ui-widget-content ui-corner-all"
-    id="ui-id-1" style="display: none;" tabindex="0">
-    </ul>
-</form>
+    // get JSON object
+    // on success, parse it and
+    // hand it over to MapBox for mapping
+    var featureLayer = L.mapbox.featureLayer()
+         .loadURL('hotels.json')
+         //wait for the layer to be "on", or "loaded", to use a function that will setIcon with an L.icon object
+         .on('ready', function(layer) {
+                this.eachLayer(function(marker) {
+                    marker.bindPopup('<div class="popup">' +
+                        '<h3>' + marker.feature.properties.name + '</h3>' +
+                        '</div>');
 
+                });
+        })
 
-<div class="leaflet-container leaflet-fade-anim" id="map" tabindex="0">
-    <!-- map goes here -->
-</div>
+         .addTo(map);
+// good mark
+             $(document)
+                 .ready(function() {                 
 
+                     var e, t, n, i, r, o;
+                     return 
+                     $(".search-field")
+                         .autocomplete({
+                             appendTo: ".search-form",
+                             source: "/search_suggestions",
+                             close: function(e) {
+                                 var t;
+                                 return t = $(".search-field")
+                                     .val()
+                                     .toLowerCase(), "Enter" === e.key && $("a:contains('" + t + "')")
+                                     .trigger("click"), r.featureLayer.eachLayer(
+                                         function(e) {
+                                             var n;
+                                             return e.feature.properties
+                                             .name === t ? (n = e._leaflet_id,
+                                                     r._layers[n].openPopup()
+                                             ) : void 0
+                                         })
+                             }
+                         }), 
+                    $(".search-form")
+                        .submit(function(e) {
+                            var t, n;
+                            return e.preventDefault(), n = $(
+                                    ".search-field")
+                                .val()
+                                .toLowerCase(), t = !1, r.featureLayer.eachLayer(
+                                    function(e) {
+                                        var i;
+                                        return e.feature.properties.name ===
+                                            n ? (i = e._leaflet_id, r._layers[
+                                                i].openPopup(), t = !0) :
+                                            void 0
+                                    }), t ? void 0 : $.ajax({
+                                    url: "/hotels/" + n.split(" ")
+                                        .join("_") + ".js"
+                                })
+                        }), o = L.mapbox.tileLayer("https://api.mapbox.com/v3/mapbox.dark.json", {
+                        detectRetina: !0
+                    }), r = L.mapbox.map("map", null, {
+                        zoomControl: !1
+                    })
+                    .addLayer(o), r.scrollWheelZoom.disable(), t = window.getComputedStyle(
+                        document.body, ":after"), e = t.getPropertyValue(
+                        "content")
+                    .replace(/['"]/g, ""), "mobile" === e ? r.setView([28.3849,-81.6044], 12) : "tablet" === e ? r.setView([28.3849,-81.6044], 12) : r.setView([28.3849,-81.6044],
+                        13), r.tap || new L.Control.Zoom({
+                        position: "bottomright"
+                    })
+                    .addTo(r), r.featureLayer.on("layeradd", function(e) {
+                        var t, n, i, r, o;
+                        return t = e.layer, i = t.feature.properties,
+                            "food" === i.kind ? r =
+                            '<img alt="Silverware" height="22" src="/public_assets/assets/silverware-9d0a4d173d9e135f903fccb2d009de22.svg" />' :
+                            "drinks" === i.kind ? r =
+                            '<img alt="Glass" height="22" src="/public_assets/assets/glass-9b07ca51d32a1325e6e433eae1e1612d.svg" />' :
+                            "food+drinks" === i.kind && (r =
+                                '<img alt="Silverware" height="22" src="/public_assets/assets/silverware-9d0a4d173d9e135f903fccb2d009de22.svg" /><img alt="Glass" height="22" src="/public_assets/assets/glass-9b07ca51d32a1325e6e433eae1e1612d.svg" />'
+                            ), o = "" === i.website ? "" :
+                            ' &#124; <a class="link" href="http://' + i
+                            .website + '">website</a>', n =
+                            '<div class="popup"><div class="type"><span>' +
+                            i.kind + "</span>" + r +
+                            '</div><div class="info"><h3 class="popup-title">' +
+                            i.name + '</h3><p class="hours">' + i.hours +
+                            '</p><p class="address">' + i.address +
+                            '</p></div><img alt="Right arrow" class="right-arrow" src="/public_assets/assets/right-arrow-0d1ba3c494d476ab7d0906cf7e933e26.svg" /></div>',
+                            t.bindPopup(n, {
+                                closeButton: !1,
+                                minWidth: 320
+                            })
+                    }),
 
-<div class="sidebar">
-    <header>
-        <h1>WDW Hub</h1>
+                $.ajax({
+                        dataType: "text",
+                        url: "/hotels.json",
+                        success: function(e) {
+                            var t;
+                            return t = $.parseJSON(e), r.featureLayer
+                                .setGeoJSON(t)
+                        }
+                    }),
+                r.on("popupopen",
 
+                        function() {
+                            return $(".popup")
+                                .click(
+                                    function() {
+                                        var e;
+                                        return e = $(this)
+                                            .find(".popup-title")
+                                            .text()
+                                            .split(" ")
+                                            .join("_"),
+                                            $.ajax({
+                                                url: "/hotels/" + e +
+                                                    ".js"
+                                            })
+                                    })
+                        }), 
+                $("article li")
+                    .click(
+                        function() {
+                            var t, n;
+                            return t = $(this), n = t.find("h2")
+                                .text(), r.featureLayer.eachLayer(
+                                    function(t) {
+                                        var i;
+                                        return t.feature.properties.name ===
+                                            n ? (i = t._leaflet_id,
+                                                "mobile" === e ? $(
+                                                    "html, body")
+                                                .animate({
+                                                        scrollTop: "0px"
+                                                    }, 200, "swing",
+                                                    function() {
+                                                        return r._layers[i]
+                                                            .openPopup()
+                                                    }) : r._layers[i].openPopup()
+                                            ) : void 0
+                                    })
+                        }), "mobile" === e && $("#map")
+                    .click(function() {
+                        return $(".sidebar")
+                            .animate({
+                                top: $(window)
+                                    .height()
+                            }, 200, "swing", function() {
+                                return $(this)
+                                    .hide(), $(".sidebar")
+                                    .after(
+                                        '<button class="show-list">show list</button>'
+                                    ), $(".show-list")
+                                    .click(function() {
+                                        return $(".sidebar")
+                                            .show(), $(
+                                                ".sidebar")
+                                            .animate({
+                                                top: "275px"
+                                            }, 200)
+                                    })
+                            })
+                    }), "mobile" === e && (n = $("ol li")
+                        .length, n % 2 === 1 && $("ol")
+                        .append("<li></li>")), i = 6, $(".sidebar .time")
+                    .each(function() {
+                        var e, t, n, r, o, s, a, u, l, c, d, h, f, p;
+                        return p = $(this)
+                            .text()
+                            .match(/[\x00-\x7F]*$/)
+                            .join(), s = p.split(":"), t = parseInt(s[0]),
+                            n = parseInt(s[1].substring(0, 2)), e = s[1]
+                            .substring(2, 4), "pm" === e && (t += 12),
+                            r = n / 60, o = t + r, a = new Date, u = a.getHours(),
+                            l = a.getMinutes(), c = l / 60, d = u + c,
+                            h = o - d, f = h / i * 100, $(this)
+                            .replaceWith('      <div class="time-graph">        <p style="width:'+f+'%"><span>'+p+"</span></p>      </div>    ")})
+                 })
 
-        <p>  </p>
+</script>
 
+<% end %>
 
-        <dl>
-            <dt><img alt="Silverware" src=
-            "/public_assets/assets/silverware-9d0a4d173d9e135f903fccb2d009de22.svg">
-            </dt>
+<%= render :partial => "search_form" %>
 
+<div id='map' class='map'> </div>
 
-            <dd class="food">(food)</dd>
-
-
-            <dt><img alt="Glass" src=
-            "/public_assets/assets/glass-9b07ca51d32a1325e6e433eae1e1612d.svg">
-            </dt>
-
-
-            <dd>(drinks)</dd>
-        </dl>
-    </header>
-
-
-    <article>
-        <div class="controls">
-            <a class="add-new-happy-hour" data-remote="true" href=
-            "http://phindee.com/add">add a new one</a><button class=
-            "show-user-location">show my location</button>
-        </div>
-
-
-        <ol>
-            <%= render :partial => 'hotel_summary', collection: @hotels, as: :hotel %>
-
-        </ol>
-    </article>
-
-
-    <footer>
-        <p>© 2016 WDW Hub</p>
-
-
-        <p>designed &amp; built by <a class="link" href=
-        "http://secondstarlabs.com/">Second Star Labs</a></p>
-    </footer>
-</div>
+<%= render :partial => "sidebar" %>

@@ -49,4 +49,22 @@ RSpec.describe Hotel, type: :model do
       expect(hotel.photos.length).to eq(25)
     end
   end
+  
+  describe '#geojson' do
+    subject { Hotel.geojson }
+    # it 'works' do
+    #   hotels = create_list(:hotel, 25)
+    #   expect(subject).to eq("something")
+    # end
+    
+    it 'returns an Array' do
+      hotels = create_list(:hotel, 25)
+      expect(subject).to be_an(Array)
+    end
+
+    it 'returns a Hash for the first element of the Array' do
+      hotels = create_list(:hotel, 25)
+      expect(subject.first).to be_a(Hash)
+    end
+  end
 end
