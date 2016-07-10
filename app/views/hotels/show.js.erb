@@ -41,9 +41,8 @@
   if ($('.overlay').length === 1) {
     return;
   }
-  $("body").append("<%= escape_javascript(render partial: 'show') %>").next().hide(); 
+  $("body").append("<%= escape_javascript(render partial: 'show', locals: { hotel: @hotel }) %>").next().hide(); 
   
-
   myLayer = L.mapbox.tileLayer("vladigleba.map-5xg3ep2l", {
     detectRetina: true
   });
