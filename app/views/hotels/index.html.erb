@@ -8,7 +8,7 @@
         scrollWheelZoom: false,
         maxZoom: 14,
         minZoom: 10
-    }).setView([28.4149,-81.6044], 13);
+    }).setView([28.3849,-81.6044], 13);
 
     // get JSON object
     // on success, parse it and
@@ -18,17 +18,30 @@
          //wait for the layer to be "on", or "loaded", to use a function that will setIcon with an L.icon object
          .on('ready', function(layer) {
                 this.eachLayer(function(marker) {
-                    //when layer.feature is within the popup, it returns "undefined"
-                    marker.bindPopup("<p>" + marker.feature.properties.name + "</p>");
+                    marker.bindPopup('<div class="popup">' +
+                        '<h3>' + marker.feature.properties.name + '</h3>' +
+                        '</div>');
+                    
                 });
         })
 
          .addTo(map);
+         
+     // # handles a sidebar hotel click
+         $('article li').click(function(e) {
+           var current, currentlyClickedName;
+           current = $(this);
+           currentlyClickedName = current.find('h2').text();
+           alert(currentlyClickedName)
+           // return map.markerLayer.eachLayer(function(layer) {
+           //   var id;
+           //   if (layer.feature.properties.name === currentlyClickedName) {
+           //     id = layer._leaflet_id;
+           //     return map._layers[id].openPopup();
+           //   }
+           // });
+         });
 
-     var popup = L.popup()
-         .setLatLng([28.4149,-81.6044])
-         .setContent('<p>Hello world!<br />This is a nice popup.</p>')
-         .openOn(map);     
 </script>
 
 <% end %>
