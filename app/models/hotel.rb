@@ -22,7 +22,7 @@ class Hotel < ActiveRecord::Base
     @geojson = Array.new
 #
     hotels.each do |hotel|
-      @coordinates = hotel.foursquare_review
+      @coordinates = hotel.foursquare_review_by_venue_id
       @geojson << {
         type: 'Feature',
         geometry: {
