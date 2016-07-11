@@ -93,7 +93,7 @@ class SyncVenue
     tips.each do |tip|
       puts "parent venue: #{tip.foursquare_review_id} tip id: #{tip.id}"
       total_tips += 1
-      puts "Tips fufilled #{total_tips}/#{tips.count}"
+      # puts "Tips fufilled #{total_tips}/#{tips.count}" # possible division by zero
 
       ft  = FoursquareTip.where(foursquare_id: tip.id).first_or_create
       ft.update(
