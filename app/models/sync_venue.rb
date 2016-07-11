@@ -113,9 +113,9 @@ class SyncVenue
 
 # -------------------
   def self._collect_venue_ids
-    search_terms_list = _collect_uris_and_search_terms
-    venue_ids = search_terms_list.collect {|search_term| FoursquareGuaranteedVenue.find_by_wdw_uri(search_term).id}
-    nogos_arrays_list               = venue_ids.zip(search_terms_list).select {|vi| vi.first == "none"}
+    search_terms_list   = _collect_uris_and_search_terms
+    venue_ids           = search_terms_list.collect {|search_term| FoursquareGuaranteedVenue.find_by_wdw_uri(search_term).id}
+    nogos_arrays_list   = venue_ids.zip(search_terms_list).select {|vi| vi.first == "none"}
     corrected_nogos_ids = _correct_nogos_and_return_ids(nogos_arrays_list)
 
     sorted              = venue_ids.sort

@@ -60,7 +60,8 @@ class HotelSync
     fz                      = FuzzyMatch.new(FoursquareReview.all, :read => :name)
     hotel                   = Hotel.find_by(name: hotel_name)
     foursquare_review  = fz.find(hotel_name) #best name match
-    foursquare_review.update(hotel_id: hotel.id)
+    hotel.update(foursquare_venue_id: foursquare_review.venue_id)
+    return hotel
   end
   
   def attach_each_foursquare_review_to_its_hotel

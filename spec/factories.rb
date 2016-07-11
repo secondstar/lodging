@@ -41,7 +41,7 @@ FactoryGirl.define do
   
   factory :foursquare_review do
     sequence(:venue_id) { |n| "4dacf7411e72c4e8dcb3e1b#{n}/"}
-    name "MyString"
+    sequence(:name) { |n| ":foursquare_review name#{n}/"}
     sequence(:address) { |n| "[\"Disney's Animal Kingdom Lodge (Walt Disney World)#{n}\", \"Lake Buena Vista, FL 32830\", \"United States\"]/"}
     cross_street "MyString"
     lat "28.35411051001386"
