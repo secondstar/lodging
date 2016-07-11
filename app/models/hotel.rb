@@ -1,6 +1,5 @@
 class Hotel < ActiveRecord::Base
-  has_one :foursquare_review
-  
+
   def tips
     # "tipe sher"
     # self.foursquare_venue_id
@@ -11,10 +10,10 @@ class Hotel < ActiveRecord::Base
 
   def photos
     # "pavlova"
-    self.foursquare_review.photos
+    self.foursquare_review_by_venue_id.photos
   end
 
-  def foursquare_review
+  def foursquare_review_by_venue_id
     FoursquareReview.find_by(venue_id: self.foursquare_venue_id) #|| FoursquareMissingVenue.new
   end
   
