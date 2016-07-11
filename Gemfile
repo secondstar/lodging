@@ -71,3 +71,4 @@ gem 'representable', '~> 3.0'
 gem 'multi_json', '~> 1.12', '>= 1.12.1'
 gem 'fuzzy_match', '~> 2.1' # best match strings
 gem 'responders', '~> 2.2' #putting back responders into rails. Hey DHH, :P.
+gem 'rails_12factor', '~> 0.0.3' # better heroku hosting 
