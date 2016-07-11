@@ -91,11 +91,11 @@ class SyncVenue
     puts "Tips available #{tips.count}"
     total_tips = 0
     tips.each do |tip|
+      puts "parent venue: #{tip.foursquare_review_id} tip id: #{tip.id}"
       total_tips += 1
       puts "Tips fufilled #{total_tips}/#{tips.count}"
-      ft = review.foursquare_tips.where(foursquare_id: tip.id).first_or_create
-      
-      # ft = review.foursquare_tips.create(
+
+      ft  = FoursquareTip.where(foursquare_id: tip.id).first_or_create
       ft.update(
                 venue_id:       venue_id.to_s,
                 foursquare_id:  tip.id.to_s,
