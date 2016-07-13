@@ -36,29 +36,41 @@ article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section,su
 }
 @font-face {
 	font-family:'Blackjack Regular';
-	src:url(/assets/blackjack-7a1b171abfd5abbce87bffe8de1af36a.eot);
-	src:url(/assets/blackjack-7a1b171abfd5abbce87bffe8de1af36a.eot?#iefix) format("embedded-opentype"),url(/assets/blackjack-ac118abf8f25654a91dec158398c24f5.woff) format("woff"),url(/assets/blackjack-75daf1b56a8fa60be5ce96f6dc53325e.ttf) format("truetype"),url(/assets/blackjack-bb197d722c96d461c1f607569d2f61a0.svg#BlackJackRegular) format("svg");
+	src:font-url('blackjack.eot');
+	src:font-url('blackjack.eot?#iefix') format("embedded-opentype"),
+    font-url('blackjack.woff') format("woff"),
+    font-url('blackjack.ttf') format("truetype"),
+    font-url('blackjack.svg#BlackJackRegular') format("svg");
 	font-weight:normal;
 	font-style:normal
 }
 @font-face {
 	font-family:'Quicksand Light';
-	src:url(/assets/quicksand-light-45ce7341589e4567998c772a4c98b2d1.eot);
-	src:url(/assets/quicksand-light-45ce7341589e4567998c772a4c98b2d1.eot?#iefix) format("embedded-opentype"),url(/assets/quicksand-light-ec752d936935dd46ec1e737540ca75fa.woff) format("woff"),url(/assets/quicksand-light-297003abeeded7aaa08868f5967a2068.ttf) format("truetype"),url(/assets/quicksand-light-df843cc6e7ca70a3e75ad8a926a3b39b.svg#QuicksandLight) format("svg");
+	src:font-url('quicksand-light.eot');
+	src:font-url('quicksand-light.eot?#iefix') format("embedded-opentype"),
+    font-url('quicksand-light.woff') format("woff"),
+    font-url('quicksand-light.ttf') format("truetype"),
+    font-url('quicksand-light.svg#QuicksandLight') format("svg");
 	font-weight:normal;
 	font-style:normal
 }
 @font-face {
 	font-family:'Quicksand Book';
-	src:url(/assets/quicksand-book-aae57d286cf0be903a471e8317051bbc.eot);
-	src:url(/assets/quicksand-book-aae57d286cf0be903a471e8317051bbc.eot?#iefix) format("embedded-opentype"),url(/assets/quicksand-book-b4c405c3f5f3860f3ba10e86e9e2c655.woff) format("woff"),url(/assets/quicksand-book-e7b3e286c5685872cb36737e1a062d9a.ttf) format("truetype"),url(/assets/quicksand-book-217f6a269884cb00452d78e386a06794.svg#QuicksandBook) format("svg");
+	src:font-url('quicksand-book.eot');
+	src:font-url('quicksand-book.eot?#iefix') format("embedded-opentype"),
+    font-url('quicksand-book.woff') format("woff"),
+    font-url('quicksand-book.ttf') format("truetype"),
+    font-url('quicksand-book.svg#QuicksandBook') format("svg");
 	font-weight:normal;
 	font-style:normal
 }
 @font-face {
 	font-family:'Quicksand Bold';
-	src:url(/assets/quicksand-bold-dcbff7f1eb982de560f482be28ba4af3.eot);
-	src:url(/assets/quicksand-bold-dcbff7f1eb982de560f482be28ba4af3.eot?#iefix) format("embedded-opentype"),url(/assets/quicksand-bold-01c63c95843cd6c383c29fe14932a531.woff) format("woff"),url(/assets/quicksand-bold-f814edff1aea66c3406003851b025761.ttf) format("truetype"),url(/assets/quicksand-bold-6c9b16856d6e4feb4cf9b88f690559b2.svg#quicksandbold) format("svg");
+	src:font-url('quicksand-bold.eot');
+	src:font-url('quicksand-bold.eot?#iefix') format("embedded-opentype"),
+    font-url('quicksand-bold.woff') format("woff"),
+    font-url('quicksand-bold.ttf') format("truetype"),
+    font-url('quicksand-bold.svg#quicksandbold') format("svg");
 	font-weight:normal;
 	font-style:normal
 }
@@ -160,14 +172,16 @@ html {
 .happy-hour-modal .title {
 	font-size:40px;
 	line-height:1em;
-	padding:0px 30px
+	padding:0px 30px;
+    color:#fff;
 }
 .happy-hour-modal .leaflet-map-pane {
 	top:15px
 }
 .location {
 	font-size:20px;
-	line-height:1.2em
+	line-height:1.2em;
+    color:#fff
 }
 .location .address {
 	font-size:30px;
@@ -298,7 +312,8 @@ html {
 	background-color:#1a1a1a
 }
 .sidebar>header {
-	background-color:#1a1a1a
+	background-color:#1a1a1a;
+    color:#fff;
 }
 .sidebar>header h1 {
 	padding:90px 0 40px;
@@ -395,10 +410,11 @@ html {
 .sidebar li .info,.sidebar li .type {
 	float:left
 }
-.sidebar li h2 {
+.sidebar li h2, .sidebar li h2 a {
 	text-transform:uppercase;
 	font-size:20px;
-	line-height:1.1em
+	line-height:1.1em;
+    color:#fff;
 }
 .sidebar li p {
 	font-size:15px

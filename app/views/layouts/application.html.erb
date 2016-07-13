@@ -9,7 +9,8 @@
     config/locales/en.yml. For more see:
     https://github.com/calebthompson/title#usage
   %>
-  <title><%= title %></title>
+  <title><%= content_for?(:title) ? yield(:title) : "Walt Disney World Hotels | WDW Hub"  %></title>
+  
   <%= stylesheet_link_tag :application, media: "all" %>
   <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.20.1/mapbox-gl.css' rel='stylesheet' />
   <%= csrf_meta_tags %>
