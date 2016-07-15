@@ -1,5 +1,28 @@
-<div class="overlay"><div class="modal happy-hour-modal" style="top: 0px;"><button class="close-modal">×</button><div id="modal-map" class="leaflet-container leaflet-fade-anim" tabindex="0"><div class="leaflet-map-pane" style="transform: translate3d(0px, 0px, 0px);"><div class="leaflet-tile-pane"><div class="leaflet-layer"><div class="leaflet-tile-container"></div><div class="leaflet-tile-container"></div></div><div class="leaflet-layer"><div class="leaflet-tile-container"></div><div class="leaflet-tile-container leaflet-zoom-animated"><img class="leaflet-tile leaflet-tile-loaded" style="height: 256px; width: 256px; transform: translate3d(155px, -216px, 0px);" src="http://a.tiles.mapbox.com/v3/vladigleba.map-5xg3ep2l/17/20868/46878.png"><img class="leaflet-tile leaflet-tile-loaded" style="height: 256px; width: 256px; transform: translate3d(155px, 40px, 0px);" src="http://b.tiles.mapbox.com/v3/vladigleba.map-5xg3ep2l/17/20868/46879.png"><img class="leaflet-tile leaflet-tile-loaded" style="height: 256px; width: 256px; transform: translate3d(-101px, -216px, 0px);" src="http://b.tiles.mapbox.com/v3/vladigleba.map-5xg3ep2l/17/20867/46878.png"><img class="leaflet-tile leaflet-tile-loaded" style="height: 256px; width: 256px; transform: translate3d(411px, -216px, 0px);" src="http://b.tiles.mapbox.com/v3/vladigleba.map-5xg3ep2l/17/20869/46878.png"><img class="leaflet-tile leaflet-tile-loaded" style="height: 256px; width: 256px; transform: translate3d(-101px, 40px, 0px);" src="http://a.tiles.mapbox.com/v3/vladigleba.map-5xg3ep2l/17/20867/46879.png"><img class="leaflet-tile leaflet-tile-loaded" style="height: 256px; width: 256px; transform: translate3d(411px, 40px, 0px);" src="http://a.tiles.mapbox.com/v3/vladigleba.map-5xg3ep2l/17/20869/46879.png"></div></div></div><div class="leaflet-objects-pane"><div class="leaflet-shadow-pane"></div><div class="leaflet-overlay-pane"></div><div class="leaflet-marker-pane"><img src="http://a.tiles.mapbox.com/v3/marker/pin-m-circle+00607d.png" class="leaflet-marker-icon leaflet-zoom-animated leaflet-clickable" style="margin-left: -15px; margin-top: -35px; width: 30px; height: 70px; transform: translate3d(270px, 125px, 0px); z-index: 125;" title="10 NW 12th Ave" tabindex="0"></div><div class="leaflet-popup-pane"></div></div></div><div class="leaflet-control-container"><div class="leaflet-top leaflet-left"><div class="leaflet-control-zoom leaflet-bar leaflet-control"><a class="leaflet-control-zoom-in" href="#" title="Zoom in">+</a><a class="leaflet-control-zoom-out" href="#" title="Zoom out">-</a></div></div><div class="leaflet-top leaflet-right"><div class="leaflet-control-grid map-tooltip leaflet-control" style="display: none;"><a class="close" href="#" title="close">close</a><div class="map-tooltip-content"></div></div></div><div class="leaflet-bottom leaflet-left"></div><div class="leaflet-bottom leaflet-right"><div class="map-legends wax-legends leaflet-control" style="display: none;"></div><div class="mapbox-control-info mapbox-small mapbox-control-info-right leaflet-control" style="display: block;"><div class="map-info-container"><a href="https://www.mapbox.com/about/maps/" target="_blank">© Mapbox</a> <a href="http://www.openstreetmap.org/about/" target="_blank">© OpenStreetMap</a> <a class="mapbox-improve-map" href="https://www.mapbox.com/map-feedback/#/-122.683/45.523/17" target="_blank">Improve this map</a></div><a class="mapbox-info-toggle mapbox-icon mapbox-icon-info" href="#"></a></div></div></div></div><div class="wrapper"><h1 class="title"><%= hotel.name %></h1><section class="location"><p class="coordinates"><span class="lat"><%= hotel.foursquare_review_by_venue_id.lat %></span><span class="lon"><%= hotel.foursquare_review_by_venue_id.lng %></span></p><p class="address"><%= hotel.address %></p><p class="contact-info"><span class="phone-number"><%= hotel.phone_number %></span><span class="website"> | <%= link_to "website", hotel.wdw_uri, target: "_blank" %></a></span></p>
+<div class="overlay">
+    <div class="modal happy-hour-modal" style="top: 0px;">
+        <button class="close-modal">×</button>
+    
+<div id="modal-map" class="leaflet-container leaflet-fade-anim" tabindex="0"></div>
     
     
+        <div class="wrapper"><h1 class="title"><%= hotel.name %></h1>
+        <section class="location">
+            <p class="coordinates">
+                <span class="lat"><%= hotel.foursquare_review_by_venue_id.lat %></span>
+                <span class="lon"><%= hotel.foursquare_review_by_venue_id.lng %></span>
+            </p>
+            <p class="address">
+                <%= hotel.address %>
+            </p>
+            <p class="contact-info">
+                <span class="phone-number"><%= hotel.phone_number %></span>
+                <span class="website">
+                     | <%= link_to "website", hotel.wdw_uri, target: "_blank" %></a>
+                 </span>
+            </p>
+        </section>
+        </div>
+    </div>
+</div>
 
 </section></div></div></div>
