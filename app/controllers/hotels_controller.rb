@@ -16,6 +16,7 @@ class HotelsController < ApplicationController
 
   # GET /hotels/1
   def show
+    render layout: "application"
   end
 
   # GET /hotels/new
