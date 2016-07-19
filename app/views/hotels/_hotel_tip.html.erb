@@ -1,0 +1,37 @@
+
+<%# park_name = park_listing.name %>
+<%# park_name_class = 'mod ' %>
+<%# column_number == 1 ? park_name_class : park_name_class += "mod channel ch-C3 "  %>
+<%# last_listing == 'true' ? park_name_class  += "cls ": park_name_class += "line "  %>
+
+    <!-- <div id="<%#= park_name %>" class="<%#= park_name_class %>">
+        <div class="hd cls">
+            <h2> <%#= link_to park_listing.name, district_path(park_listing) %> </h2>
+
+        </div>
+        <div class="bd">
+        </div>
+    </div> -->
+
+
+<!-- -->
+    <%#= render :partial => 'tip' %>
+    <div class="comment">
+      <div class="comment-image">
+        <img 
+            src="https://irs2.4sqi.net/img/user/32x32/152501-WDSNOHXRR4OE2G0B.jpg" 
+            alt="Greg G." class="avatar" 
+            title="Greg G." 
+            data-retina-url="https://irs2.4sqi.net/img/user/64x64/152501-WDSNOHXRR4OE2G0B.jpg" 
+            height="32" 
+            width="32">
+      </div>
+      <div class="comment-content">
+        <h1>Tip Author here</h1>
+        <p><%= hotel_tip.text %></p>
+        <!-- <p class="comment-detail">Date or details about this post</p> -->
+      </div>
+    </div>
+
+    
+<!-- -->
