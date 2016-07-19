@@ -61,15 +61,18 @@ class SyncVenue
     photos.each do |photo|
       puts "parent venue: #{photo.foursquare_venue_id} photo id: #{photo.id}"
       fp = FoursquarePhoto.where(foursquare_photo_id: photo.id).first_or_create
-      fp.update(source: photo.source.to_s,
-                prefix: photo.prefix.to_s,
-                suffix: photo.suffix.to_s,
-                width:  photo.width.to_i,
-                height: photo.height.to_i,
-                visibility: photo.visibility.to_s,
-                foursquare_user_id: photo.user.fetch('id'),
-                foursquare_venue_id: venue_id,
-                foursquare_photo_id: photo.id
+      fp.update(source:                 photo.source.to_s,
+                prefix:                 photo.prefix.to_s,
+                suffix:                 photo.suffix.to_s,
+                width:                  photo.width.to_i,
+                height:                 photo.height.to_i,
+                visibility:             photo.visibility.to_s,
+                foursquare_user_id:     photo.user.fetch('id'),
+                foursquare_venue_id:    venue_id,
+                foursquare_photo_id:    photo.id,
+                created_at:             Time.at(photo.createdAt.to_i),
+                photographer_first_name:  photo.user.fetch("firstName", FoursquareMissingVenuePhoto.new.photographer_first_name),
+                photographer_last_name:  photo.user.fetch("lastName", FoursquareMissingVenuePhoto.new.photographer_last_name)
       )
     end
 
