@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160706134720) do
+ActiveRecord::Schema.define(version: 20160719143729) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -92,6 +92,12 @@ ActiveRecord::Schema.define(version: 20160706134720) do
     t.datetime "updated_at",           null: false
     t.integer  "foursquare_review_id"
     t.string   "foursquare_id"
+    t.string   "foursquare_author_id"
+    t.string   "author_first_name"
+    t.string   "author_last_name"
+    t.string   "author_gender"
+    t.string   "author_photo_prefix"
+    t.string   "author_photo_suffix"
   end
 
   add_index "foursquare_tips", ["foursquare_review_id"], name: "index_foursquare_tips_on_foursquare_review_id", using: :btree

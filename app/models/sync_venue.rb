@@ -105,7 +105,13 @@ class SyncVenue
                 lang:           tip.lang.to_s,
                 likes:          tip.likes.to_s,
                 agree_count:    tip.agreeCount,
-                disagree_count: tip.disagreeCount
+                disagree_count: tip.disagreeCount,
+                foursquare_author_id: tip.user.id,
+                author_first_name: tip.user.firstName,
+                author_last_name: tip.user.lastName,
+                author_gender: tip.user.gender,
+                author_photo_prefix: tip.user.photo.fetch("prefix"),
+                author_photo_suffix: tip.user.photo.fetch("suffix", "")
       )
     end
 
