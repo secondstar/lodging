@@ -1,0 +1,205 @@
+section {
+  @include outer-container;
+  header { @include span-columns(3); }
+  section { @include span-columns(9); }
+  
+  .mainIconWrapper { @include span-columns(3); }
+  .primaryInfo { @include span-columns(6); }
+  .sectionsBar {@include span-columns(3); }
+}
+.photoBanner {
+	-moz-border-radius:3px 3px 0 0;
+	-webkit-border-radius:3px 3px 0 0;
+	border-radius:3px 3px 0 0;
+	border-bottom:1px solid #efeff4;
+	height:200px;
+	margin-top:10px;
+	overflow:hidden;
+	position:absolute;
+	width:100%;
+	z-index:1
+}
+
+.photoBanner .backgroundPhoto {
+    left:0;
+    min-height:100%;
+    min-width:100%;
+    position:absolute;
+    top:0;
+    z-index:1
+}
+.photoBanner .photosSection {
+    left:0;
+    position:absolute;
+    top:0;
+    z-index:2
+}
+
+
+/*.noPhoto .venueInfoSection .photoBanner .photosSection,.hasPhoto .photoBanner .photosSection {
+    text-align:center
+}
+.noPhoto .venueInfoSection .photoBanner,.hasPhoto .photoBanner {
+    height:210px
+}
+.noPhoto .venueInfoSection .photosSection ul.photos li.photo,.hasPhoto .photosSection ul.photos li.photo {
+    height:200px;
+    width:200px
+}
+.noPhoto .venueInfoSection .photosSection ul.photos li.photo.placeholderPhoto,.hasPhoto .photosSection ul.photos li.photo.placeholderPhoto {
+    background-size:200px;
+    background:url('/img/venuepage/photo-placeholder-2b7a13f5820667c59789344b3008d9c2.png') center center no-repeat #efeff4
+}
+@media (-webkit-min-device-pixel-ratio:2),(min-device-pixel-ratio:2) {
+    .noPhoto .venueInfoSection .photosSection ul.photos li.photo.placeholderPhoto,.hasPhoto .photosSection ul.photos li.photo.placeholderPhoto {
+        background-image:url("/img/venuepage/photo-placeholder@2x-d2203d4bc5e94c2eb62f8f3b68336cb1.png");
+        background-size:120px 120px
+    }
+}
+.noPhoto .venueInfoSection .photosSection ul.photos li.photo.allPhotos .allPhotosLink .allPhotosText,.hasPhoto .photosSection ul.photos li.photo.allPhotos .allPhotosLink .allPhotosText {
+    height:80px;
+    padding:60px 0
+}
+.noPhoto .venueInfoSection .photosSection.hasArrows .leftArrow,.hasPhoto .photosSection.hasArrows .leftArrow,.noPhoto .venueInfoSection .photosSection.hasArrows .rightArrow,.hasPhoto .photosSection.hasArrows .rightArrow {
+    -moz-transition:.15s left,.15s right,background 1s;
+    -webkit-transition:.15s left,.15s right,background 1s;
+    transition:.15s left,.15s right,background 1s;
+    -moz-border-radius:60px;
+    -webkit-border-radius:60px;
+    border-radius:60px;
+    cursor:pointer;
+    height:60px;
+    position:absolute;
+    top:75px;
+    width:60px;
+    z-index:2
+}
+.noPhoto .venueInfoSection .photosSection.hasArrows .leftArrow,.hasPhoto .photosSection.hasArrows .leftArrow {
+    background:#2d5be3 url('/img/venuepage/arrow_left-e33d016d85167ff0adc1e498212e3d46.png') 35px center no-repeat;
+    left:-60px
+}
+@media (-webkit-min-device-pixel-ratio:2),(min-device-pixel-ratio:2) {
+    .noPhoto .venueInfoSection .photosSection.hasArrows .leftArrow,.hasPhoto .photosSection.hasArrows .leftArrow {
+        background-image:url("/img/venuepage/arrow_left@2x-ac58a70908d4d09ebafa69d2e793a7d3.png");
+        background-size:10px 15px
+    }
+}
+.noPhoto .venueInfoSection .photosSection.hasArrows .rightArrow,.hasPhoto .photosSection.hasArrows .rightArrow {
+    background:#2d5be3 url('/img/venuepage/arrow_right-bb6cc859b75ab6c461172afb3e7fd1c5.png') 15px center no-repeat;
+    right:-60px
+}
+@media (-webkit-min-device-pixel-ratio:2),(min-device-pixel-ratio:2) {
+    .noPhoto .venueInfoSection .photosSection.hasArrows .rightArrow,.hasPhoto .photosSection.hasArrows .rightArrow {
+        background-image:url("/img/venuepage/arrow_right@2x-6e2431088743802716a06d036ce483c9.png");
+        background-size:10px 15px
+    }
+}
+.noPhoto .venueInfoSection .photosSection.hasArrows.withLeftArrow .leftArrow,.hasPhoto .photosSection.hasArrows.withLeftArrow .leftArrow {
+    left:-30px
+}
+.noPhoto .venueInfoSection .photosSection.hasArrows.withRightArrow .rightArrow,.hasPhoto .photosSection.hasArrows.withRightArrow .rightArrow {
+    right:-30px
+}
+.noPhoto .venueInfoSection .photosSection ul.photos li.photo,.hasPhoto .photosSection ul.photos li.photo {
+    border-left:5px solid #f7f7fa;
+    margin:0
+}
+.noPhoto .venueInfoSection .photosSection ul.photos li.photo:first-child,.hasPhoto .photosSection ul.photos li.photo:first-child {
+    border-left:none
+}
+.photosSection {
+    width:100%
+}
+.photosSection ul.photos {
+    background:#fff;
+    height:200px;
+    list-style:none;
+    margin:0;
+    overflow-x:scroll;
+    overflow-y:hidden;
+    padding:5px;
+    text-align:left;
+    white-space:nowrap
+}
+.photosSection ul.photos::after {
+    -moz-border-radius:3px;
+    -webkit-border-radius:3px;
+    border-radius:3px;
+    content:"";
+    background-color:#f7f7fa;
+    height:200px;
+    left:5px;
+    position:absolute;
+    top:5px;
+    width:950px
+}
+.photosSection ul.photos::-webkit-scrollbar {
+    display:none
+}
+.photosSection ul.photos li.photo {
+    -moz-box-shadow:#c7cdcf 0 1px 0 0;
+    -webkit-box-shadow:#c7cdcf 0 1px 0 0;
+    box-shadow:#c7cdcf 0 1px 0 0;
+    background:#fff;
+    -moz-box-shadow:none;
+    -webkit-box-shadow:none;
+    box-shadow:none;
+    -moz-border-radius:3px;
+    -webkit-border-radius:3px;
+    border-radius:3px;
+    display:inline-block;
+    margin:0 0 0 10px;
+    position:relative;
+    width:640px;
+    z-index:1
+}
+.photosSection ul.photos li.photo:first-child {
+    margin:0
+}
+.photosSection ul.photos li.photo:last-child {
+    margin-right:0
+}
+.photosSection ul.photos li.photo img {
+    -moz-border-radius:3px;
+    -webkit-border-radius:3px;
+    border-radius:3px
+}
+.photosSection ul.photos li.photo.photoWithContent,.photosSection ul.photos li.photo.allPhotos {
+    cursor:pointer
+}
+.photosSection ul.photos li.photo.placeholderPhoto {
+    background-color:transparent;
+    opacity:.6;
+    padding-left:1px
+}
+.photosSection ul.photos li.photo.allPhotos {
+    line-height:0;
+    overflow:hidden
+}
+.photosSection ul.photos li.photo.allPhotos .allPhotosLink {
+    color:#fff;
+    font-size:14px;
+    z-index:2
+}
+.photosSection ul.photos li.photo.allPhotos .allPhotosLink .allPhotosText {
+    background:rgba(0,0,0,0.6);
+    line-height:18px;
+    position:absolute;
+    text-align:center;
+    width:100%;
+    z-index:3
+}
+.photosSection ul.photos li.photo.allPhotos .allPhotosLink .allPhotosText:hover {
+    text-decoration:underline
+}
+.photosSection ul.photos li.photo.allPhotos .allPhotosLink .allPhotosText img {
+    height:40px;
+    padding-bottom:5px;
+    width:49px
+}
+.venueDetail.noPhoto .venueInfoSection {
+    -moz-border-radius:3px 3px 0 0;
+    -webkit-border-radius:3px 3px 0 0;
+    border-radius:3px 3px 0 0
+}
+*/

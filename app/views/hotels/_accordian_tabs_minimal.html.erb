@@ -1,0 +1,19 @@
+<ul class="accordion-tabs-minimal">
+  <li class="tab-header-and-content">
+    <a href="#" class="tab-link is-active">Tips</a>
+    <div class="tab-content">
+  	  <%= render	partial: "hotel_tip",
+  					collection: hotel.tips %>
+  </li>
+  <li class="tab-header-and-content">
+    <a href="#" class="tab-link">Photos</a>
+    <div class="tab-content">
+<div class="cards">
+  	  <%= render	partial: "photo_card",
+  					collection: hotel.photos %>
+
+
+</div>
+    </div>
+  </li>
+</ul>

@@ -18,6 +18,7 @@
                 <span class="phone-number"><%= hotel.phone_number %></span>
                 <span class="website">
                      | <%= link_to "website", hotel.wdw_uri, target: "_blank" %></a>
+                     | <%= link_to "tips, photos", hotel_path(hotel) %>
                  </span>
             </p>
         </section>
