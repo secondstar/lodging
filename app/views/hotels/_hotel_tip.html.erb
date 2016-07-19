@@ -18,16 +18,15 @@
     <%#= render :partial => 'tip' %>
     <div class="comment">
       <div class="comment-image">
-        <img 
-            src="https://irs2.4sqi.net/img/user/32x32/152501-WDSNOHXRR4OE2G0B.jpg" 
-            alt="Greg G." class="avatar" 
-            title="Greg G." 
-            data-retina-url="https://irs2.4sqi.net/img/user/64x64/152501-WDSNOHXRR4OE2G0B.jpg" 
-            height="32" 
-            width="32">
+          <%= image_tag "#{hotel_tip.author_photo_prefix}32x32#{hotel_tip.author_photo_suffix}",
+               title: "#{hotel_tip.author_first_name} #{hotel_tip.author_last_name} ", 
+               class: "avatar",
+               data_retina_url: "#{hotel_tip.author_photo_prefix}64x64#{hotel_tip.author_photo_suffix}",
+               size: "32x64"
+          %>
       </div>
       <div class="comment-content">
-        <h1>Tip Author here</h1>
+        <h1><%= "#{hotel_tip.author_first_name} #{hotel_tip.author_last_name}" %></h1>
         <p><%= hotel_tip.text %></p>
         <!-- <p class="comment-detail">Date or details about this post</p> -->
       </div>
