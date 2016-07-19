@@ -1,0 +1,55 @@
+<div class="venueInfoSection">
+    <div class="topVenueSection">
+        <div class="mainIconWrapper hasCustomIcon">
+            <a href="/waltdisneyworld"><img src="https://irs1.4sqi.net/img/user/88x88/A0MEDWHVOTWJNUVQ.jpg" alt="Walt Disney World Resort" class="avatar" title="Walt Disney World Resort" data-retina-url="https://irs1.4sqi.net/img/user/176x176/A0MEDWHVOTWJNUVQ.jpg" height="88" width="88"></a>
+        </div>
+        <div class="primaryInfo">
+            <div class="venueNameSection">
+                <h1 class="venueName" itemprop="name">
+                    <%= hotel.name %>
+                </h1>
+            </div>
+            <div class="categories">
+                <span class="unlinkedCategory">Resort</span>
+            </div>
+            <div class="locationInfo">
+                <span class="venueNeighborhood">Walt Disney World Resort</span>, 
+                <span class="venueCity"><%= hotel.city %></span>
+            </div>
+            <div class="bottomVenueSection"></div>
+        </div>
+    </div>
+    <div class="sectionsBar">
+        <div class="sectionInfo">
+            <!-- <span class="sectionInfoName">hotel.name</span> -->
+        </div>
+        <div class="venueRateBlock" 
+            itemprop="aggregateRating" 
+            itemscope="" 
+            itemtype="http://schema.org/AggregateRating">
+            <span class="venueScore positive" 
+                title="<%= hotel.foursquare_review_by_venue_id.rating.to_f %>/10" 
+                style="background-color: #<%= hotel.foursquare_review_by_venue_id.rating_color %>;">
+                <span itemprop="ratingValue">
+                    <%= hotel.foursquare_review_by_venue_id.rating.to_f %>
+                </span>
+                <sup>/<span itemprop="bestRating">10</span>
+                </sup>
+            </span>
+            <div class="numRatingsBlock">
+                <div class="numRatings" itemprop="ratingCount">
+                    
+                </div>
+                <div class="numRatingsLabel">
+                    
+                </div>
+            </div>
+            <div class="likeDislikeControls comboRatingButton">
+                <div class="comboRatingButtonLike like"></div>
+                <div class="comboRatingButtonOk ok"></div>
+                <div class="comboRatingButtonDislike dislike"></div>
+            </div>
+        </div>
+    </div>
+    <div id="sectionsBarPlaceholder" style="display: none;"></div>
+</div>
