@@ -56,5 +56,28 @@ class FoursquareMissingVenuePhoto
   def foursquare_photo_id
     'ID for photo not available'
   end
+
+  def photographer_first_name
+    ""
+  end
   
+  def photographer_last_name
+    ""
+  end
+  
+  def photographer_prefix
+    ""
+  end
+  
+  def photographer_suffix
+    ""
+  end
+  
+  def photographer_photo
+    ""
+  end
+  
+  def visibility
+    ""
+  end
 end
