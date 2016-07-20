@@ -3,9 +3,9 @@
     <%= image_tag "#{photo_card.prefix}600x600#{photo_card.suffix}" %>
   </div>
   <div class="card-header">
-    Photographer Name
+    by: <%= "#{photo_card.photographer_first_name} #{photo_card.photographer_last_name}" %>
   </div>
   <div class="card-copy">
-    <p>Month and day taken</p>
+    <p>taken: <%= "#{photo_card.created_at.strftime("%B %Y")}" %></p>
   </div>
 </div>
