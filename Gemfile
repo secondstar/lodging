@@ -7,7 +7,7 @@ gem "bourbon", "5.0.0.beta.5"
 gem "delayed_job_active_record"
 gem "flutie"
 gem "high_voltage"
-gem "honeybadger"
+gem 'honeybadger', '~> 2.6', '>= 2.6.1'
 gem "jquery-rails"
 gem "neat", "~> 1.7.0"
 gem "newrelic_rpm", ">= 3.9.8"
