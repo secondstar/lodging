@@ -1,0 +1,2 @@
+class Album < OpenStruct
+end

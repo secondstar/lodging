@@ -1,74 +1,46 @@
-<% content_for :javascript do %>
-<script src='https://api.mapbox.com/mapbox-gl-js/v0.20.1/mapbox-gl.js'></script>
-<script>
-    L.mapbox.accessToken = 'pk.eyJ1IjoiY2FwdHByb3RvbiIsImEiOiI3cDFLWWRnIn0.guU68dUaxKCX_MPrZHAesQ';
-    map = L.mapbox.map('map', 'captproton.0ln7n37l', {
-        // the options here prevent mouse wheel or trackpad scrolling
-        // and restrict the zooms to zoom levels 14 through 18
-        scrollWheelZoom: false,
-        maxZoom: 14,
-        minZoom: 10
-    }).setView([28.3849,-81.6044], 13);
-
-    // get JSON object
-    // on success, parse it and
-    // hand it over to MapBox for mapping
-    var featureLayer = L.mapbox.featureLayer()
-         .loadURL('/hotels.json')
-         //wait for the layer to be "on", or "loaded", to use a function that will setIcon with an L.icon object
-         .on('ready', function(layer) {
-                this.eachLayer(function(marker) {
-                    marker.bindPopup('<a data-remote="true" href="/hotels/154" style="color: grey"><div class="popup">' +
-                        '<h3>' + marker.feature.properties.name + '</h3>' +
-                        '</a></div>');
-
-                });
-        })
-
-         .addTo(map);
-// good mark
-             $(document)
-                 .ready(function() {                 
-
-                     var e, t, n, i, r, o;
-                     return 
-                     $(".search-field")
-                         .autocomplete({
-                             appendTo: ".search-form",
-                             source: "/search_suggestions",
-                             close: function(e) {
-                                 var t;
-                                 return t = $(".search-field")
-                                     .val()
-                                     .toLowerCase(), "Enter" === e.key && $("a:contains('" + t + "')")
-                                     .trigger("click"), r.featureLayer.eachLayer(
-                                         function(e) {
-                                             var n;
-                                             return e.feature.properties
-                                             .name === t ? (n = e._leaflet_id,
-                                                     r._layers[n].openPopup()
-                                             ) : void 0
-                                         })
-                             }
-                         }), 
-                    $(".search-form")
-                        .submit(function(e) {
-                            var t, n;
-                            return e.preventDefault(), n = $(
-                                    ".search-field")
+    function() {
+        $(document)
+            .ready(function() {
+                var e, t, n, i, r, o;
+                return 
+                $(".search-field")
+                    .autocomplete({
+                        appendTo: ".search-form",
+                        source: "/search_suggestions",
+                        close: function(e) {
+                            var t;
+                            return t = $(".search-field")
                                 .val()
-                                .toLowerCase(), t = !1, r.featureLayer.eachLayer(
+                                .toLowerCase(), "Enter" === e.key &&
+                                $("a:contains('" + t + "')")
+                                .trigger("click"), r.featureLayer.eachLayer(
                                     function(e) {
-                                        var i;
-                                        return e.feature.properties.name ===
-                                            n ? (i = e._leaflet_id, r._layers[
-                                                i].openPopup(), t = !0) :
-                                            void 0
-                                    }), t ? void 0 : $.ajax({
-                                    url: "/hotels/" + n.split(" ")
-                                        .join("_") + ".js"
-                                })
-                        }), o = L.mapbox.tileLayer("https://api.mapbox.com/v3/mapbox.dark.json", {
+                                        var n;
+                                        return e.feature.properties
+                                            .name === t ? (n = e._leaflet_id,
+                                                r._layers[n].openPopup()
+                                            ) : void 0
+                                    })
+                        }
+                    }), 
+                $(".search-form")
+                    .submit(function(e) {
+                        var t, n;
+                        return e.preventDefault(), n = $(
+                                ".search-field")
+                            .val()
+                            .toLowerCase(), t = !1, r.featureLayer.eachLayer(
+                                function(e) {
+                                    var i;
+                                    return e.feature.properties.name ===
+                                        n ? (i = e._leaflet_id, r._layers[
+                                            i].openPopup(), t = !0) :
+                                        void 0
+                                }), t ? void 0 : $.ajax({
+                                url: "/hotels/" + n.split(" ")
+                                    .join("_") + ".js"
+                            })
+                    }), o = L.mapbox.tileLayer("https://api.mapbox.com/v3/mapbox.dark.json", {
                         detectRetina: !0
                     }), r = L.mapbox.map("map", null, {
                         zoomControl: !1
@@ -76,7 +48,7 @@
                     .addLayer(o), r.scrollWheelZoom.disable(), t = window.getComputedStyle(
                         document.body, ":after"), e = t.getPropertyValue(
                         "content")
-                    .replace(/['"]/g, ""), "mobile" === e ? r.setView([27.3849,-80.6144], 7) : "tablet" === e ? r.setView([28.3849,-81.6044], 12) : r.setView([28.3849,-81.6044],
+                    .replace(/['"]/g, ""), "mobile" === e ? r.setView([28.3849,-81.6044], 12) : "tablet" === e ? r.setView([28.3849,-81.6044], 12) : r.setView([28.3849,-81.6044],
                         13), r.tap || new L.Control.Zoom({
                         position: "bottomright"
                     })
@@ -187,15 +159,69 @@
                             r = n / 60, o = t + r, a = new Date, u = a.getHours(),
                             l = a.getMinutes(), c = l / 60, d = u + c,
                             h = o - d, f = h / i * 100, $(this)
-                            .replaceWith('      <div class="time-graph">        <p style="width:'+f+'%"><span>'+p+"</span></p>      </div>    ")})
-                 })
-
-</script>
-
-<% end %>
-
-<%= render :partial => "search_form" %>
-
-<div id='map' class='map'> </div>
-
-<%= render :partial => "sidebar" %>
+                            .replaceWith(
+                                '      <div class="time-graph">        
+                                            <p style="width:' + f + '%">
+                                                <span>' + p + "</span>
+                                            </p> 
+                                        </div>")
+                    }), 
+                $(".show-user-location")
+                    .click(function(t) {
+                        return navigator.geolocation ? (t.preventDefault(),
+                            t.stopPropagation(), r.locate(), r.on(
+                                "locationfound", function(t) {
+                                    var n, i, o, s, a;
+                                    return $("#map")
+                                        .trigger("click"), s = .01,
+                                        "mobile" === e ? (n = 0, s = .03) 
+                                        : n = "tablet" === e ? .0125 : .0175, a = [t.latlng
+                                            .lat - s, t.latlng.lng -
+                                            n], o = [t.latlng.lat +
+                                            .01, t.latlng.lng], r.fitBounds(
+                                            [a, o]), i = L.mapbox.featureLayer({
+                                            type: "Feature",
+                                            geometry: {
+                                                type: "Point",
+                                                coordinates: [t
+                                                    .latlng
+                                                    .lng, t
+                                                    .latlng
+                                                    .lat]
+                                            },
+                                            properties: {
+                                                title: "you",
+                                                "marker-color": "#9c2c2c",
+                                                "marker-symbol": "star"
+                                            }
+                                        })
+                                        .addTo(r), r.on("layeradd",
+                                            function() {
+                                                return $(
+                                                        ".marker-title"
+                                                    )
+                                                    .parent()
+                                                    .parent()
+                                                    .parent()
+                                                    .addClass(
+                                                        "reduce-width"
+                                                    )
+                                            })
+                                })) : ($("#map")
+                            .before(
+                                '<div class="alert alert-error"><button class="dismiss-button" type="button">&times;</button><p>Geolocation is not supported by your browser.</p></div>'
+                            )
+                            .prev()
+                            .hide()
+                            .fadeIn("fast"), $(".dismiss-button")
+                            .click(function() {
+                                return $(this)
+                                    .parent()
+                                    .fadeOut("fast", function() {
+                                        return $(this)
+                                            .remove()
+                                    })
+                            }))
+                    })
+            })
+    }.call(this);

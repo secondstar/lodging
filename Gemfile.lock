@@ -111,7 +111,7 @@ GEM
     hashdiff (0.3.0)
     hashie (3.4.4)
     high_voltage (3.0.0)
-    honeybadger (2.6.0)
+    honeybadger (2.6.1)
     httparty (0.13.7)
       json (~> 1.8)
       multi_xml (>= 0.5.2)
@@ -299,7 +299,7 @@ DEPENDENCIES
   foursquare2 (~> 2.0, >= 2.0.2)
   fuzzy_match (~> 2.1)
   high_voltage
-  honeybadger
+  honeybadger (~> 2.6, >= 2.6.1)
   httparty (~> 0.13.7)
   jquery-rails
   launchy
