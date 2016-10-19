@@ -30,6 +30,7 @@ class Hotel < ActiveRecord::Base
           coordinates: [@coordinates.lng, @coordinates.lat]
         },
         properties: {
+          id: hotel.id,
           name: hotel.name,
           address: hotel.address,
           :'marker-color' => '#00607d',

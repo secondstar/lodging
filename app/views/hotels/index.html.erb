@@ -18,9 +18,9 @@
          //wait for the layer to be "on", or "loaded", to use a function that will setIcon with an L.icon object
          .on('ready', function(layer) {
                 this.eachLayer(function(marker) {
-                    marker.bindPopup('<div class="popup">' +
+                    marker.bindPopup('<a data-remote="true" href="/hotels/'+ marker.feature.properties.id +'" style="color: white"><div class="popup">' +
                         '<h3>' + marker.feature.properties.name + '</h3>' +
-                        '</div>');
+                        '</a></div>');
 
                 });
         })
