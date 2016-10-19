@@ -1,3 +1,8 @@
+class Client
+  # fake class to help troubleshoot
+  
+end
+
 # class Apis::Client
 #   attr_reader :connection, :routes
 #
