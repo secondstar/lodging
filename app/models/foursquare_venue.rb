@@ -35,13 +35,14 @@ class FoursquareVenue
       ll: @connection.lat_and_lng})
     
     client = FoursquareClient.new(connection: connection, routes: ROUTES)
-    search_venues = client.search_venues.fetch('response', "no response found").fetch('venues', "no venues found")
-    search_venues.each do |venue|
-      strained_venue  = venue.except("contact", "location","categories", "hereNow", "stats", "specials")
-      response        = OpenStruct.new(strained_venue)
-      responses << response
-    end
-    responses
+    # search_venues = client.search_venues.fetch('response', "no response found").fetch('venues', "no venues found")
+    # search_venues.each do |venue|
+    #   strained_venue  = venue.except("contact", "location","categories", "hereNow", "stats", "specials")
+    #   response        = OpenStruct.new(strained_venue)
+    #   responses << response
+    # end
+    # responses
+    #####
     # venue = search_venues.first
     # strained_venue = venue.except("contact", "location","categories", "hereNow", "stats", "specials")
     # response = Representation.new(strained_venue)

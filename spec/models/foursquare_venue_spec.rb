@@ -62,7 +62,7 @@ RSpec.describe FoursquareVenue do
     let(:search_venues_connection) { FoursquareConnection.new }
     subject { FoursquareVenue.new(connection: search_venues_connection) }
     
-    let(:fsq_venues_search_query) { File.read( Rails.root + 'spec/support/fixtures/fourscore_venues_search_query_disney.json' ) }
+    let(:fsq_venues_search_query) { File.read( Rails.root + 'spec/support/fixtures/foursquare_venues_search_query_disney.json' ) }
     let(:search_target) { FoursquareVenue.new(connection: connection).search_venues("disney") }
 
     before do
