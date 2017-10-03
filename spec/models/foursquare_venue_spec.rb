@@ -18,7 +18,7 @@ RSpec.describe FoursquareVenue do
     let(:fsq_venue_detail_connection) { FoursquareConnection.new(venue_id: "4ecc3303f5b90c1c343087c6", query: {}) }
     
     before do
-      stub_request(:get, "https://api.foursquare.com/v2/venues//4ecc3303f5b90c1c343087c6?client_id=R1TDM0FYS2YSOFTWG2QU2DS0OE00BZLMQCQPMKUGO5CJGNYH&client_secret=1N5G1D22C2410VE3RJXPS10Y31E2WA0BT45KYJFTGR0S35QN&ll=28.37777,-81.56498&v=20160609").
+      stub_request(:get, "https://api.foursquare.com/v2/venues//4ecc3303f5b90c1c343087c6?client_id=#{FOURSQUARE_ID}&client_secret=#{FOURSQUARE_SECRET}&ll=28.37777,-81.56498&v=20160609").
         with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby'}).
         to_return(:status => 200, :body => fsq_disney_springs_query, :headers => {})
       
@@ -62,19 +62,23 @@ RSpec.describe FoursquareVenue do
     let(:search_venues_connection) { FoursquareConnection.new }
     subject { FoursquareVenue.new(connection: search_venues_connection) }
     
-    let(:fsq_venues_search_query) { File.read( Rails.root + 'spec/support/fixtures/fourscore_venues_search_query_disney.json' ) }
-    let(:search_target) { FoursquareVenue.new(connection: connection).search_venues("disney") }
+    let(:fsq_venues_search_query) { File.read( Rails.root + 'spec/support/fixtures/foursquare_venues_search_query_disney.json' ) }
+    let(:search_target) { FoursquareVenue.new(connection: search_venues_connection).search_venues("disney") }
 
     before do
-      stub_request(:get, "https://api.foursquare.com/v2/venues/search/?client_id=R1TDM0FYS2YSOFTWG2QU2DS0OE00BZLMQCQPMKUGO5CJGNYH&client_secret=1N5G1D22C2410VE3RJXPS10Y31E2WA0BT45KYJFTGR0S35QN&ll=28.37777,-81.56498&query=disney%20resort&v=20160609").
+      stub_request(:get, "https://api.foursquare.com/v2/venues/search/?client_id=#{FOURSQUARE_ID}&client_secret=#{FOURSQUARE_SECRET}&ll=28.37777,-81.56498&query=disney%20resort&v=20160609").
         with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby'}).
         to_return(:status => 200, :body => fsq_venues_search_query, :headers => {})
     end
 
     # it 'works' do
-    #   expect(target[0]).to eq("something")
+    #   expect(search_target[0]).to eq("something")
     # end
 
+    # it "works" do
+    #   expect(FoursquareVenue.new(connection: search_venues_connection).search_venues("disney")).to eq("something")
+
+    # end
     # # disney example
     
     it 'is an Array' do

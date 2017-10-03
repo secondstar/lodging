@@ -12,23 +12,26 @@ RSpec.describe SyncVenue, type: :model do
     
     
     before do
-      stub_request(:get, "https://api.foursquare.com/v2/venues/search/?client_id=R1TDM0FYS2YSOFTWG2QU2DS0OE00BZLMQCQPMKUGO5CJGNYH&client_secret=1N5G1D22C2410VE3RJXPS10Y31E2WA0BT45KYJFTGR0S35QN&ll=28.37777,-81.56498&query=disneyworld.disney.go.com/resorts/all-star-movies-resort/%20resort&v=20160607&verified=true").
-        with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby'}).
-        to_return(:status => 200, :body => "", :headers => {})
-    
-      
-      # stub_request(:get, "https://api.foursquare.com/v2/venues/search/?client_id=R1TDM0FYS2YSOFTWG2QU2DS0OE00BZLMQCQPMKUGO5CJGNYH&client_secret=1N5G1D22C2410VE3RJXPS10Y31E2WA0BT45KYJFTGR0S35QN&ll=28.37777,-81.56498&query=disneyworld.disney.go.com/resorts/all-star-music-resort/%20resort&v=20160607&verified=true").
+      # stub_request(:get, "https://api.foursquare.com/v2/venues/search/?client_id=#{FOURSQUARE_ID}&client_secret=#{FOURSQUARE_SECRET}&ll=28.37777,-81.56498&query=disneyworld.disney.go.com/resorts/all-star-movies-resort/%20resort&v=20160607&verified=true").
       #   with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby'}).
-      #   to_return(:status => 200, :body => fsq_all_star_movies_query, :headers => {})
+      #   to_return(:status => 200, :body => "", :headers => {})
     
-        stub_request(:get, "https://api.foursquare.com/v2/venues/search/?client_id=R1TDM0FYS2YSOFTWG2QU2DS0OE00BZLMQCQPMKUGO5CJGNYH&client_secret=1N5G1D22C2410VE3RJXPS10Y31E2WA0BT45KYJFTGR0S35QN&ll=28.37777,-81.56498&query=disneyworld.disney.go.com/resorts/bay-lake-tower-at-contemporary/%20resort&v=20160607&verified=true").
-        with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby'}).
-        to_return(:status => 200, :body => fsq_contemporay_baylake_tower, :headers => {})
       
+      # # stub_request(:get, "https://api.foursquare.com/v2/venues/search/?client_id=R1TDM0FYS2YSOFTWG2QU2DS0OE00BZLMQCQPMKUGO5CJGNYH&client_secret=1N5G1D22C2410VE3RJXPS10Y31E2WA0BT45KYJFTGR0S35QN&ll=28.37777,-81.56498&query=disneyworld.disney.go.com/resorts/all-star-music-resort/%20resort&v=20160607&verified=true").
+      # #   with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby'}).
+      # #   to_return(:status => 200, :body => fsq_all_star_movies_query, :headers => {})
+    
+      #   stub_request(:get, "https://api.foursquare.com/v2/venues/search/?client_id=#{FOURSQUARE_ID}&client_secret=#{FOURSQUARE_SECRET}&ll=28.37777,-81.56498&query=disneyworld.disney.go.com/resorts/bay-lake-tower-at-contemporary/%20resort&v=20160607&verified=true").
+      #   with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby'}).
+      #   to_return(:status => 200, :body => fsq_contemporay_baylake_tower, :headers => {})
+      
+      # stub_request(:get, "https://touringplans.com/walt-disney-world/hotels/websites").
+      #   with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby'}).
+      #   to_return(:status => 200, :body => tp_hotels, :headers => {})
+
       stub_request(:get, "https://touringplans.com/walt-disney-world/hotels/websites").
-        with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby'}).
-        to_return(:status => 200, :body => tp_hotels, :headers => {})
-        
+         with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby'}).
+         to_return(:status => 200, :body => "", :headers => {})        
     end
     
     # it 'works' do
@@ -101,11 +104,11 @@ RSpec.describe SyncVenue, type: :model do
     # subject(SyncVenue._correct_nogos(nogos_arrays_list))
     
     before do
-      stub_request(:get, "https://api.foursquare.com/v2/venues/search/?client_id=R1TDM0FYS2YSOFTWG2QU2DS0OE00BZLMQCQPMKUGO5CJGNYH&client_secret=1N5G1D22C2410VE3RJXPS10Y31E2WA0BT45KYJFTGR0S35QN&ll=28.37777,-81.56498&query=bay-lake-tower-at-contemporary%20resort&v=20160607&verified=true").
+      stub_request(:get, "https://api.foursquare.com/v2/venues/search/?client_id=#{FOURSQUARE_ID}&client_secret=#{FOURSQUARE_SECRET}&ll=28.37777,-81.56498&query=bay-lake-tower-at-contemporary%20resort&v=20160607&verified=true").
         with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby'}).
         to_return(:status => 200, :body => fsq_contemporary_baylake, :headers => {})
       
-      stub_request(:get, "https://api.foursquare.com/v2/venues/search/?client_id=R1TDM0FYS2YSOFTWG2QU2DS0OE00BZLMQCQPMKUGO5CJGNYH&client_secret=1N5G1D22C2410VE3RJXPS10Y31E2WA0BT45KYJFTGR0S35QN&ll=28.37777,-81.56498&query=all-star-movies-resort%20resort&v=20160607&verified=true").
+      stub_request(:get, "https://api.foursquare.com/v2/venues/search/?client_id=#{FOURSQUARE_ID}&client_secret=#{FOURSQUARE_SECRET}&ll=28.37777,-81.56498&query=all-star-movies-resort%20resort&v=20160607&verified=true").
         with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby'}).
         to_return(:status => 200, :body => fsq_all_star_movies_query, :headers => {})
       
