@@ -42,6 +42,7 @@ class FoursquareVenue
       responses << response
     end
     responses
+    #####
     # venue = search_venues.first
     # strained_venue = venue.except("contact", "location","categories", "hereNow", "stats", "specials")
     # response = Representation.new(strained_venue)
