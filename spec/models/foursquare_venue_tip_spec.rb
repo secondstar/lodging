@@ -17,7 +17,7 @@ RSpec.describe FoursquareVenueTip, type: :model do
     subject { FoursquareVenueTip.new.venue_tips(venue_id, search_term) }
     
     before do
-      stub_request(:get, "https://api.foursquare.com/v2/venues/4b9b0114f964a520ffea35e3/tips?client_id=R1TDM0FYS2YSOFTWG2QU2DS0OE00BZLMQCQPMKUGO5CJGNYH&client_secret=1N5G1D22C2410VE3RJXPS10Y31E2WA0BT45KYJFTGR0S35QN&v=20160609").
+      stub_request(:get, "https://api.foursquare.com/v2/venues/4b9b0114f964a520ffea35e3/tips?client_id=#{FOURSQUARE_ID}&client_secret=#{FOURSQUARE_SECRET}&v=20160609").
         with(:headers => {'Accept'=>'application/json', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby gem'}).
         to_return(:status => 200, :body => bay_tower_tips_query, :headers => {})
     end
