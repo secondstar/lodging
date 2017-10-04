@@ -26,11 +26,11 @@ RSpec.describe TouringPlansComFeed, type: :model do
       expect(subject).to be_an(Array)
     end
     
-    it 'has roughly 55 elements' do
+    it 'has roughly 30 elements' do
       expect(subject.length).to be_within(5).of(30)
     end
     
-    it 'renders a string for each element' do
+    it 'renders a hash for each element' do
       expect(subject.first).to be_a(Hash)
     end
   end
