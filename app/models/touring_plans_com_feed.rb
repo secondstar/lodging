@@ -14,8 +14,8 @@ class TouringPlansComFeed
   default_params :output => 'json'
   format :json
 
-  def collect_list_of_disney_hotels(doc_link: @source_index_uri)
-    doc = Nokogiri::HTML(open(doc_link))
+  def collect_list_of_disney_hotels
+    doc = Nokogiri::HTML(open(source_index_uri))
     permalinks            = []
     anchor_rows           = doc.css("table")[0].css("tr")    
     anchor_rows.each do |row|
