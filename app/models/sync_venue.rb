@@ -40,9 +40,9 @@ class SyncVenue
   end
   
   def self.all
+    # updates reviews of all Foursquare Venues
     all_ids = self._collect_venue_ids
-    # if phrase is an ugly, temporary patch that omits hotels #expedient
-    responses = all_ids.each {|venue_id| self.venue(venue_id) if venue_id != "none" }
+    responses = all_ids.each {|venue_id| self.venue(venue_id) }
 
   end
 
@@ -131,6 +131,9 @@ class SyncVenue
     sorted              = venue_ids.sort
     sorted.pop(corrected_nogos_ids.length)
     all_ids = [sorted, corrected_nogos_ids].flatten
+    # remove id's that are of a foursquare_missing_venue #patch
+    all_ids = all_ids.reject {|i| i == "none"}
+
   end
   
   
