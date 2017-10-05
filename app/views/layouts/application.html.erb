@@ -1,28 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="ROBOTS" content="NOODP" />
-  <meta name="viewport" content="initial-scale=1" />
-  <%#
-    Configure default and controller-, and view-specific titles in
-    config/locales/en.yml. For more see:
-    https://github.com/calebthompson/title#usage
-  %>
-  <title><%= content_for?(:title) ? yield(:title) : "Walt Disney World Hotels | WDW Hub"  %></title>
-  
-  <%= stylesheet_link_tag :application, media: "all" %>
-  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.20.1/mapbox-gl.css' rel='stylesheet' />
-  <%= csrf_meta_tags %>
-</head>
-<body class="<%= body_class %>">
-    <%= render "navigation" -%>
-  <%= render "flashes" -%>
-  <%= yield %>
-  
-  <%= render 'footer' %>
+<% provide(:title, @hotel.name) %>
+<!doctype html>
+<html class="no-js" lang="en">
+  <%= render :partial => "head" %>
+  <body>
 
-  <%= render "javascript" %>
-  <%= render "css_overrides" %>
-</body>
+  <%= render :partial => "top_bar" %>
+  <%= render "flashes" -%>
+ 
+  <%= render :partial => "slideshow" %>
+
+  <%= render :partial => "page_title" %>
+
+    <%= render :partial => "featured_photo_gallery" %>
+
+    <hr>
+
+    <%= render :partial => "primary_callout" %>
+
+    <hr>
+
+    <div class="row column text-center">
+      <h2>Some Other Neat Products</h2>
+      <hr>
+    </div>
+
+    <%= render :partial => "guest_photo_gallery" %>
+
+    <hr>
+
+    <%= render :partial => "guest_comments" %>
+    <%= render :partial => "callout_large_secondary" %>
+
+    <!-- <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script> -->
+    <!-- <script src="http://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script> -->
+    <%= render "javascript" %>
+    <script>
+      $(document).foundation();
+    </script>
+  </body>
 </html>

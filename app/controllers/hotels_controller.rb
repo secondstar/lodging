@@ -3,6 +3,7 @@ class HotelsController < ApplicationController
 
   # GET /hotels
   def index
+    
     @hotels = Hotel.all
     @hotel_groups = @hotels.select(:id, :name, :category_code).group_by {|h| h.category_code}
     @geojson = Hotel.geojson
