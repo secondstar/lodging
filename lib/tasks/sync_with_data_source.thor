@@ -8,7 +8,7 @@ class SyncWithDataSource < Thor
     TouringPlansHotelImport.new.save_all_remote_hotels
   end
   
-  desc "2_foursquare_venues", "sync cached records with foursquare.com"
+  desc "foursquare_venues", "sync cached records with foursquare.com"
   def foursquare_venues
     say "Updating Foursquare venues…", :blue
     SyncVenue.all
@@ -32,6 +32,40 @@ class SyncWithDataSource < Thor
     say "Updating Foursquare tips…", :blue
     SyncVenue.all_tips
   end
+
+
+end
+
+class AdminTask < Thor
+  
+  desc "update_site", "general command to update site from all sources"
+  def update_site
+    say "* Updating Touring Plans reviews *", :blue
+    sleep(1.seconds)
+    TouringPlansHotelImport.new.save_all_remote_hotels
+
+    say "** Updating Foursquare venues **", :blue
+    sleep(1.seconds)
+    SyncVenue.all
+
+    say "*** Updating Foursquare photos ***", :blue
+    sleep(1.seconds)
+    SyncVenue.all_photos
+
+    say "**** Updating Foursquare tips ****", :blue
+    sleep(1.seconds)
+    SyncVenue.all_tips
+
+    say "Almost there!", :red, :on_yellow
+    sleep(1.seconds)
+
+    say "Connecting new data to hotels…", :blue
+    HotelSync.new.update_all_from_touringplans_com
+    HotelSync.new.attach_each_foursquare_review_to_its_hotel
+
+    say " DONE", :yellow, :on_blue
+  end
+  
 
 
 end
