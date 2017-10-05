@@ -1,0 +1,22 @@
+<div class="media-object">
+  <div class="media-object-section">
+    <!-- <img class="thumbnail" src="http://placehold.it/100x100"> -->
+          <%= image_tag "#{guest_comment.author_photo_prefix}50x50#{guest_comment.author_photo_suffix}",
+               title: "#{guest_comment.author_first_name} #{guest_comment.author_last_name} ", 
+               class: "thumbnail",
+               data_retina_url: "#{guest_comment.author_photo_prefix}100x100#{guest_comment.author_photo_suffix}",
+               size: "100x100"
+          %>    
+  </div>
+  <div class="media-object-section">
+    <h5><%= "#{guest_comment.author_first_name} #{guest_comment.author_last_name}" %></h5>
+    <p><%= guest_comment.text %></p>
+  </div>
+</div>
+
+          <%#= image_tag "#{hotel_tip.author_photo_prefix}100x100#{hotel_tip.author_photo_suffix}",
+               title: "#{hotel_tip.author_first_name} #{hotel_tip.author_last_name} ", 
+               class="thumbnail",
+               data_retina_url: "#{hotel_tip.author_photo_prefix}200x200#{hotel_tip.author_photo_suffix}",
+               size: "200x200"
+          %>
