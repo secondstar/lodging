@@ -40,6 +40,7 @@ class SyncVenue
   end
   
   def self.all
+    # updates reviews of all Foursquare Venues
     all_ids = self._collect_venue_ids
     responses = all_ids.each {|venue_id| self.venue(venue_id) }
 
@@ -130,6 +131,9 @@ class SyncVenue
     sorted              = venue_ids.sort
     sorted.pop(corrected_nogos_ids.length)
     all_ids = [sorted, corrected_nogos_ids].flatten
+    # remove id's that are of a foursquare_missing_venue #patch
+    all_ids = all_ids.reject {|i| i == "none"}
+
   end
   
   
@@ -149,13 +153,17 @@ class SyncVenue
   
   def self._correct_nogos_and_return_ids(nogos_arrays_list)
     nogo_paths_list = nogos_arrays_list.collect {|nogo_array| _get_path_of_uri(nogo_array) }
-    nogo_paths_list = nogo_paths_list.grep_v("board-walk-villas")
     corrected_nogos = nogo_paths_list.collect {|nogo_path|
        FoursquareGuaranteedVenue.search_by_wdw_uri(nogo_path).select {|venue|
          venue.verified == true
        }.first
     }
-    ids = corrected_nogos.collect {|venue| venue.id}
+    # compacting is just an temporary patch
+    # hotels like possibly copper creek are omitted
+    # venue.verified sometimes returns nil
+
+    flattened_corrected_nogos = corrected_nogos.flatten.compact
+    ids = flattened_corrected_nogos.map {|venue| venue.id}
         
   end
   
@@ -164,6 +172,7 @@ class SyncVenue
   end
   
   def self._wdw_uris
+    ## this should be investigated to  see if using seed datga is correct
     tp_seed_data = TouringPlansHotelImport.new.seed_data
     uris = tp_seed_data.collect {|seed| seed[:wdw_uri]}
   end
