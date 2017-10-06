@@ -1,1 +1,28 @@
-<%= yield(:title) %>
+  <%= render :partial => "top_bar" %>
+  <%= render "flashes" -%>
+ 
+  <%= render :partial => "slideshow" %>
+
+  <%= render :partial => "page_title" %>
+
+  <%= render :partial => "featured_photo_gallery" %>
+
+  <hr>
+
+  <%= render :partial => "primary_callout" %>
+
+  <hr>
+
+  <div class="row column text-center">
+    <h2>Guest Photos</h2>
+    <hr>
+  </div>
+
+  <%= render :partial => "guest_photo_gallery", locals:  {hotel: @hotel}  %>
+
+  <hr>
+
+  <%= render :partial => "guest_comments", locals:  {hotel: @hotel} %>
+
+  <%= render :partial => "callout_large_secondary" %>
+
