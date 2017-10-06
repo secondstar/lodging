@@ -1,0 +1,6 @@
+  <div class="column">
+    <!-- <img class="thumbnail" src="http://placehold.it/300x400"> -->
+    <%= image_tag "#{guest_photo.prefix}600x600#{guest_photo.suffix}", class: "thumbnail" %>
+    <h5><%= "by: #{guest_photo.photographer_first_name} #{guest_photo.photographer_last_name}" if guest_photo.photographer_first_name %></h5>
+    <p>taken: <%= "#{guest_photo.created_at.strftime("%B %Y")}" %></p>
+  </div>
