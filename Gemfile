@@ -2,7 +2,8 @@ source "https://rubygems.org"
 
 ruby "2.4.0"
 
-gem "autoprefixer-rails"
+gem 'autoprefixer-rails', '~> 7.1', '>= 7.1.5'
+# gem "autoprefixer-rails"
 gem "bourbon", "5.0.0.beta.5"
 gem "delayed_job_active_record"
 gem "flutie"
@@ -17,10 +18,11 @@ gem "puma"
 gem "rack-canonical-host"
 gem "rails", "~> 4.2.0"
 gem "recipient_interceptor"
-gem "sass-rails", "~> 5.0"
+gem 'sass-rails', '~> 5.0', '>= 5.0.6'
 gem "simple_form"
-gem "sprockets", ">= 3.0.0"
-gem "sprockets-es6"
+# gem "sprockets", ">= 3.0.0"
+gem 'sprockets', '~> 3.7', '>= 3.7.1'
+gem 'sprockets-es6', '~> 0.9.2'
 gem "title"
 gem "uglifier"
 
