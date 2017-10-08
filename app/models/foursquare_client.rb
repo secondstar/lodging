@@ -1,6 +1,7 @@
 class FoursquareClient
   attr_reader :connection, :routes
   
+  
   def initialize(connection:, routes:)
     @connection   = connection
     @routes       = routes
