@@ -97,6 +97,7 @@ GEM
       multipart-post (>= 1.2, < 3)
     faraday_middleware (0.10.0)
       faraday (>= 0.7.4, < 0.10)
+    flickraw (0.9.9)
     flutie (2.0.0)
     formulaic (0.4.0)
       activesupport
@@ -117,8 +118,7 @@ GEM
     hashie (3.4.4)
     high_voltage (3.0.0)
     honeybadger (2.6.1)
-    httparty (0.13.7)
-      json (~> 1.8)
+    httparty (0.15.6)
       multi_xml (>= 0.5.2)
     i18n (0.8.6)
     jquery-rails (4.1.1)
@@ -140,7 +140,7 @@ GEM
     mini_portile2 (2.3.0)
     minitest (5.10.3)
     multi_json (1.12.1)
-    multi_xml (0.5.5)
+    multi_xml (0.6.0)
     multipart-post (2.0.0)
     neat (1.7.4)
       bourbon (>= 4.0)
@@ -300,6 +300,7 @@ DEPENDENCIES
   delayed_job_active_record
   dotenv-rails
   factory_girl_rails
+  flickraw (~> 0.9.9)
   flutie
   formulaic
   foundation-rails (~> 6.4, >= 6.4.1.2)
@@ -307,7 +308,7 @@ DEPENDENCIES
   fuzzy_match (~> 2.1)
   high_voltage
   honeybadger (~> 2.6, >= 2.6.1)
-  httparty (~> 0.13.7)
+  httparty (~> 0.15.6)
   jquery-rails
   launchy
   multi_json (~> 1.12, >= 1.12.1)
