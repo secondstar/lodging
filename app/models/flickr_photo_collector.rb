@@ -25,7 +25,7 @@ class FlickrPhotoCollector
 	def cache_photos(photo_collection)
 		photos = photo_collection.flatten
 		photos.each do |photo|
-
+			prepare_attributes_for_storage(photo)
 			hotel_photo = CachedFlickrPhoto.find_or_create_by(flickr_id: photo.flickr_id)
 			hotel_photo.update(photo.to_h)
 		end
