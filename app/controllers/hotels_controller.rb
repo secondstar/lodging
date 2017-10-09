@@ -19,7 +19,7 @@ class HotelsController < ApplicationController
   def show
     render layout: "application"
     @comments = @hotel.tips
-    @photos = @hotel.photos.first(9)
+    @photos = @hotel.foursquare_photos.first(9)
 
   end
 

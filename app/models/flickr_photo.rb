@@ -4,7 +4,7 @@ class FlickrPhoto
   attr_reader :client, :lat, :lon, :radius
   
   def initialize(api_key: FLICKR_ID, shared_secret: FLICKR_SECRET, lat:"", lon:"", radius:"")
-    @client     = FlickrClient.new.client.photos
+    @client     = FlickrClient.new.client
     @lat        = lat
     @lon        = lon
     @radius     = radius
@@ -14,15 +14,14 @@ class FlickrPhoto
 	"i am flickr"
   end
 
-  def search(search_term)
+  def search(text: "")
     responses = []
-    client.search(text: search_term)
-    # search_results = client.search(text: search_term)
-    # search_results.each do |photo|
-    #   response        = OpenStruct.new(photo)
-    #   responses << response
-    # end
-    # responses
+    search_results = self.client.photos.search(text: text)
+    search_results.each do |photo|
+      response        = OpenStruct.new(photo.to_hash)
+      responses << response
+    end
+    responses
   end
 
 end
