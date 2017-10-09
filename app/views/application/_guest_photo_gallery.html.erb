@@ -1,4 +1,4 @@
-<% @guest_photo_gallery = @hotel.photos.first(6) %>
+<% @guest_photo_gallery = @hotel.foursquare_photos.first(6) %>
 <div class="row small-up-2 medium-up-3 large-up-6">
   <%= render :partial => "/hotels/2017/guest_photo", :collection => @guest_photo_gallery %>
 

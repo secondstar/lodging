@@ -18,8 +18,9 @@ class HotelsController < ApplicationController
   # GET /hotels/1
   def show
     render layout: "application"
-    @comments = @hotel.tips
-    @photos = @hotel.photos.first(9)
+    @comments       = @hotel.tips
+    @photos         = @hotel.foursquare_photos.first(9)
+    @flickr_photos  = @hotel.cached_flickr_photos.first(4)
 
   end
 

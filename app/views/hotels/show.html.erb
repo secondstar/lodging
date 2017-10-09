@@ -5,7 +5,13 @@
 
   <%= render :partial => "page_title" %>
 
-  <%= render :partial => "featured_photo_gallery" %>
+    <div class="row small-up-2 large-up-4">
+        <%= render :partial => "featured_photo_gallery", locals:  {hotel: @hotel} %>
+
+    </div>
+
+
+  <%#= render :partial => "featured_photo_gallery", locals: {photos: @flickr_photos} %>
 
   <hr>
 
