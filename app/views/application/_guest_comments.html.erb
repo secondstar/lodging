@@ -1,93 +1,17 @@
     <div class="row">
       <div class="medium-4 columns">
-        <h4>Double Super Products</h4>
-        <div class="media-object">
-          <div class="media-object-section">
-            <img class="thumbnail" src="http://placehold.it/100x100">
-          </div>
-          <div class="media-object-section">
-            <h5>Nunc Eu Ullamcorper Orci</h5>
-            <p>Quisque eget odio ac lectus vestibulum faucibus eget in metus. In pellentesque.</p>
-          </div>
-        </div>
-        <div class="media-object">
-          <div class="media-object-section">
-            <img class="thumbnail" src="http://placehold.it/100x100">
-          </div>
-          <div class="media-object-section">
-            <h5>Nunc Eu Ullamcorper Orci</h5>
-            <p>Quisque eget odio ac lectus vestibulum faucibus eget in metus. In pellentesque.</p>
-          </div>
-        </div>
-        <div class="media-object">
-          <div class="media-object-section">
-            <img class="thumbnail" src="http://placehold.it/100x100">
-          </div>
-          <div class="media-object-section">
-            <h5>Nunc Eu Ullamcorper Orci</h5>
-            <p>Quisque eget odio ac lectus vestibulum faucibus eget in metus. In pellentesque.</p>
-          </div>
-        </div>
+        <h4>Tips</h4>
+              <%#= render  partial: "hotel_tip", collection: @hotel.tips.first(5) %>
+        <% @comments = @hotel.tips %>
+        <%= render :partial => "/hotels/2017/guest_comment", :collection => @comments[0..2] %>
       </div>
       <div class="medium-4 columns">
-        <h4>Top Products</h4>
-        <div class="media-object">
-          <div class="media-object-section">
-            <img class="thumbnail" src="http://placehold.it/100x100">
-          </div>
-          <div class="media-object-section">
-            <h5>Nunc Eu Ullamcorper Orci</h5>
-            <p>Quisque eget odio ac lectus vestibulum faucibus eget in metus. In pellentesque.</p>
-          </div>
-        </div>
-        <div class="media-object">
-          <div class="media-object-section">
-            <img class="thumbnail" src="http://placehold.it/100x100">
-          </div>
-          <div class="media-object-section">
-            <h5>Nunc Eu Ullamcorper Orci</h5>
-            <p>Quisque eget odio ac lectus vestibulum faucibus eget in metus. In pellentesque.</p>
-          </div>
-        </div>
-        <div class="media-object">
-          <div class="media-object-section">
-            <img class="thumbnail" src="http://placehold.it/100x100">
-          </div>
-          <div class="media-object-section">
-            <h5>Nunc Eu Ullamcorper Orci</h5>
-            <p>Quisque eget odio ac lectus vestibulum faucibus eget in metus. In pellentesque.</p>
-          </div>
-        </div>
+        <h4>&nbsp;</h4>
+        <%= render :partial => "/hotels/2017/guest_comment", :collection => @comments[3..5] %>
       </div>
       <div class="medium-4 columns">
-        <h4>Top Products</h4>
-        <div class="media-object">
-          <div class="media-object-section">
-            <img class="thumbnail" src="http://placehold.it/100x100">
-          </div>
-          <div class="media-object-section">
-            <h5>Nunc Eu Ullamcorper Orci</h5>
-            <p>Quisque eget odio ac lectus vestibulum faucibus eget in metus. In pellentesque.</p>
-          </div>
-        </div>
-        <div class="media-object">
-          <div class="media-object-section">
-            <img class="thumbnail" src="http://placehold.it/100x100">
-          </div>
-          <div class="media-object-section">
-            <h5>Nunc Eu Ullamcorper Orci</h5>
-            <p>Quisque eget odio ac lectus vestibulum faucibus eget in metus. In pellentesque.</p>
-          </div>
-        </div>
-        <div class="media-object">
-          <div class="media-object-section">
-            <img class="thumbnail" src="http://placehold.it/100x100">
-          </div>
-          <div class="media-object-section">
-            <h5>Nunc Eu Ullamcorper Orci</h5>
-            <p>Quisque eget odio ac lectus vestibulum faucibus eget in metus. In pellentesque.</p>
-          </div>
-        </div>
+        <h4>&nbsp;</h4>
+        <%= render :partial => "/hotels/2017/guest_comment", :collection => @comments[7..8] %>
       </div>
     </div>
 

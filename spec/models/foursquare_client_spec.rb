@@ -34,17 +34,17 @@ RSpec.describe FoursquareClient do
                to_return(:status => 200, :body => fsq_query, :headers => {})    
     end
     
-    # it 'works' do
-    #   expect(subject.search_venues.parsed_response.fetch('response').fetch('venues')).to eq("something")
+    it 'works' do
+      expect(subject.search_venues.parsed_response.fetch('response').fetch('venues')).to eq("something")
+    end
+    # it 'returns an array within hash' do
+    #   target = subject.search_venues.parsed_response.fetch('response').fetch('venues')
+    #   expect(target).to be_a_kind_of(Array)
     # end
-    it 'returns an array within hash' do
-      target = subject.search_venues.parsed_response.fetch('response').fetch('venues')
-      expect(target).to be_a_kind_of(Array)
-    end
     
-    it 'returns between 1 and 30 venues' do
-      target = subject.search_venues.parsed_response.fetch('response').fetch('venues')
-      expect(target.length).to be_within(1).of(30)
-    end
+    # it 'returns between 1 and 30 venues' do
+    #   target = subject.search_venues.parsed_response.fetch('response').fetch('venues')
+    #   expect(target.length).to be_within(1).of(30)
+    # end
   end
 end

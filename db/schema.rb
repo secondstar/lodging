@@ -11,10 +11,43 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160719173010) do
+ActiveRecord::Schema.define(version: 20171009223716) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cached_flickr_photo_sizes", force: :cascade do |t|
+    t.string   "label"
+    t.string   "width"
+    t.string   "height"
+    t.text     "source"
+    t.text     "url"
+    t.string   "media"
+    t.integer  "cached_flickr_photo_id"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "cached_flickr_photo_sizes", ["cached_flickr_photo_id"], name: "index_cached_flickr_photo_sizes_on_cached_flickr_photo_id", using: :btree
+
+  create_table "cached_flickr_photos", force: :cascade do |t|
+    t.string   "owner"
+    t.string   "secret"
+    t.string   "server"
+    t.integer  "farm"
+    t.string   "title"
+    t.boolean  "ispublic"
+    t.boolean  "isfriend"
+    t.boolean  "isfamily"
+    t.integer  "hotel_id"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.string   "flickr_id"
+    t.text     "description_content"
+    t.integer  "rotation"
+    t.string   "originalformat"
+    t.integer  "haspeople"
+  end
 
   create_table "delayed_jobs", force: :cascade do |t|
     t.integer  "priority",   default: 0, null: false
@@ -31,6 +64,60 @@ ActiveRecord::Schema.define(version: 20160719173010) do
   end
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
+
+  create_table "flickr_search_filters", force: :cascade do |t|
+    t.string   "user_id"
+    t.string   "tags"
+    t.string   "tag_mode"
+    t.string   "text"
+    t.string   "min_upload_date"
+    t.string   "max_upload_date"
+    t.string   "min_taken_date"
+    t.string   "max_taken_date"
+    t.string   "license"
+    t.string   "sort"
+    t.string   "privacy_filter"
+    t.string   "bbox"
+    t.string   "accuracy"
+    t.string   "safe_search"
+    t.string   "content_type"
+    t.string   "machine_tags"
+    t.string   "machine_tag_mode"
+    t.string   "group_id"
+    t.string   "faves"
+    t.string   "camera"
+    t.string   "jump_to"
+    t.string   "contacts"
+    t.string   "woe_id"
+    t.string   "place_id"
+    t.string   "media"
+    t.string   "has_geo"
+    t.string   "geo_context"
+    t.string   "lat"
+    t.string   "lon"
+    t.string   "radius"
+    t.string   "radius_units"
+    t.string   "is_commons"
+    t.string   "in_gallery"
+    t.string   "person_id"
+    t.string   "is_getty"
+    t.string   "username"
+    t.string   "exif_min_exposure"
+    t.string   "exif_max_exposure"
+    t.string   "exif_min_aperture"
+    t.string   "exif_max_aperture"
+    t.string   "exif_min_focallen"
+    t.string   "exif_max_focallen"
+    t.string   "exclude_user_id"
+    t.string   "extras"
+    t.string   "per_page"
+    t.string   "page"
+    t.integer  "hotel_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  add_index "flickr_search_filters", ["hotel_id"], name: "index_flickr_search_filters_on_hotel_id", using: :btree
 
   create_table "foursquare_photos", force: :cascade do |t|
     t.string   "source"
@@ -176,6 +263,8 @@ ActiveRecord::Schema.define(version: 20160719173010) do
     t.string   "theme"
   end
 
+  add_foreign_key "cached_flickr_photo_sizes", "cached_flickr_photos"
+  add_foreign_key "flickr_search_filters", "hotels"
   add_foreign_key "foursquare_reviews", "hotels"
   add_foreign_key "foursquare_tips", "foursquare_reviews"
 end

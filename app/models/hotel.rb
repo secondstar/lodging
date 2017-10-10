@@ -1,4 +1,5 @@
 class Hotel < ActiveRecord::Base
+  has_many :cached_flickr_photos
 
   def tips
     # "tipe sher"
@@ -8,7 +9,7 @@ class Hotel < ActiveRecord::Base
     # self.foursquare_review.tips
   end
 
-  def photos
+  def foursquare_photos
     # "pavlova"
     self.foursquare_review_by_venue_id.photos
   end

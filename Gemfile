@@ -2,7 +2,8 @@ source "https://rubygems.org"
 
 ruby "2.4.0"
 
-gem "autoprefixer-rails"
+gem 'autoprefixer-rails', '~> 7.1', '>= 7.1.5'
+# gem "autoprefixer-rails"
 gem "bourbon", "5.0.0.beta.5"
 gem "delayed_job_active_record"
 gem "flutie"
@@ -17,10 +18,11 @@ gem "puma"
 gem "rack-canonical-host"
 gem "rails", "~> 4.2.0"
 gem "recipient_interceptor"
-gem "sass-rails", "~> 5.0"
+gem 'sass-rails', '~> 5.0', '>= 5.0.6'
 gem "simple_form"
-gem "sprockets", ">= 3.0.0"
-gem "sprockets-es6"
+# gem "sprockets", ">= 3.0.0"
+gem 'sprockets', '~> 3.7', '>= 3.7.1'
+gem 'sprockets-es6', '~> 0.9.2'
 gem "title"
 gem "uglifier"
 
@@ -65,7 +67,7 @@ group :staging, :production do
 end
 
 ## app specific
-gem 'httparty', '~> 0.13.7' # grab the contents of a url
+gem 'httparty', '~> 0.15.6' # grab the contents of a url
 gem 'crack', '~> 0.4.3' # parse the xml or json of that page
 gem 'foursquare2', '~> 2.0', '>= 2.0.2' #foursquare api
 gem 'representable', '~> 3.0'
@@ -74,3 +76,4 @@ gem 'fuzzy_match', '~> 2.1' # best match strings
 gem 'responders', '~> 2.2' #putting back responders into rails. Hey DHH, :P.
 gem 'rails_12factor', '~> 0.0.3' # better heroku hosting 
 gem 'foundation-rails', '~> 6.4', '>= 6.4.1.2'
+gem 'flickraw', '~> 0.9.9'

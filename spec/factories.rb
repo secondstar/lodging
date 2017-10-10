@@ -1,8 +1,73 @@
 FactoryGirl.define do
-  factory :palooza do
-    name "MyString"
+  factory :cached_flickr_photo_size do
+    label "MyString"
+    width "MyString"
+    height "MyString"
+    source "MyText"
+    url "MyText"
+    media "MyString"
+    cached_flickr_photo nil
+  end
+  factory :cached_flickr_photo do
+    id "MyString"
+    owner "MyString"
+    secret "MyString"
+    server "MyString"
+    farm 1
+    title "MyString"
+    ispublic false
+    isfriend false
+    isfamily false
+    hotel_id 1
+  end
+  factory :flickr_search_filter do
+    user_id "MyString"
+    tags "MyString"
+    tag_mode "MyString"
+    text "MyString"
+    min_upload_date "MyString"
+    max_upload_date "MyString"
+    min_taken_date "MyString"
+    max_taken_date "MyString"
+    license "MyString"
+    sort "MyString"
+    privacy_filter "MyString"
+    bbox "MyString"
+    accuracy "MyString"
+    safe_search "MyString"
+    content_type "MyString"
+    machine_tags "MyString"
+    machine_tag_mode "MyString"
+    group_id "MyString"
+    faves "MyString"
+    camera "MyString"
+    jump_to "MyString"
+    contacts "MyString"
+    woe_id "MyString"
+    place_id "MyString"
+    media "MyString"
+    has_geo "MyString"
+    geo_context "MyString"
     lat "MyString"
-    lng "MyString"
+    lon "MyString"
+    radius "MyString"
+    radius_units "MyString"
+    is_commons "MyString"
+    in_gallery "MyString"
+    person_id "MyString"
+    is_getty "MyString"
+    username "MyString"
+    exif_min_exposure "MyString"
+    exif_max_exposure "MyString"
+    exif_min_aperture "MyString"
+    exif_max_aperture "MyString"
+    exif_min_focallen "MyString"
+    exif_max_focallen "MyString"
+    exclude_user_id "MyString"
+    extras "MyString"
+    per_page "MyString"
+    page "MyString"
+    hotel nil
   end
   factory :hotel_sync do
     
