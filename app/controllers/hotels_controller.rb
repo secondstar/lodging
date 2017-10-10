@@ -20,7 +20,6 @@ class HotelsController < ApplicationController
     render layout: "application"
     @comments       = @hotel.tips
     @photos         = @hotel.foursquare_photos.first(9)
-    @flickr_photos  = @hotel.cached_flickr_photos.first(4)
 
   end
 

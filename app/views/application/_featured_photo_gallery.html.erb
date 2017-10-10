@@ -1,5 +1,6 @@
     <div class="row small-up-2 large-up-4">
+    	<% featured_collection = CachedFlickrPhoto._collect_tall_medium_for_hotel(@hotel.id).shuffle.first(4) %>
         <%= render :partial => "/hotels/2017/featured_photo", 
-                   :collection => @hotel.cached_flickr_photos.first(4) %>
+                   :collection => featured_collection if featured_collection.length == 4 %>
 
     </div>

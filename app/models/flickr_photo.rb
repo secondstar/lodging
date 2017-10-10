@@ -24,4 +24,18 @@ class FlickrPhoto
     responses
   end
 
+  def get_info(photo_id:,secret:)
+    photo = client.photos.getInfo(photo_id: photo_id, secret: secret)
+    response        = OpenStruct.new(photo.to_hash)
+  end
+
+  def get_sizes(flickr_id)
+    responses = []
+    sizes = client.photos.getSizes(photo_id: flickr_id)
+    sizes.each do |photo|
+      response        = OpenStruct.new(photo.to_hash)
+      responses << response
+    end
+    responses
+  end
 end

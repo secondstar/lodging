@@ -11,10 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171008234735) do
+ActiveRecord::Schema.define(version: 20171009223716) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cached_flickr_photo_sizes", force: :cascade do |t|
+    t.string   "label"
+    t.string   "width"
+    t.string   "height"
+    t.text     "source"
+    t.text     "url"
+    t.string   "media"
+    t.integer  "cached_flickr_photo_id"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "cached_flickr_photo_sizes", ["cached_flickr_photo_id"], name: "index_cached_flickr_photo_sizes_on_cached_flickr_photo_id", using: :btree
 
   create_table "cached_flickr_photos", force: :cascade do |t|
     t.string   "owner"
@@ -26,9 +40,13 @@ ActiveRecord::Schema.define(version: 20171008234735) do
     t.boolean  "isfriend"
     t.boolean  "isfamily"
     t.integer  "hotel_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
     t.string   "flickr_id"
+    t.text     "description_content"
+    t.integer  "rotation"
+    t.string   "originalformat"
+    t.integer  "haspeople"
   end
 
   create_table "delayed_jobs", force: :cascade do |t|
@@ -245,6 +263,7 @@ ActiveRecord::Schema.define(version: 20171008234735) do
     t.string   "theme"
   end
 
+  add_foreign_key "cached_flickr_photo_sizes", "cached_flickr_photos"
   add_foreign_key "flickr_search_filters", "hotels"
   add_foreign_key "foursquare_reviews", "hotels"
   add_foreign_key "foursquare_tips", "foursquare_reviews"

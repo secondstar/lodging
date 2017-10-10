@@ -1,4 +1,13 @@
 FactoryGirl.define do
+  factory :cached_flickr_photo_size do
+    label "MyString"
+    width "MyString"
+    height "MyString"
+    source "MyText"
+    url "MyText"
+    media "MyString"
+    cached_flickr_photo nil
+  end
   factory :cached_flickr_photo do
     id "MyString"
     owner "MyString"

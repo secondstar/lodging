@@ -1,5 +1,5 @@
       <div class="column">
-      	        <%= image_tag("https://farm#{featured_photo.farm}.staticflickr.com/#{featured_photo.server}/#{featured_photo.flickr_id}_#{featured_photo.secret}_z.jpg", 
+      	        <%= image_tag("#{featured_photo.cached_flickr_photo_sizes.first.source}", 
       	        	class: "thumbnail",
       	        	size:  "300x400") %>
       	        <!-- <img src="https://farm3.staticflickr.com/2847/13590772955_d97853612b_s.jpg" alt="myphoto"> -->
