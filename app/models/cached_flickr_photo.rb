@@ -6,6 +6,13 @@ class CachedFlickrPhoto < ActiveRecord::Base
   scope :tall_skinny_medium_sizes, -> { includes(:cached_flickr_photo_sizes).
   		where(cached_flickr_photo_sizes: {height: '640'}).
   		where(cached_flickr_photo_sizes: {label: "Medium 640"}) }
+  scope :portrait_medium, -> { includes(:cached_flickr_photo_sizes).portrait.
+      where(cached_flickr_photo_sizes: {label: "Medium 640"}) }
+  scope :portrait, -> { includes(:cached_flickr_photo_sizes).where(cached_flickr_photo_sizes: {width_by_height: (0.001..0.99)}) }
+  scope :landscape, -> { includes(:cached_flickr_photo_sizes).where(cached_flickr_photo_sizes: {width_by_height: (1.01..10.0)}) }
+  scope :landscape_medium, -> { includes(:cached_flickr_photo_sizes).landscape.
+      where(cached_flickr_photo_sizes: {width_by_height: (1.3..1.4)}).
+      where(cached_flickr_photo_sizes: {label: "Medium 640"}) }
 
   def self._collect_tall_medium_for_hotel(hotel_id)
    	all_tall_photos = self.tall_skinny_medium_sizes

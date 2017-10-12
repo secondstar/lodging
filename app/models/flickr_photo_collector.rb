@@ -70,4 +70,8 @@ class FlickrPhotoCollector
 			end
 		end
 	end
+
+	def caculate_width_height_ratio(width:,height:)
+		ratio = width.to_f / height.to_f
+	end
 end
