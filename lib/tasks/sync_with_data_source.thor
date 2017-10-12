@@ -33,7 +33,15 @@ class SyncWithDataSource < Thor
     SyncVenue.all_tips
   end
 
-
+  desc "flickr_photos", "sync cached photo source uri's with flickr.com"
+  def flickr_photos
+    say "Updating flickr photos…", :blue
+    collector = FlickrPhotoCollector.new
+    photo_collection = collector.all 
+    collector.cache_photos(photo_collection)
+    collector._add_sizes_to_cached_photos
+    collector._calculate_and_save_missing_width_height_ratios
+  end
 end
 
 class AdminTask < Thor

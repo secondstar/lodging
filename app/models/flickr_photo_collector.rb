@@ -59,15 +59,32 @@ class FlickrPhotoCollector
 	end
 
 	def _add_sizes_to_cached_photos
-		photos_without_sizes = CachedFlickrPhoto.missing_sizes
+		photos_without_sizes 			= CachedFlickrPhoto.missing_sizes
 		photos_without_sizes.each do |photo|
 			sizes = FlickrPhoto.new.get_sizes(photo.flickr_id)
 			sizes.each do |size|
+				size.width_by_height = self.caculate_width_height_ratio(width: size.width, height: size.height)
 				cs = photo.cached_flickr_photo_sizes.find_or_create_by(source: size.source) 
 				cs.update(size.to_h)
 				puts "**** sleep ****"
 				sleep 0.5
 			end
 		end
+
+
+	end
+
+	def caculate_width_height_ratio(width:,height:)
+		ratio = width.to_f / height.to_f
+	end
+
+	def _calculate_and_save_missing_width_height_ratios
+		sizes_without_width_by_height	= CachedFlickrPhotoSize.where(width_by_height: nil)
+		missing_ratios = sizes_without_width_by_height.count
+		puts "Missing #{missing_ratios} ratios"
+		sizes_without_width_by_height.each do |size|
+			ratio = self.caculate_width_height_ratio(width: size.width, height: size.height)
+			size.update(width_by_height: ratio)
+		end		
 	end
 end

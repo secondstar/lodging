@@ -1,22 +1,23 @@
 class FlickrPhoto
   ## formerly used attempted to create FlickrClient and FlickrConnection, but they failed
 
-  attr_reader :client, :lat, :lon, :radius
+  attr_reader :client, :lat, :lon, :radius, :per_page
   
-  def initialize(api_key: FLICKR_ID, shared_secret: FLICKR_SECRET, lat:"", lon:"", radius:"")
+  def initialize(api_key: FLICKR_ID, shared_secret: FLICKR_SECRET, lat:"", lon:"", radius:"", per_page: 500)
     @client     = FlickrClient.new.client
     @lat        = lat
     @lon        = lon
     @radius     = radius
+    @per_page   = per_page
   end
 	
   def title
 	"i am flickr"
   end
 
-  def search(text: "")
+  def search(text: "", per_page: 500)
     responses = []
-    search_results = self.client.photos.search(text: text)
+    search_results = self.client.photos.search(text: text, per_page: per_page)
     search_results.each do |photo|
       response        = OpenStruct.new(photo.to_hash)
       responses << response
