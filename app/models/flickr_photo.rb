@@ -3,7 +3,7 @@ class FlickrPhoto
 
   attr_reader :client, :lat, :lon, :radius, :per_page
   
-  def initialize(api_key: FLICKR_ID, shared_secret: FLICKR_SECRET, lat:"", lon:"", radius:"", per_page: 500)
+  def initialize(api_key: FLICKR_ID, shared_secret: FLICKR_SECRET, lat:"", lon:"", radius:"", per_page: 200)
     @client     = FlickrClient.new.client
     @lat        = lat
     @lon        = lon
