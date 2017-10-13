@@ -66,9 +66,9 @@ class FlickrPhotoCollector
 				size.width_by_height = self.caculate_width_height_ratio(width: size.width, height: size.height)
 				cs = photo.cached_flickr_photo_sizes.find_or_create_by(source: size.source) 
 				cs.update(size.to_h)
-				puts "**** sleep ****"
-				sleep 0.5
 			end
+			puts "**** sleep ****"
+			sleep 0.5
 		end
 
 
