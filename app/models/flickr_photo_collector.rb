@@ -26,7 +26,7 @@ class FlickrPhotoCollector
 		photos = photo_collection.flatten
 		photos.each do |photo|
 			hotel_photo = CachedFlickrPhoto.find_or_create_by(flickr_id: photo.flickr_id)
-			return if hotel_photo.originalformat.to_s.length > 0
+			return if hotel_photo.hotel_id.to_i > 0 # photo already exists and is linked to hotel
 			self.prepare_attributes_for_storage(photo)
 			hotel_photo.update(photo.to_h)
 		end
@@ -51,7 +51,7 @@ class FlickrPhotoCollector
 		photo.haspeople				= photo_info.haspeople
 		# need to sleep to not max out QPS (queries per second)
 		puts "**** sleep ****"
-		sleep 1			
+		sleep 0.25
 	end
 
 	def to_boolean(value)
@@ -67,8 +67,9 @@ class FlickrPhotoCollector
 				cs = photo.cached_flickr_photo_sizes.find_or_create_by(source: size.source) 
 				cs.update(size.to_h)
 			end
+			# need to sleep to not max out QPS (queries per second)
 			puts "**** sleep ****"
-			sleep 0.5
+			sleep 0.25
 		end
 
 
