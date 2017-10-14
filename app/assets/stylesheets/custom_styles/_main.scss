@@ -1,0 +1,25 @@
+/* Hotels*/
+
+
+#wrap {
+  position: relative;
+  /* make this relative to have the inner div absolute without     breaking out */
+  /*    width: 200px;  /* fix the width or else it'll be the entire page's width */
+  /*background: silver;*/
+}
+
+#text {
+  color: #ffffff;
+  position: absolute;
+  width: 75px;
+  /*height: 60%;*/
+  top: 0;
+  right:5.5%; /* instead of margin*/
+  /*background: black;*/
+  opacity: 0.67;
+  padding: 10px;
+}
+
+h2 {
+  font-size: 2.0em;
+}

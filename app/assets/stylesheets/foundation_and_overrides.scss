@@ -11,7 +11,7 @@
 
 @import 'global';
 
-/*@include foundation-global-styles;*/
+@include foundation-global-styles;
 @include foundation-grid;
 @include foundation-typography;
 @include foundation-button;

@@ -4,38 +4,40 @@
   <%= render :partial => "head" %>
   <body>
 
-  <%= render :partial => "top_bar" %>
-  <%= render "flashes" -%>
- 
-  <%= render :partial => "slideshow" %>
+ <div class="grid-container">
+    <%= render :partial => "top_bar" %>
+    <%= render "flashes" -%>
+   
+    <%= render :partial => "slideshow" %>
 
-  <%= render :partial => "page_title" %>
+    <%= render :partial => "page_title" %>
 
-  <%= render :partial => "featured_photo_gallery" %>
+    <%= render :partial => "featured_photo_gallery" %>
 
-  <hr>
-
-  <%#= render :partial => "primary_callout" %>
-
-  <hr>
-
-  <div class="row column text-center">
-    <h2>Guest Photos</h2>
     <hr>
-  </div>
 
-  <%= render :partial => "guest_photo_gallery" %>
+    <%#= render :partial => "primary_callout" %>
 
-  <hr>
+    <hr>
 
-  <%= render :partial => "guest_comments" %>
-  <%= render :partial => "callout_large_secondary" %>
+    <div class="row column text-center">
+      <h2>Guest Photos</h2>
+      <hr>
+    </div>
 
-    <!-- <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script> -->
-    <!-- <script src="http://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script> -->
-    <%= render "javascript" %>
-    <script>
-      $(document).foundation();
-    </script>
+    <%= render :partial => "guest_photo_gallery" %>
+
+    <hr>
+
+    <%= render :partial => "guest_comments" %>
+    <%= render :partial => "callout_large_secondary" %>
+
+      <!-- <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script> -->
+      <!-- <script src="http://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script> -->
+      <%= render "javascript" %>
+      <script>
+        $(document).foundation();
+      </script>
+    </div>
   </body>
 </html>
