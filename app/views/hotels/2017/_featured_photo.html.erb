@@ -2,7 +2,7 @@
 			<div class="row">
 			    <div id="wrap">
 			      <div id="text">
-			      		<%= link_to featured_photo.cached_flickr_photo_sizes.first.url do %>
+			      		<%= link_to(featured_photo.cached_flickr_photo_sizes.first.url, target: "blank") do %>
 				      		<svg viewBox="0 0 250 250" width="37" height="37">
 			  					<use xlink:href="#flickr_icon"/>
 							</svg>
