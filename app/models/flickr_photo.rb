@@ -15,7 +15,7 @@ class FlickrPhoto
 	"i am flickr"
   end
 
-  def search(text: "", per_page: 500)
+  def search(text: "", per_page: self.per_page)
     responses = []
     search_results = self.client.photos.search(text: text, per_page: per_page)
     search_results.each do |photo|

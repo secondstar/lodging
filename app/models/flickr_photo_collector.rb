@@ -23,7 +23,8 @@ class FlickrPhotoCollector
 	end
 
 	def cache_photos(photo_collection)
-		photos = photo_collection.flatten
+		photo_collection = photo_collection.flatten
+		photos = self._qualifiy_for_addition_to_db(photo_collection)
 		photos.each do |photo|
 			hotel_photo = CachedFlickrPhoto.find_or_create_by(flickr_id: photo.flickr_id)
 			return if hotel_photo.hotel_id.to_i > 0 # photo already exists and is linked to hotel
@@ -81,11 +82,22 @@ class FlickrPhotoCollector
 
 	def _calculate_and_save_missing_width_height_ratios
 		sizes_without_width_by_height	= CachedFlickrPhotoSize.where(width_by_height: nil)
-		missing_ratios = sizes_without_width_by_height.count
+		missing_ratios 					= sizes_without_width_by_height.count
 		puts "Missing #{missing_ratios} ratios"
 		sizes_without_width_by_height.each do |size|
 			ratio = self.caculate_width_height_ratio(width: size.width, height: size.height)
 			size.update(width_by_height: ratio)
 		end		
+	end
+
+	def _qualifiy_for_addition_to_db(photo_collection)
+		self._screen_out_photos_already_in_db(photo_collection)
+	end
+
+	def _screen_out_photos_already_in_db(photo_collection)
+		# screen out photos we already have
+		photo_collection_ids 		= photo_collection.flatten.map {|i| i.id}
+		cached_flickr_photo_ids 	= CachedFlickrPhoto.all.map {|i| i.flickr_id}
+		uncollected_flickr_photos 	= photo_collection.reject { |i| cached_flickr_photo_ids.include? i.id }
 	end
 end
