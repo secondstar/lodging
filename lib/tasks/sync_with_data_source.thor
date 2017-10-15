@@ -64,6 +64,14 @@ class AdminTask < Thor
     sleep(1.seconds)
     SyncVenue.all_tips
 
+    say "Updating flickr photos…", :blue
+    collector = FlickrPhotoCollector.new
+    photo_collection = collector.all 
+    collector.cache_photos(photo_collection)
+    collector._add_sizes_to_cached_photos
+    collector._calculate_and_save_missing_width_height_ratios
+    
+
     say "Almost there!", :red, :on_yellow
     sleep(1.seconds)
 
