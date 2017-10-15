@@ -31,8 +31,16 @@ class FlickrPhoto
   end
 
   def get_sizes(flickr_id)
+      puts "*****************"
+      puts "sizes for flickr_id: #{flickr_id}"
+      puts "                 "
+      puts "*****************"
     responses = []
-    sizes = client.photos.getSizes(photo_id: flickr_id)
+    begin
+      sizes = client.photos.getSizes(photo_id: flickr_id)
+    rescue
+       return responses
+    end
     sizes.each do |photo|
       response        = OpenStruct.new(photo.to_hash)
       responses << response
